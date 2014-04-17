@@ -1,8 +1,9 @@
 package gamedatas;
 
- 
-import gamecore.Engine;
-
+/**
+ * Class whitch contains the game stats.
+ * @author MOREL Charles <charles.morel@iut-valence.fr>
+ */
 public class GameMode {
 
     /**
@@ -10,8 +11,11 @@ public class GameMode {
      */
     public GameStatus gameStatus;
 
-    public Engine myEngine;
+    /**
+     * Statistics of the times.
+     */
     public Timer myTimer;
+    
     /**
    * 
    * @element-type Quests

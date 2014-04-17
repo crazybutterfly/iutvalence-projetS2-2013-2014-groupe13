@@ -15,15 +15,10 @@ public class Engine {
 
   // public [WHAT TYPE ?] Team;
 
-  public int numberOfPlayer;
-
+    public int numberOfPlayer;
     public MainDisplay mainDisplay;
     public AllPlayers allPlayers;
     public ChatDatas chatDatas;
-    /**
-   * 
-   * @element-type GameMode
-   */
   public GameMode  myGameMode;
     public DataInterface dataInterface;
     public GameLauncher gameLauncher;

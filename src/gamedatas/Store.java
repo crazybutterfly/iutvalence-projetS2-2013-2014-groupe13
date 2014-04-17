@@ -1,7 +1,5 @@
 package gamedatas;
 
- 
-import gamecore.Engine;
 
 public abstract class Store {
 
@@ -10,7 +8,6 @@ public abstract class Store {
    * @element-type Item
    */
   public items.Item  myItem;
-    public Engine myEngine;
 
  /* 
     TODO : work out how to do that function.

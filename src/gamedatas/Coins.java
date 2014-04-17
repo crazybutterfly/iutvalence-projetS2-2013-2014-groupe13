@@ -1,19 +1,12 @@
 package gamedatas;
 
-
+/**
+ * Class which store coins for a player.
+ * @author MOREL Charles <charles.morel@iut-valence.fr>
+ */
 public class Coins {
 
   private int quantity;
-
-    /**
-     * joueur espion.
-     */
-    public SpyPlayer spyPlayer;
-
-    /**
-     * le chef des gardes.
-     */
-    public GuardChiefPlayer guardChiefPlayer;
 
     /**
      * a procedure to add coins
