@@ -5,8 +5,6 @@ import items.Item;
 
 public class GuardStorage {
 
-    public GuardChiefStore myGuardChiefStore;
-
     /**
      * when a guard takes an item.
      * @param item what the guards want for an item.

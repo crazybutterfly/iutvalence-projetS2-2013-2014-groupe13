@@ -8,6 +8,5 @@ public class SpiesQuest extends Quests {
 
   public boolean done;
 
-  //public [whatIsReturnType?] newOperation() {}
 
 }

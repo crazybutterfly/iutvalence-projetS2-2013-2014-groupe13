@@ -6,7 +6,6 @@ public class Player {
 
   public String pseudo;
 
-    public AllPlayers myAllPlayers;
 
   public void Player() {
   }
