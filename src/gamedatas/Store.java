@@ -1,6 +1,6 @@
 package gamedatas;
 
-import java.util.Vector;
+ 
 import gamecore.Engine;
 
 public abstract class Store {
@@ -9,7 +9,7 @@ public abstract class Store {
    * 
    * @element-type Item
    */
-  public Vector  myItem;
+  public items.Item  myItem;
     public Engine myEngine;
 
  /* 

@@ -1,6 +1,6 @@
 package gamedatas;
 
-import java.util.Vector;
+ 
 import gamecore.Engine;
 
 
@@ -25,7 +25,7 @@ public class Map {
    * 
    * @element-type ItemOnTheMap
    */
-  public Vector  myItemOnTheMap;
+  public items.ItemOnTheMap  myItemOnTheMap;
 
   public void createAWall(Integer xStartCase, Integer yStartCase, Integer xLarger, Integer yLarger) {
   }

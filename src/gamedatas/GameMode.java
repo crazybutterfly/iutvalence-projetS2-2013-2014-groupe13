@@ -1,6 +1,6 @@
 package gamedatas;
 
-import java.util.Vector;
+ 
 import gamecore.Engine;
 
 public class GameMode {
@@ -16,6 +16,6 @@ public class GameMode {
    * 
    * @element-type Quests
    */
-  public Vector  myQuests;
+  public Quests  myQuests;
 
 }

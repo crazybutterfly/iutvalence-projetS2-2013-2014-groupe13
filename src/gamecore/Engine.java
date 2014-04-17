@@ -3,10 +3,11 @@ package gamecore;
 import gamedatas.AllPlayers;
 import playersinteractions.PlayerInputs;
 import gamedatas.DataInterface;
-import java.util.Vector;
+ 
 import gamedatas.Store;
 import display.MainDisplay;
 import gamedatas.ChatDatas;
+import gamedatas.GameMode;
 import gamedatas.Map;
 
 
@@ -23,7 +24,7 @@ public class Engine {
    * 
    * @element-type GameMode
    */
-  public Vector  myGameMode;
+  public GameMode  myGameMode;
     public DataInterface dataInterface;
     public GameLauncher gameLauncher;
     public Map map;

@@ -1,11 +1,11 @@
 package gamedatas;
 
-import java.util.Vector;
+
 import gamecore.Engine;
 
 /**
  *
- * @author UCDP_Brony
+ * @author WOERLY-MOUSSIER Joachim <joachim.woerly-moussier@iut-valence.fr>
  */
 public class AllPlayers {
 

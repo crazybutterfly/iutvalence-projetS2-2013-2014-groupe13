@@ -8,7 +8,7 @@ package gamedatas;
 
 /**
  * Enumeration for the game's status
- * @author UCDP_Brony
+ * @author WOERLY-MOUSSIER Joachim <joachim.woerly-moussier@iut-valence.fr>
  */
 enum GameStatus 
 {

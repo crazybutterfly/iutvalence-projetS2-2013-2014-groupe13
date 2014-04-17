@@ -8,7 +8,7 @@ package gamedatas;
 
 /**
  * a class where stats are defined.
- * @author UCDP_Brony
+ * @author WOERLY-MOUSSIER Joachim <joachim.woerly-moussier@iut-valence.fr>
  */
 class Stats {
     private int numberOfKills;

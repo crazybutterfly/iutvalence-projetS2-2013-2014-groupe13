@@ -3,7 +3,7 @@ package gamedatas;
 /**
  * This is the "case" class, made to defined what is composing the map of 
  * the game (which you just lost, by the way).
- * @author UCDP_Brony
+ * @author WOERLY-MOUSSIER Joachim <joachim.woerly-moussier@iut-valence.fr>
  */
 public class Case {
 

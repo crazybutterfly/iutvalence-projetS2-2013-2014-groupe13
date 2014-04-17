@@ -1,7 +1,7 @@
 package gamedatas;
 
 
-import java.util.Vector;
+ 
 
 
 public class ClassicPlayer extends Player {

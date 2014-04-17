@@ -8,7 +8,7 @@ package gamedatas;
 
 /**
  *
- * @author UCDP_Brony
+ * @author WOERLY-MOUSSIER Joachim <joachim.woerly-moussier@iut-valence.fr>
  */
 enum PlayerStatus {
     ALIVE,
