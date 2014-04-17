@@ -3,44 +3,48 @@ package gamecore;
 import gamedatas.AllPlayers;
 import playersinteractions.PlayerInputs;
 import gamedatas.DataInterface;
- 
+
 import gamedatas.Store;
 import display.MainDisplay;
 import gamedatas.ChatDatas;
 import gamedatas.GameMode;
 import gamedatas.Map;
 
-
-public class Engine {
-
-  // public [WHAT TYPE ?] Team;
+public class Engine
+{
 
     public int numberOfPlayer;
     public MainDisplay mainDisplay;
     public AllPlayers allPlayers;
     public ChatDatas chatDatas;
-  public GameMode  myGameMode;
+    public GameMode myGameMode;
     public DataInterface dataInterface;
     public GameLauncher gameLauncher;
     public Map map;
     public Store store;
 
-  public void doInteraction(PlayerInputs playerInput) {
-  }
+    public void doInteraction(PlayerInputs playerInput)
+    {
+    }
 
-  public void Engine(GameInformations gameInfos) {
-  }
+    public void Engine(GameInformations gameInfos)
+    {
+    }
 
-  public void classicPlayerPlay() {
-  }
+    public void classicPlayerPlay()
+    {
+    }
 
-  public void classicPlayerWaitingRespawn() {
-  }
+    public void classicPlayerWaitingRespawn()
+    {
+    }
 
-  public void classicPlayerDead() {
-  }
+    public void classicPlayerDead()
+    {
+    }
 
-  public void startCycle() {
-  }
+    public void startCycle()
+    {
+    }
 
 }

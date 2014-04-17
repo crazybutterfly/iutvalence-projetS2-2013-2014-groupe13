@@ -2,23 +2,29 @@ package gamecore;
 
 import playersinteractions.PlayerInputs;
 
-public class GameLauncher {
+public class GameLauncher
+{
 
-    private Engine myEngine;
-    private PlayerInputs myPlayerInputs;
-    private GameInformations myGameInformations;
+    public static void main(String[] args)
+    {
 
-  private GameInformations gameCreation() {
-  return null;
-  }
+        Engine myEngine;
+        PlayerInputs myPlayerInputs;
+        GameInformations myGameInformations;
 
-  public void gameStart(GameInformations gameInfos) {
-  }
+    }
 
-  public void GameLauncher() {
-  }
+    private GameInformations gameCreation()
+    {
+        return null;
+    }
 
-  public void teamSelect(GameInformations gameInfos) {
-  }
+    private void gameStart(GameInformations gameInfos)
+    {
+    }
+
+    private void teamSelect(GameInformations gameInfos)
+    {
+    }
 
 }
