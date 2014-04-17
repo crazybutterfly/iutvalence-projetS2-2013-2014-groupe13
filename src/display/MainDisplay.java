@@ -12,7 +12,6 @@ import display.guardchiefdisplay.GuardChiefStoreScreen;
 
 public class MainDisplay {
 
-    public Engine myEngine;
     public ClassicMainMap myClassicMainMap;
     public ClassicStoreScreen myClassicStoreScreen;
     public SideBar mySideBar;
