@@ -14,13 +14,9 @@ public class ClassicPlayer extends Player {
 
   public int lastTimeBeforeRespawn;
 
-  public int timeToRespawn;
+  private int timeToRespawn;
 
   public int initialNumberOfLives;
-
-  public int remainingLives;
-
-  public int adversaryKilled;
 
     /**
    * 
@@ -43,5 +39,49 @@ public class ClassicPlayer extends Player {
   {
       super();
   }
+
+    /**
+     * @return the posX
+     */
+    public int getPosX() 
+    {
+        return posX;
+    }
+
+    /**
+     * @return the posY
+     */
+    public int getPosY() 
+    {
+        return posY;
+    }
+
+    /**
+     * @return the status
+     */
+    public PlayerStatus getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(PlayerStatus status) {
+        this.status = status;
+    }
+
+    /**
+     * @return the timeToRespawn
+     */
+    public int getTimeToRespawn() {
+        return timeToRespawn;
+    }
+
+    /**
+     * @param timeToRespawn the timeToRespawn to set
+     */
+    public void setTimeToRespawn(int timeToRespawn) {
+        this.timeToRespawn = timeToRespawn;
+    }
 
 }
