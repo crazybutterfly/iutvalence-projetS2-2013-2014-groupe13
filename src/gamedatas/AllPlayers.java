@@ -1,10 +1,9 @@
 package gamedatas;
 
 
-import gamecore.Engine;
-
 /**
  *
+ * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @author WOERLY-MOUSSIER Joachim <joachim.woerly-moussier@iut-valence.fr>
  * @author BEGOT William <william.begot@iut-valence.fr>
  */
@@ -16,11 +15,7 @@ public class AllPlayers {
 
 GuardPlayer[] guardsArray;
 SpyPlayer[] spiesArray;
-    private Engine myEngine;
-    /**
-   * 
-   * @element-type Player
-   */
+
   private Player  myPlayer;
 
   public AllPlayers(int numberOfGuards, int numberOfSpies)
