@@ -1,57 +1,95 @@
 package gamedatas;
 
 /**
- * This is the frame class, made to defined what is composing the map of 
- * the game (which you just lost, by the way).
+ * This is the "Frame" class, made to defined what is composing the map of the
+ * game (which you just lost, by the way).
+ *
+ * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @author WOERLY-MOUSSIER Joachim <joachim.woerly-moussier@iut-valence.fr>
  */
-public class Frame {
+public enum Frame
+{
+    /* ---------------------- START DECLARATIONS---------------------- */
 
     /**
-     * is the content of that frame a wall ?
+     * A wall. Nobody can walk on that.
      */
-    private boolean isAWall;
+    WALL(false, false, "#"),
     
     /**
-     * can spies walk on that ?
+     * The floor. Anybody can walk on it.
      */
-    private boolean spiesCanWalk;
+    FLOOR(true, true, " "),
+    
+    /**
+     * The Spies' floor. For spies only.
+     */
+    SPIESFLOOR(true, false, "."),
+    
+    /**
+     * The Guards' floor. For guards only.
+     */
+    GUARDSFLOOR(false, true, "+");
 
+    /* ---------------------- END DECLARATIONS ---------------------- */
+
+    
+    
+    
+    /* ---------------------- START PARAMETERS DECLARATIONS ---------------------- */
+    
     /**
-     * can guards walk on that ?
+     * is true if spies can walk on the frame
      */
-    private boolean guardsCanWalk;
+    private final boolean spiesCanWalk;
+    
+    /**
+     * is true if guards can walk on the frame
+     */
+    private final boolean guardsCanWalk;
+    
+    /**
+     * text representation of the frame
+     */
+    private final String Representation;
+    
+    /* ---------------------- END PARAMETERS DECLARATIONS ---------------------- */
+
     
     
-    public Frame (){
-        
-        this.isAWall=true;
-        this.spiesCanWalk=false;
-        this.guardsCanWalk=false;
-        
+    
+    /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
+    private Frame(boolean spies, boolean guards, String representation)
+    {
+        this.spiesCanWalk = spies;
+        this.guardsCanWalk = guards;
+        this.Representation = representation;
     }
+    /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
     
-    /**
-     * @return IsAWall
-     */
-
-    public boolean GetIsAWall(){
-        return this.isAWall;
+    /* ---------------------- START FUNCTION(S) ---------------------- */
+    @Override
+    public String toString(){
+        return this.Representation;
     }
-    
+    /* ---------------------- END FUNCTION(S) ---------------------- */
+
+    /* ---------------------- START GETTERS & SETTERS ---------------------- */
+
     /**
-     * @return spiesCanWalk
+     * @return true if spies can walk on the frame
      */
-    
-    public boolean GetSpiesCanWalk() {
+    public boolean isWalkableBySpies()
+    {
         return spiesCanWalk;
     }
 
     /**
-     * @return guardsCanWalk
+     * @return true if guards can walk on the frame
      */
-    public boolean GetGuardsCanWalk() {
+    public boolean isWalkableByGuards()
+    {
         return guardsCanWalk;
     }
-
+    /* ---------------------- END GETTERS AND SETTERS ---------------------- */
 }
