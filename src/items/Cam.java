@@ -1,15 +1,18 @@
 package items;
 
+public class Cam extends ItemOnTheMap
+{
 
-public class Cam extends ItemOnTheMap {
-  public final int numCam;
+    /* ---------------------- START DECLARATIONS ---------------------- */
+    public final int numCam;
+    public static int numberOfCams;
+    /* ---------------------- END DECLARATIONS ---------------------- */
 
-  public static int numberOfCams;
-
-  
-  public Cam()
-  {
-      this.numCam = Cam.numberOfCams;
-      Cam.numberOfCams ++;
-  }
+    /* ---------------------- START FUNCTION(S) ---------------------- */
+    public Cam()
+    {
+        this.numCam = Cam.numberOfCams;
+        Cam.numberOfCams++;
+    }
+    /* ---------------------- END FUNCTION(S) ---------------------- */
 }

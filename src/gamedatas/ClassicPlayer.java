@@ -1,49 +1,54 @@
 package gamedatas;
 
+/**
+ *
+ * @author MOREL Charles <charles.morel@iut-valence.fr>
+ * @author BEGOT William <william.begot@iut-valence.fr>
+ * @author DUBOIS Thomas <thomas.dubois@iut-valence.fr>
+ */
+public class ClassicPlayer extends Player
+{
 
- 
+    /* ---------------------- START DECLARATIONS ---------------------- */
+    private int posX;
 
+    private int posY;
 
-public class ClassicPlayer extends Player {
+    private PlayerStatus status;
 
-  private int posX;
+    public int lastTimeBeforeRespawn;
 
-  private int posY;
+    private int timeToRespawn;
 
-  private PlayerStatus status;
+    public int initialNumberOfLives;
 
-  public int lastTimeBeforeRespawn;
+    public items.Item[] items;
 
-  private int timeToRespawn;
+    private Stats stats;
+    /* ---------------------- END DECLARATIONS ---------------------- */
 
-  public int initialNumberOfLives;
+    /* ---------------------- START FUNCTION(S) ---------------------- */
+    public void updatePosition(int newPosX, int newPosY)
+    {
+        this.posX = newPosX;
+        this.posY = newPosY;
+    }
 
-    /**
-   * 
-   * @element-type Item
-   */
-  public items.Item[] items;
-  private Stats stats;
+    @Override
+    public Stats getStats()
+    {
+        return this.stats;
+    }
 
-  public void updatePosition(Integer newPosX, Integer newPosY) {
-      this.posX = newPosX;
-      this.posY = newPosY;
-  }
-
-  @Override
-  public Stats getStats() {
-      return this.stats;
-  }
-
-  public ClassicPlayer() 
-  {
-      super();
-  }
+    public ClassicPlayer()
+    {
+        super();
+    }
 
     /**
      * @return the posX
      */
-    public int getPosX() 
+    public int getPosX()
     {
         return posX;
     }
@@ -51,7 +56,7 @@ public class ClassicPlayer extends Player {
     /**
      * @return the posY
      */
-    public int getPosY() 
+    public int getPosY()
     {
         return posY;
     }
@@ -59,29 +64,33 @@ public class ClassicPlayer extends Player {
     /**
      * @return the status
      */
-    public PlayerStatus getStatus() {
+    public PlayerStatus getStatus()
+    {
         return status;
     }
 
     /**
      * @param status the status to set
      */
-    public void setStatus(PlayerStatus status) {
+    public void setStatus(PlayerStatus status)
+    {
         this.status = status;
     }
 
     /**
      * @return the timeToRespawn
      */
-    public int getTimeToRespawn() {
+    public int getTimeToRespawn()
+    {
         return timeToRespawn;
     }
 
     /**
      * @param timeToRespawn the timeToRespawn to set
      */
-    public void setTimeToRespawn(int timeToRespawn) {
+    public void setTimeToRespawn(int timeToRespawn)
+    {
         this.timeToRespawn = timeToRespawn;
     }
-
+    /* ---------------------- END FUNCTION(S) ---------------------- */
 }
