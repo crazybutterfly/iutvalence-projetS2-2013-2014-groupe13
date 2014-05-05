@@ -6,7 +6,6 @@ import display.guardchiefdisplay.GuardChiefMainMap;
 import display.classicdisplay.ClassicMainMap;
 import gamedatas.Store;
 import gamedatas.ChatDatas;
-import gamecore.Engine;
 import gamedatas.Map;
 import display.guardchiefdisplay.GuardChiefStoreScreen;
 
