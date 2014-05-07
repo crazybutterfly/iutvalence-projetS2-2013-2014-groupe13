@@ -11,17 +11,17 @@ public class AllPlayers
 {
 
     /* ---------------------- START DECLARATIONS ---------------------- */
-    
+
     private final int numberOfGuards;
 
     private final int numberOfSpies;
 
     GuardPlayer[] guardsArray;
-    
+
     SpyPlayer[] spiesArray;
 
     /* ---------------------- END DECLARATIONS ---------------------- */
-    
+
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
     public AllPlayers(int numberOfGuards, int numberOfSpies)
     {
@@ -80,7 +80,7 @@ public class AllPlayers
     }
 
     /* ---------------------- END FUNCTION(S) ---------------------- */
-    
+
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
     /**
      * @return the numberOfGuards

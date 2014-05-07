@@ -25,9 +25,9 @@ public class Map
      */
     public Frame[][] map;
 
-    
+
     public static final int STANDARD_X_SIZE_VALUE = 1000;
-    
+
     public static final int STANDARD_Y_SIZE_VALUE = 1000;
     /* ---------------------- END DECLARATIONS ---------------------- */
 

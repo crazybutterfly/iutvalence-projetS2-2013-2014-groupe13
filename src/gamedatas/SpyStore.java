@@ -1,4 +1,5 @@
 package gamedatas;
 
-public class SpyStore extends Store {
+public class SpyStore extends Store
+{
 }

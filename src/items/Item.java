@@ -1,21 +1,24 @@
 package items;
 
-public class Item {
-    
-  public String itemName;
+public class Item
+{
 
-  public boolean usableByASpy;
+    public String itemName;
 
-  public boolean usableByAGuard;
+    public boolean usableByASpy;
 
-  public int timeBeforeUnlock;
+    public boolean usableByAGuard;
 
-  public int itemPrice;
+    public int timeBeforeUnlock;
 
-  public void useItem() {
-  }
+    public int itemPrice;
 
-  public Item() {
-  }
+    public void useItem()
+    {
+    }
+
+    public Item()
+    {
+    }
 
 }

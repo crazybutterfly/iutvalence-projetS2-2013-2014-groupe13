@@ -5,7 +5,8 @@ package playersinteractions;
  *
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  */
-public class PlayerInputs {
+public class PlayerInputs
+{
 
     /**
      * last character ou key imput by the player.
@@ -21,12 +22,12 @@ public class PlayerInputs {
      * mouse cursor Y-position at last interaction .
      */
     public int mouseCursorPosY;
-    
+
     /**
      * mouse key pressed at last leyboard interaction.
      */
     public String lastMouseInput;
-    
+
     /**
      * player has asked an interaction using keyboard.
      */

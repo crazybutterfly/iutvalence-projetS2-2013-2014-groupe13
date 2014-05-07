@@ -15,17 +15,14 @@ public enum Frame
      * A wall. Nobody can walk on that.
      */
     WALL(false, false, "#"),
-    
     /**
      * The floor. Anybody can walk on it.
      */
     FLOOR(true, true, " "),
-    
     /**
      * The Spies' floor. For spies only.
      */
     SPIESFLOOR(true, false, "."),
-    
     /**
      * The Guards' floor. For guards only.
      */
@@ -33,31 +30,24 @@ public enum Frame
 
     /* ---------------------- END DECLARATIONS ---------------------- */
 
-    
-    
-    
     /* ---------------------- START PARAMETERS DECLARATIONS ---------------------- */
-    
     /**
      * is true if spies can walk on the frame
      */
     private final boolean spiesCanWalk;
-    
+
     /**
      * is true if guards can walk on the frame
      */
     private final boolean guardsCanWalk;
-    
+
     /**
      * text representation of the frame
      */
     private final String Representation;
-    
+
     /* ---------------------- END PARAMETERS DECLARATIONS ---------------------- */
 
-    
-    
-    
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
     private Frame(boolean spies, boolean guards, String representation)
     {
@@ -66,10 +56,11 @@ public enum Frame
         this.Representation = representation;
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
-    
+
     /* ---------------------- START FUNCTION(S) ---------------------- */
     @Override
-    public String toString(){
+    public String toString()
+    {
         return this.Representation;
     }
     /* ---------------------- END FUNCTION(S) ---------------------- */

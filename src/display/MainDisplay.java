@@ -9,7 +9,8 @@ import gamedatas.ChatDatas;
 import gamedatas.Map;
 import display.guardchiefdisplay.GuardChiefStoreScreen;
 
-public class MainDisplay {
+public class MainDisplay
+{
 
     public ClassicMainMap myClassicMainMap;
     public ClassicStoreScreen myClassicStoreScreen;
@@ -19,10 +20,12 @@ public class MainDisplay {
     public GuardChiefMainMap myGuardChiefMainMap;
     public GuardChiefStoreScreen myGuardChiefStoreScreen;
 
-  public void refreshDisplay(Map myMap, Store stores, ChatDatas chatInfos, AllPlayers players) {
-  }
+    public void refreshDisplay(Map myMap, Store stores, ChatDatas chatInfos, AllPlayers players)
+    {
+    }
 
-  public void displayLastScreen() {
-  }
+    public void displayLastScreen()
+    {
+    }
 
 }

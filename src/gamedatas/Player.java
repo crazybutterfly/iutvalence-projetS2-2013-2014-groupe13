@@ -11,7 +11,7 @@ public class Player
     /* ---------------------- START DECLARATIONS ---------------------- */
 
     public String pseudo;
-    
+
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /* ---------------------- START FUNCTION(S) ---------------------- */

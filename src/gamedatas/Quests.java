@@ -1,8 +1,9 @@
 package gamedatas;
 
-public class Quests {
+public class Quests
+{
 
 
-  public boolean QuestFinished;
+    public boolean QuestFinished;
 
 }

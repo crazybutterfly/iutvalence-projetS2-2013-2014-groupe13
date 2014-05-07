@@ -2,24 +2,25 @@ package gamedatas;
 
 /**
  * Class whitch contains the game stats.
+ *
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  */
-public class GameMode {
+public class GameMode
+{
 
     /**
-     *  the game status.
+     * the game status.
      */
     public GameStatus gameStatus;
 
     /**
      * Statistics of the times.
      */
-    public Timer myTimer;
-    
+    public Timer gameTimer;
+
     /**
-   * 
-   * @element-type Quests
-   */
-  public Quests  myQuests;
+     * Quests datas of the game.
+     */
+    public Quests gameQuests;
 
 }

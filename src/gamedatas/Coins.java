@@ -12,7 +12,7 @@ public class Coins
     /* ---------------------- START DECLARATIONS ---------------------- */
 
     private int quantity;
-    
+
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /**

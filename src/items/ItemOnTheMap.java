@@ -1,10 +1,11 @@
 package items;
 
-public class ItemOnTheMap extends Item {
+public class ItemOnTheMap extends Item
+{
 
-  public int posX;
+    public int posX;
 
-  public int posY;
+    public int posY;
 
 
 }

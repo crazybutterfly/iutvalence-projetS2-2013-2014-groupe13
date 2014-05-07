@@ -12,7 +12,7 @@ public class GameLauncher
         PlayerInputs myPlayerInputs;
         GameInformations myGameInformations;
 
-        
+
     }
 
     private GameInformations gameCreation()

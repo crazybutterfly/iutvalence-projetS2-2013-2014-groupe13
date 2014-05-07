@@ -1,4 +1,5 @@
 package gamedatas;
 
-public class PrincipalSpiesQuest extends SpiesQuest {
+public class PrincipalSpiesQuest extends SpiesQuest
+{
 }

@@ -2,10 +2,12 @@ package display;
 
 import gamedatas.ChatDatas;
 
-public class ChatDisplay {
+public class ChatDisplay
+{
 
 
-  public void refreshChatDisplay(ChatDatas chatinfos) {
-  }
+    public void refreshChatDisplay(ChatDatas chatinfos)
+    {
+    }
 
 }

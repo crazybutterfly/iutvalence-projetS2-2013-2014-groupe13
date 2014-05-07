@@ -3,12 +3,13 @@ package gamedatas;
 
 import gamecore.Engine;
 
-public class ChatDatas {
+public class ChatDatas
+{
 
-  //public datas;
+    //public datas;
 
     public Engine myEngine;
 
-  //public updateChatDatas( ) {}
+    //public updateChatDatas( ) {}
 
 }
