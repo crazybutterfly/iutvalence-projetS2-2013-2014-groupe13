@@ -5,21 +5,20 @@ public class Cam extends ItemOnTheMap
 
     /* ---------------------- START DECLARATIONS ---------------------- */
     private final int numCam;
-    
+
     /* ---------------------- END DECLARATIONS ---------------------- */
 
-/* ---------------------- START CONSTRUCTOR(S) ---------------------- */
+    /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
     public Cam(int camID)
     {
         this.numCam = camID;
     }
-/* ---------------------- END CONSTRUCTOR(S) ---------------------- */
-    
+    /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
+
     /* ---------------------- START FUNCTION(S) ---------------------- */
     /* ---------------------- END FUNCTION(S) ---------------------- */
-    
-    /* ---------------------- START GETTERS & SETTERS ---------------------- */
 
+    /* ---------------------- START GETTERS & SETTERS ---------------------- */
     /**
      * @return the numCam
      */

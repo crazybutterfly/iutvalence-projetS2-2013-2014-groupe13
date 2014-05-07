@@ -24,7 +24,7 @@ public class SpyPlayer extends ClassicPlayer
      * Stats du Spy.
      */
     protected SpyStats stats;
-    
+
     /**
      * Pseudo par défaut du Spy.
      */
@@ -34,10 +34,9 @@ public class SpyPlayer extends ClassicPlayer
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
-    
     /**
-     * Ajoute un numéro au pseudo du Spy.
-     * Donne Les stats du Spy.
+     * Ajoute un numéro au pseudo du Spy. Donne Les stats du Spy.
+     *
      * @param NumberOfThePlayer Numéro du Spy.
      */
     public SpyPlayer(int NumberOfThePlayer)
@@ -48,25 +47,27 @@ public class SpyPlayer extends ClassicPlayer
         this.myCoins = new Coins();
         this.stats = new SpyStats();
     }
-    
+
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 
     /* ---------------------- START FUNCTION(S) ---------------------- */
-    
     /**
      * Fonction permettant au Spy de tuer un Guard avec son couteau.
+     *
      * @param guardsArray tableau des cibles Guard potentiel du Spy.
      * @param numberOfGuards Cible Guard du Spy.
      */
     public void useKnife(GuardPlayer[] guardsArray, int numberOfGuards)
     {
-        for(int i = 0; i < numberOfGuards-2; i++)
-            if(guardsArray[i].getPosX() == this.posX && guardsArray[i].getPosY() == this.posY)
+        for (int i = 0; i < numberOfGuards - 2; i++) {
+            if (guardsArray[i].getPosX() == this.posX && guardsArray[i].getPosY() == this.posY) {
                 guardsArray[i].playerHasBeenKilled();
+            }
+        }
     }
 
     /* ---------------------- END FUNCTION(S) ---------------------- */
-    
+
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
     @Override
     public SpyStats getStats()

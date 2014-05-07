@@ -14,18 +14,18 @@ public class GuardPlayer extends ClassicPlayer
      * Temps d'attente avant réapparition après mort du Guard.
      */
     private int timeToRespawn;
-    
+
     /**
      * Nom par défaut du Guard.
      */
     public final static String DEFAULT_PSEUDO_PREFIX_FOR_GUARD = "_GUARD_";
     /* ---------------------- END DECLARATIONS ---------------------- */
-    
+
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
-    
+
     /**
-     * Ajoute un numéro au pseudo par défaut du Guard.
-     * Donne les stats du Guard.
+     * Ajoute un numéro au pseudo par défaut du Guard. Donne les stats du Guard.
+     *
      * @param NumberOfThePlayer Numéro du Guard.
      */
     public GuardPlayer(int NumberOfThePlayer)
@@ -35,15 +35,15 @@ public class GuardPlayer extends ClassicPlayer
         this.pseudo += NumberOfThePlayer;
         this.stats = new Stats();
     }
-    
+
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
-    
+
 
     /* ---------------------- START FUNCTION(S) ---------------------- */
-
     /**
      * Fonction permettant à un Guard d'utiliser un pistolet.
-     * @param classicPlayers 
+     *
+     * @param classicPlayers
      */
     public void useGun(ClassicPlayer classicPlayers)
     {
@@ -56,8 +56,8 @@ public class GuardPlayer extends ClassicPlayer
     {
         this.stats = stats;
     }
-    
-    
+
+
     /**
      * function to increment the waiting_for_respawn time.
      *

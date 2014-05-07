@@ -102,9 +102,10 @@ public class ClassicPlayer extends Player
      */
     public final static int MAXIMUM_NUMBER_OF_ITEM_TYPE = 10;
 
-   /**
-     * Nombre d'item que le joueur possède par type d'item.
-     * Il possède un item du type d'item de base : couteau ou pistolet selon si c'est un Guard ou un Spie.
+    /**
+     * Nombre d'item que le joueur possède par type d'item. Il possède un item
+     * du type d'item de base : couteau ou pistolet selon si c'est un Guard ou
+     * un Spie.
      */
     public final static int NUMBER_OF_ITEM_POCESSED_BY_TYPE_DEFAULT = 1;
 
@@ -141,6 +142,7 @@ public class ClassicPlayer extends Player
 
     /**
      * Fonction mettant à jour la position(X,Y) du joueur.
+     *
      * @param newPosX Position X.
      * @param newPosY Position Y.
      */
@@ -152,15 +154,17 @@ public class ClassicPlayer extends Player
 
     /**
      * Fonction attribuant au joueur le statut "en attente de réapparition".
-     * Fonction qui retirera un Spies en cas de mort définitive... à voir avec autre fonction ?
-     * Fonction qui lors de la mort d'un Guard, ajoute un malus de temps de réapparition. Plus le Guard meurt plus le temps de réapparition augmente... à voir avec autre fonction ?
+     * Fonction qui retirera un Spies en cas de mort définitive... à voir avec
+     * autre fonction ? Fonction qui lors de la mort d'un Guard, ajoute un malus
+     * de temps de réapparition. Plus le Guard meurt plus le temps de
+     * réapparition augmente... à voir avec autre fonction ?
      */
     public void playerHasBeenKilled()
     {
 
     }
     /* ---------------------- END FUNCTION(S) ---------------------- */
-    
+
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
 
     public Stats getStats()

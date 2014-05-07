@@ -3,18 +3,36 @@ package items;
 public class Item
 {
 
-    public String itemName;
+    /* ---------------------- START DECLARATIONS ---------------------- */
+    private String itemName;
 
-    public boolean usableByASpy;
+    protected boolean usableByASpy;
 
-    public boolean usableByAGuard;
+    protected boolean usableByAGuard;
 
-    public int timeBeforeUnlock;
+    protected int timeBeforeUnlock;
 
-    public int itemPrice;
+    protected int itemPrice;
+    /* ---------------------- END DECLARATIONS ---------------------- */
 
+    /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
     public Item()
     {
     }
+    /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
+
+    /* ---------------------- START FUNCTION(S) ---------------------- */
+    /* ---------------------- END FUNCTION(S) ---------------------- */
+
+    /* ---------------------- START GETTERS & SETTERS ---------------------- */
+    /**
+     * @return the itemName
+     */
+    public String getItemName()
+    {
+        return itemName;
+    }
+    /* ---------------------- END GETTERS AND SETTERS ---------------------- */
+
 
 }

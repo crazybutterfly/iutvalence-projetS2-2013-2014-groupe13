@@ -15,21 +15,20 @@ public class SpyStats extends Stats
 
     public final static boolean TEAM_HAS_DOCS_DEFAULT = false;
     public final static int REMAINING_LIVES_DEFAULT = 0;
-    
-/* ---------------------- END DECLARATIONS ---------------------- */
 
-/* ---------------------- START CONSTRUCTOR(S) ---------------------- */
+    /* ---------------------- END DECLARATIONS ---------------------- */
+
+    /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
     public SpyStats()
     {
         super();
         this.teamHasDocs = TEAM_HAS_DOCS_DEFAULT;
         this.remainingLives = REMAINING_LIVES_DEFAULT;
     }
-/* ---------------------- END CONSTRUCTOR(S) ---------------------- */
-    
-    
-/* ---------------------- START GETTERS & SETTERS ---------------------- */
+    /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 
+
+    /* ---------------------- START GETTERS & SETTERS ---------------------- */
     /**
      * @return the remainingLives
      */
@@ -61,5 +60,5 @@ public class SpyStats extends Stats
     {
         this.teamHasDocs = teamHasDocs;
     }
-/* ---------------------- END GETTERS AND SETTERS ---------------------- */
+    /* ---------------------- END GETTERS AND SETTERS ---------------------- */
 }
