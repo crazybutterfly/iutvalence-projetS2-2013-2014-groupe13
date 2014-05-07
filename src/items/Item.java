@@ -13,7 +13,7 @@ public class Item
 
     public int itemPrice;
 
-    public void useItem()
+    public Item()
     {
     }
 
