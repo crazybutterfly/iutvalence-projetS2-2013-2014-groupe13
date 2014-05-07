@@ -1,37 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package gamedatas;
 
 /**
- * a class where stats are defined.
- * @author WOERLY-MOUSSIER Joachim <joachim.woerly-moussier@iut-valence.fr>
+ *
+ * @author begotw
  */
 public class Stats {
-    private int numberOfKills;
-    private int timeSurvived;
-    private int timesHandsGotOnTheDocs;
-    private int remainingLives;
- 
-//TODO : DEFINE '+' OPERATOR
+    
+    
+/* ---------------------- START DECLARATIONS ---------------------- */    
+    protected int numberOfKills;
+    protected int numberOfDeaths;
 
-    /**
-     * @return the remainingLives
-     */
-    public int getRemainingLives() 
+    public static final int NUMBER_OF_KILLS_DEFAULT = 0;
+    public static final int NUMBER_OF_DEATH_DEFAULT = 0;
+/* ---------------------- END DECLARATIONS ---------------------- */
+    
+/* ---------------------- START CONSTRUCTOR(S) ---------------------- */
+    public Stats()
     {
-        return remainingLives;
+        this.numberOfKills = NUMBER_OF_KILLS_DEFAULT;
+        this.numberOfDeaths = NUMBER_OF_DEATH_DEFAULT;
     }
-    /**
-     * @param remainingLives the remainingLives to set
-     */
-    public void setRemainingLives(int remainingLives) 
-    {
-        this.remainingLives = remainingLives;
-    }
+/* ---------------------- END CONSTRUCTOR(S) ---------------------- */
+    
+    
+/* ---------------------- START GETTERS & SETTERS ---------------------- */
     /**
      * @return the numberOfKills
      */
@@ -49,35 +42,19 @@ public class Stats {
     }
 
     /**
-     * @return the timeSurvived
+     * @return the numberOfDeaths
      */
-    public int getTimeSurvived() 
+    public int getNumberOfDeaths() 
     {
-        return timeSurvived;
+        return numberOfDeaths;
     }
 
     /**
-     * @param timeSurvived the timeSurvived to set
+     * @param numberOfDeaths the numberOfDeaths to set
      */
-    public void setTimeSurvived(int timeSurvived) 
+    public void setNumberOfDeaths(int numberOfDeaths) 
     {
-        this.timeSurvived = timeSurvived;
+        this.numberOfDeaths = numberOfDeaths;
     }
-
-    /**
-     * @return the timesHandsGotOnTheDocs
-     */
-    public int getTimesHandsGotOnTheDocs() 
-    {
-        return timesHandsGotOnTheDocs;
-    }
-
-    /**
-     * @param timesHandsGotOnTheDocs the timesHandsGotOnTheDocs to set
-     */
-    public void setTimesHandsGotOnTheDocs(int timesHandsGotOnTheDocs) 
-    {
-        this.timesHandsGotOnTheDocs = timesHandsGotOnTheDocs;
-    }
-
-}    
+/* ---------------------- END GETTERS AND SETTERS ---------------------- */
+}

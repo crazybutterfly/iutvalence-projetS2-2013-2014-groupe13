@@ -10,20 +10,23 @@ public class Player
 {
     /* ---------------------- START DECLARATIONS ---------------------- */
 
-    public String pseudo;
-    
+    /**
+     * Attribut attribuant un pseudo à un joueur.
+     */
+    protected String pseudo;
+
+    /**
+     * Pseudo par défaut d'un joueur.
+     */
+    public final static String DEFAULT_PSEUDO_PREFIX = "PLAYER";
     /* ---------------------- END DECLARATIONS ---------------------- */
 
-    /* ---------------------- START FUNCTION(S) ---------------------- */
-    public void Player()
+    /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
+    public Player()
     {
+        this.pseudo = DEFAULT_PSEUDO_PREFIX;
     }
+    /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 
-    private Stats stats;
 
-    public Stats getStats()
-    {
-        return this.stats;
-    }
-    /* ---------------------- END FUNCTION(S) ---------------------- */
 }
