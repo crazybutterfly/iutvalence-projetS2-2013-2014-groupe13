@@ -147,6 +147,4 @@ public class AllPlayers
     }
     /* ---------------------- END GETTERS & SETTERS ---------------------- */
 
-
-
 }
