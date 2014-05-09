@@ -37,68 +37,74 @@ public class GameInformationLoaderFromFile {
      * @throws java.io.FileNotFoundException
      */
     public boolean isMapFileValid(String fileLocation) throws IOException, FileNotFoundException {
-        BufferedReader fileTester = new BufferedReader(new FileReader(fileLocation));
-        try {
-            int mapXSizeTest = Integer.parseInt(fileTester.readLine());
-            int mapYSizeTest = Integer.parseInt(fileTester.readLine());
-            if ((mapXSizeTest > Map.MAX_X_SIZE) || (mapYSizeTest > Map.MAX_Y_SIZE)) {
-                System.out.println("erreur de dimension de la map");
-                return false;
-            }
+        if (!this.fileExists(fileLocation)) {
+            System.out.println("file not found");
+            return false;
+        } else {
 
-            String line = fileTester.readLine();
-            int index = 3;
-            while ((line != null) && (!"".equals(line))) {
-
-                String[] parts = line.split("\\s");
-                if ((parts[0].charAt(0) != 'R') && (parts[0].charAt(0) != 'C')) {
-                    System.out.println("erreur R && C ligne "+index);
+            BufferedReader fileTester = new BufferedReader(new FileReader(fileLocation));
+            try {
+                int mapXSizeTest = Integer.parseInt(fileTester.readLine());
+                int mapYSizeTest = Integer.parseInt(fileTester.readLine());
+                if ((mapXSizeTest > Map.MAX_X_SIZE) || (mapYSizeTest > Map.MAX_Y_SIZE)) {
+                    System.out.println("erreur de dimension de la map");
                     return false;
                 }
-                if (parts[0].charAt(0) == 'R') {
-                    if ((Integer.parseInt(parts[1]) > mapXSizeTest) || (Integer.parseInt(parts[1]) < 0)) {
-                        System.out.println("erreur premier param rectangle ligne "+index);
-                        return false;
-                    }
-                    if ((Integer.parseInt(parts[2]) > mapYSizeTest) || (Integer.parseInt(parts[2]) < 0)) {
-                        System.out.println("erreur second param rectangle ligne "+index);
-                        return false;
-                    }
-                    if ((Integer.parseInt(parts[3]) > mapXSizeTest) || (Integer.parseInt(parts[3]) < 0)) {
-                        System.out.println("erreur troisième param rectangle ligne "+index);
-                        return false;
-                    }
-                    if ((Integer.parseInt(parts[4]) > mapYSizeTest) || (Integer.parseInt(parts[4]) < 0)) {
-                        System.out.println("erreur quatrième param rectangle ligne "+index);
-                        return false;
-                    }
-                    if ((!parts[5].equals("W")) && (!parts[5].equals("F")) && (!parts[5].equals("S")) && (!parts[5].equals("G"))) {
-                        System.out.println("erreur format case ligne "+index);
-                        return false;
-                    }
-                } else if (parts[0].charAt(0) == 'C') {
-                    if ((Integer.parseInt(parts[1]) <= Integer.parseInt(parts[3])) || (Integer.parseInt(parts[1]) >= mapXSizeTest - Integer.parseInt(parts[3]))) {
-                        System.out.println("erreur premier param cercle ligne "+index);
-                        return false;
-                    }
-                    if ((Integer.parseInt(parts[2]) <= Integer.parseInt(parts[3])) || (Integer.parseInt(parts[2]) >= mapXSizeTest - Integer.parseInt(parts[3]))) {
-                        System.out.println("erreur second param cercle ligne "+index);
-                        return false;
-                    }
-                    if ((!parts[4].equals("W")) && (!parts[4].equals("F")) && (!parts[4].equals("S")) && (!parts[4].equals("G"))) {
-                        System.out.println("erreur format case ligne "+index);
-                        return false;
-                    }
-                }
 
-                line = fileTester.readLine();
+                String line = fileTester.readLine();
+                int index = 3;
+                while ((line != null) && (!"".equals(line))) {
+
+                    String[] parts = line.split("\\s");
+                    if ((parts[0].charAt(0) != 'R') && (parts[0].charAt(0) != 'C')) {
+                        System.out.println("erreur R && C ligne " + index);
+                        return false;
+                    }
+                    if (parts[0].charAt(0) == 'R') {
+                        if ((Integer.parseInt(parts[1]) > mapXSizeTest) || (Integer.parseInt(parts[1]) < 0)) {
+                            System.out.println("erreur premier param rectangle ligne " + index);
+                            return false;
+                        }
+                        if ((Integer.parseInt(parts[2]) > mapYSizeTest) || (Integer.parseInt(parts[2]) < 0)) {
+                            System.out.println("erreur second param rectangle ligne " + index);
+                            return false;
+                        }
+                        if ((Integer.parseInt(parts[3]) > mapXSizeTest) || (Integer.parseInt(parts[3]) < 0)) {
+                            System.out.println("erreur troisième param rectangle ligne " + index);
+                            return false;
+                        }
+                        if ((Integer.parseInt(parts[4]) > mapYSizeTest) || (Integer.parseInt(parts[4]) < 0)) {
+                            System.out.println("erreur quatrième param rectangle ligne " + index);
+                            return false;
+                        }
+                        if ((!parts[5].equals("W")) && (!parts[5].equals("F")) && (!parts[5].equals("S")) && (!parts[5].equals("G"))) {
+                            System.out.println("erreur format case ligne " + index);
+                            return false;
+                        }
+                    } else if (parts[0].charAt(0) == 'C') {
+                        if ((Integer.parseInt(parts[1]) <= Integer.parseInt(parts[3])) || (Integer.parseInt(parts[1]) >= mapXSizeTest - Integer.parseInt(parts[3]))) {
+                            System.out.println("erreur premier param cercle ligne " + index);
+                            return false;
+                        }
+                        if ((Integer.parseInt(parts[2]) <= Integer.parseInt(parts[3])) || (Integer.parseInt(parts[2]) >= mapXSizeTest - Integer.parseInt(parts[3]))) {
+                            System.out.println("erreur second param cercle ligne " + index);
+                            return false;
+                        }
+                        if ((!parts[4].equals("W")) && (!parts[4].equals("F")) && (!parts[4].equals("S")) && (!parts[4].equals("G"))) {
+                            System.out.println("erreur format case ligne " + index);
+                            return false;
+                        }
+                    }
+
+                    line = fileTester.readLine();
+                }
+            } catch (IOException e) {
+                System.out.println("fichier invalide");
+                return false;
             }
-        } catch (IOException e) {
-            System.out.println("fichier invalide");
-            return false;
+            System.out.println("Fichier valide");
+            return true;
         }
-        System.out.println("Fichier valide");
-        return true;
     }
 
     public boolean fileExists(String fileLocation) throws FileNotFoundException {
