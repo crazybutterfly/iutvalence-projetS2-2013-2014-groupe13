@@ -115,6 +115,11 @@ public class ClassicPlayer extends Player
      * Guard, c'est un pistolet.
      */
     public final static int CURRENT_NUMBER_OF_ITEM_TYPE_POCESSED_DEFAULT = 1;
+    
+    /**
+     * Empty item, used to initialize a item array when there are no item.
+     */
+    public final static Item EMPTY_ITEM = new Item("EmplyItem",false,false,0,0);
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
@@ -129,7 +134,7 @@ public class ClassicPlayer extends Player
         this.initialNumberOfLives = INITIAL_NUMBER_OF_LIVES;
         this.items = new Item[MAXIMUM_NUMBER_OF_ITEM_TYPE];
         for (int i = 0; i < MAXIMUM_NUMBER_OF_ITEM_TYPE; i++) {
-            this.items[i] = new Item();
+            this.items[i] = EMPTY_ITEM;
         }
         this.numberOfItemsByType = new int[MAXIMUM_NUMBER_OF_ITEM_TYPE];
         for (int i = 0; i < MAXIMUM_NUMBER_OF_ITEM_TYPE; i++) {
