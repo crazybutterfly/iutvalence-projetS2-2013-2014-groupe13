@@ -28,5 +28,26 @@ public class Player
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 
+    /* ---------------------- START FUNCTION(S) ---------------------- */
+    
+    public boolean changePseudo(String[] allPlayersPseudos, String newPseudo)
+    {
+        for (String allPlayersPseudo : allPlayersPseudos)
+            if (allPlayersPseudo.equals(newPseudo))
+                return false;
+        this.pseudo = newPseudo;
+        return true;
+    }
+    /* ---------------------- END FUNCTION(S) ---------------------- */
+    /* ---------------------- START GETTERS & SETTERS ---------------------- */
+    /**
+     * @return the pseudo
+     */
+    public String getPseudo()
+    {
+        return pseudo;
+    }
+    /* ---------------------- END GETTERS AND SETTERS ---------------------- */
+
 
 }

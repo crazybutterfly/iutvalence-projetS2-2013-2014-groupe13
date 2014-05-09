@@ -31,7 +31,7 @@ public class GuardChiefPlayer extends Player
     /**
      * Pseudo par défaut du Guard Chief.
      */
-    public final static String DEFAULT_PSEUDO_FOR_GUARD_CHIEF = "_GUARD_BIG_BOSS_";
+    public final static String DEFAULT_PSEUDO_FOR_GUARD_CHIEF = "_GUARD_BIG_BOSS";
 
     /**
      * Nombre de caméra par défaut du Guard Chief.

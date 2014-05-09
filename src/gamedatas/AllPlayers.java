@@ -45,6 +45,8 @@ public class AllPlayers
      * Attribut stockant les caractéristiques du joueur Guard Chief.
      */
     private GuardChiefPlayer guardChiefPlayer;
+    
+    
 
     /* ---------------------- END DECLARATIONS ---------------------- */
 
@@ -60,11 +62,11 @@ public class AllPlayers
         this.numberOfSpies = numberOfSpies;
         this.guardsArray = new GuardPlayer[this.numberOfGuards - 1];
         this.spiesArray = new SpyPlayer[this.numberOfSpies];
-        for (int i = 0; i < this.numberOfGuards - 2; i++) {
-            this.guardsArray[i] = new GuardPlayer(i++);
+        for (int i = 0; i < this.numberOfGuards - 1; i++) {
+            this.guardsArray[i] = new GuardPlayer(i+1);
         }
-        for (int i = 0; i < this.numberOfSpies - 1; i++) {
-            this.spiesArray[i] = new SpyPlayer(i++);
+        for (int i = 0; i < this.numberOfSpies; i++) {
+            this.spiesArray[i] = new SpyPlayer(i+1);
         }
         this.guardChiefPlayer = new GuardChiefPlayer();
         this.guardTeamStats = new Stats();
@@ -81,7 +83,7 @@ public class AllPlayers
     public void updateGuardTeamStats()
     {
         Stats newGuardTeamStats;
-        newGuardTeamStats = new SpyStats();
+        newGuardTeamStats = new Stats();
         for (int i = 0; i < getNumberOfGuards() - 2; i++) {
             newGuardTeamStats.setNumberOfKills(this.guardsArray[i].getStats().getNumberOfKills() + newGuardTeamStats.getNumberOfKills());
             newGuardTeamStats.setNumberOfDeaths(this.guardsArray[i].getStats().getNumberOfDeaths() + newGuardTeamStats.getNumberOfDeaths());
@@ -105,6 +107,18 @@ public class AllPlayers
             }
         }
         this.spyTeamStats = newSpyTeamStats;
+    }
+    
+    public String[] getAllPlayersPseudos()
+    {
+        int totalNumberOfPlayers = this.numberOfGuards+this.numberOfSpies;
+        String[] allPlayersPseudos = new String[totalNumberOfPlayers];
+        allPlayersPseudos[0] = this.guardChiefPlayer.getPseudo();
+        for (int i = 1; i < this.numberOfGuards; i++)
+            allPlayersPseudos[i] = this.guardsArray[i-1].getPseudo();
+        for (int i = this.numberOfGuards; i < totalNumberOfPlayers; i++)
+            allPlayersPseudos[i] = this.spiesArray[i-this.numberOfGuards].getPseudo();
+        return allPlayersPseudos;
     }
 
     /* ---------------------- END FUNCTION(S) ---------------------- */

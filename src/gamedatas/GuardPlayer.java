@@ -19,6 +19,16 @@ public class GuardPlayer extends ClassicPlayer
      * Nom par défaut du Guard.
      */
     public final static String DEFAULT_PSEUDO_PREFIX_FOR_GUARD = "_GUARD_";
+    
+    /**
+     * the number of spies killed without de killed.
+     */
+    private int spiesKilledWithoutDying;
+    
+    /**
+     * the default number of spies killed without de killed.
+     */
+    public final static int SPIES_KILLED_WITHOUT_DYING_DEFAULT = 0;
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
@@ -31,6 +41,7 @@ public class GuardPlayer extends ClassicPlayer
     public GuardPlayer(int NumberOfThePlayer)
     {
         super();
+        this.spiesKilledWithoutDying = SPIES_KILLED_WITHOUT_DYING_DEFAULT;
         this.pseudo += DEFAULT_PSEUDO_PREFIX_FOR_GUARD;
         this.pseudo += NumberOfThePlayer;
         this.stats = new Stats();

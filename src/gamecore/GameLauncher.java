@@ -8,11 +8,10 @@ public class GameLauncher
     public static void main(String[] args)
     {
 
-        Engine myEngine;
-        PlayerInputs myPlayerInputs;
-        GameInformations myGameInformations;
-
-
+        Engine gameEngine;
+        PlayerInputs playersInputs;
+        GameInformations initialGameInformations;     
+        
     }
 
     private GameInformations gameCreation()
