@@ -6,25 +6,34 @@ package gamedatas;
  * @author WOERLY-MOUSSIER Joachim <joachim.woerly-moussier@iut-valence.fr>
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  */
-public class Map
-{
+public class Map {
 
     /* ---------------------- START DECLARATIONS ---------------------- */
-    /**
+    
+	/**
+	* the maximum lateral size of the map.
+	*/
+	public static final int MAX_X_SIZE = 13330;
+	
+	/**
+	* the maximum vertical size of the map.
+	*/
+	public static final int MAX_Y_SIZE = 13330;
+	
+	/**
      * the number of columns of the current map.
      */
-    public int numberOfColumns;
+    private final int numberOfColumns;
 
     /**
      * the numer of lines of the current map.
      */
-    public int numberOfLines;
+    private final int numberOfLines;
 
     /**
      * the current map (an array of Frames).
      */
-    public Frame[][] map;
-
+    private final Frame[][] map;
 
     public static final int STANDARD_X_SIZE_VALUE = 1000;
 
@@ -39,8 +48,7 @@ public class Map
      * @param numberOfColumns the number of columns of the map.
      * @param numberOfLines the number of lines of the map.
      */
-    public Map(int numberOfColumns, int numberOfLines)
-    {
+    public Map(int numberOfColumns, int numberOfLines) {
         this.numberOfColumns = numberOfColumns;
         this.numberOfLines = numberOfLines;
         this.map = new Frame[this.numberOfColumns][this.numberOfLines];
@@ -65,8 +73,7 @@ public class Map
      * @param frameStatus the frame status that is to be inserted into the
      * frames within the rectangle
      */
-    public void changeStatusOfFrameRectangle(int xStartCase, int yStartCase, int width, int height, Frame frameStatus)
-    {
+    public void changeStatusOfFrameRectangle(int xStartCase, int yStartCase, int width, int height, Frame frameStatus) {
         for (int lineToDealWith = yStartCase - 1; lineToDealWith < (yStartCase + height - 1); lineToDealWith++) {
             for (int columnToDealWith = xStartCase - 1; columnToDealWith < (xStartCase + width - 1); columnToDealWith++) {
                 this.map[columnToDealWith][lineToDealWith] = frameStatus;
@@ -74,9 +81,62 @@ public class Map
         }
     }
 
-    @Override
-    public String toString()
+    /**
+     *
+     * @param xFrame
+     * @param yFrame
+     * @param frame
+     */
+    public void changeStatusOfFrame(int xFrame, int yFrame, Frame frame)
     {
+        this.map[xFrame][yFrame] = frame;
+    }
+    
+    /**
+     *
+     * @param centerX
+     * @param centerY
+     * @param radius
+     * @param frame
+     */
+    public void drawCircle(final int centerX, final int centerY, final int radius, final Frame frame) {
+
+        for (int i = 0; i < radius; i++) {
+            int d = 3 - (2 * radius);
+            int x = 0;
+            int y = radius-i;
+            Frame circleFrame = frame;
+
+            do {
+                this.changeStatusOfFrame(centerX + x, centerY + y, circleFrame);
+                this.changeStatusOfFrame(centerX + x, centerY + y-1, circleFrame);
+                this.changeStatusOfFrame(centerX + x, centerY - y, circleFrame);
+                this.changeStatusOfFrame(centerX + x, centerY - y+1, circleFrame);
+                this.changeStatusOfFrame(centerX - x, centerY + y, circleFrame);
+                this.changeStatusOfFrame(centerX - x, centerY + y-1, circleFrame);
+                this.changeStatusOfFrame(centerX - x, centerY - y, circleFrame);
+                this.changeStatusOfFrame(centerX - x, centerY - y+1, circleFrame);
+                this.changeStatusOfFrame(centerX + y, centerY + x, circleFrame);
+                this.changeStatusOfFrame(centerX + y-1, centerY + x, circleFrame);
+                this.changeStatusOfFrame(centerX + y, centerY - x, circleFrame);
+                this.changeStatusOfFrame(centerX + y-1, centerY - x, circleFrame);
+                this.changeStatusOfFrame(centerX - y, centerY + x, circleFrame);
+                this.changeStatusOfFrame(centerX - y+1, centerY + x, circleFrame);
+                this.changeStatusOfFrame(centerX - y, centerY - x, circleFrame);
+                this.changeStatusOfFrame(centerX - y+1, centerY - x, circleFrame);
+                if (d < 0) {
+                    d = d + (4 * x) + 6;
+                } else {
+                    d = d + 4 * (x - y) + 10;
+                    y--;
+                }
+                x++;
+            } while (x <= y);
+        }
+    }
+
+    @Override
+    public String toString() {
         String stringDescriptionOfMap = "";
 
         for (int lineToDealWith = 0; lineToDealWith < this.numberOfLines; lineToDealWith++) {
