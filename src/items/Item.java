@@ -16,8 +16,13 @@ public class Item
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
-    public Item()
+    public Item(String name, boolean spy, boolean guard, int time, int price)
     {
+        this.itemName = name;
+        this.itemPrice = price;
+        this.timeBeforeUnlock = time;
+        this.usableByAGuard = guard;
+        this.usableByASpy = spy;
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 
@@ -31,6 +36,11 @@ public class Item
     public String getItemName()
     {
         return itemName;
+    }
+    
+    public void useItem()
+    {
+        
     }
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
 
