@@ -13,7 +13,8 @@ import java.io.File;
  * @author WOERLY-MOUSSIER Joachim <joachim.woerly-moussier@iut-valence.fr>
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  */
-public class GameInformationLoaderFromFile {
+public class GameInformationLoaderFromFile
+{
 
     /**
      * création d'un lecteur pour récupérer les données entrées par le joueur
@@ -24,7 +25,8 @@ public class GameInformationLoaderFromFile {
      * Creates a file reader.
      *
      */
-    public GameInformationLoaderFromFile() {
+    public GameInformationLoaderFromFile()
+    {
 
     }
 
@@ -32,65 +34,86 @@ public class GameInformationLoaderFromFile {
      * Creates a map from the file read.
      *
      * @param fileLocation
+     *
      * @return a map.
+     *
      * @throws java.io.IOException
      * @throws java.io.FileNotFoundException
      */
-    public boolean isMapFileValid(String fileLocation) throws IOException, FileNotFoundException {
-        if (!this.fileExists(fileLocation)) {
+    public boolean isMapFileValid(String fileLocation) throws IOException, FileNotFoundException
+    {
+        if (!this.fileExists(fileLocation))
+        {
             System.out.println("file not found");
             return false;
-        } else {
+        }
+        else
+        {
 
             BufferedReader fileTester = new BufferedReader(new FileReader(fileLocation));
-            try {
+            try
+            {
                 int mapXSizeTest = Integer.parseInt(fileTester.readLine());
                 int mapYSizeTest = Integer.parseInt(fileTester.readLine());
-                if ((mapXSizeTest > Map.MAX_X_SIZE) || (mapYSizeTest > Map.MAX_Y_SIZE)) {
+                if ((mapXSizeTest > Map.MAX_X_SIZE) || (mapYSizeTest > Map.MAX_Y_SIZE))
+                {
                     System.out.println("erreur de dimension de la map");
                     return false;
                 }
 
                 String line = fileTester.readLine();
                 int index = 3;
-                while ((line != null) && (!"".equals(line))) {
+                while ((line != null) && (!"".equals(line)))
+                {
 
                     String[] parts = line.split("\\s");
-                    if ((parts[0].charAt(0) != 'R') && (parts[0].charAt(0) != 'C')) {
+                    if ((parts[0].charAt(0) != 'R') && (parts[0].charAt(0) != 'C'))
+                    {
                         System.out.println("erreur R && C ligne " + index);
                         return false;
                     }
-                    if (parts[0].charAt(0) == 'R') {
-                        if ((Integer.parseInt(parts[1]) > mapXSizeTest) || (Integer.parseInt(parts[1]) < 0)) {
+                    if (parts[0].charAt(0) == 'R')
+                    {
+                        if ((Integer.parseInt(parts[1]) > mapXSizeTest) || (Integer.parseInt(parts[1]) < 0))
+                        {
                             System.out.println("erreur premier param rectangle ligne " + index);
                             return false;
                         }
-                        if ((Integer.parseInt(parts[2]) > mapYSizeTest) || (Integer.parseInt(parts[2]) < 0)) {
+                        if ((Integer.parseInt(parts[2]) > mapYSizeTest) || (Integer.parseInt(parts[2]) < 0))
+                        {
                             System.out.println("erreur second param rectangle ligne " + index);
                             return false;
                         }
-                        if ((Integer.parseInt(parts[3]) > mapXSizeTest) || (Integer.parseInt(parts[3]) < 0)) {
+                        if ((Integer.parseInt(parts[3]) > mapXSizeTest) || (Integer.parseInt(parts[3]) < 0))
+                        {
                             System.out.println("erreur troisième param rectangle ligne " + index);
                             return false;
                         }
-                        if ((Integer.parseInt(parts[4]) > mapYSizeTest) || (Integer.parseInt(parts[4]) < 0)) {
+                        if ((Integer.parseInt(parts[4]) > mapYSizeTest) || (Integer.parseInt(parts[4]) < 0))
+                        {
                             System.out.println("erreur quatrième param rectangle ligne " + index);
                             return false;
                         }
-                        if ((!parts[5].equals("W")) && (!parts[5].equals("F")) && (!parts[5].equals("S")) && (!parts[5].equals("G"))) {
+                        if ((!parts[5].equals("W")) && (!parts[5].equals("F")) && (!parts[5].equals("S")) && (!parts[5].equals("G")))
+                        {
                             System.out.println("erreur format case ligne " + index);
                             return false;
                         }
-                    } else if (parts[0].charAt(0) == 'C') {
-                        if ((Integer.parseInt(parts[1]) <= Integer.parseInt(parts[3])) || (Integer.parseInt(parts[1]) >= mapXSizeTest - Integer.parseInt(parts[3]))) {
+                    }
+                    else if (parts[0].charAt(0) == 'C')
+                    {
+                        if ((Integer.parseInt(parts[1]) <= Integer.parseInt(parts[3])) || (Integer.parseInt(parts[1]) >= mapXSizeTest - Integer.parseInt(parts[3])))
+                        {
                             System.out.println("erreur premier param cercle ligne " + index);
                             return false;
                         }
-                        if ((Integer.parseInt(parts[2]) <= Integer.parseInt(parts[3])) || (Integer.parseInt(parts[2]) >= mapXSizeTest - Integer.parseInt(parts[3]))) {
+                        if ((Integer.parseInt(parts[2]) <= Integer.parseInt(parts[3])) || (Integer.parseInt(parts[2]) >= mapXSizeTest - Integer.parseInt(parts[3])))
+                        {
                             System.out.println("erreur second param cercle ligne " + index);
                             return false;
                         }
-                        if ((!parts[4].equals("W")) && (!parts[4].equals("F")) && (!parts[4].equals("S")) && (!parts[4].equals("G"))) {
+                        if ((!parts[4].equals("W")) && (!parts[4].equals("F")) && (!parts[4].equals("S")) && (!parts[4].equals("G")))
+                        {
                             System.out.println("erreur format case ligne " + index);
                             return false;
                         }
@@ -98,7 +121,9 @@ public class GameInformationLoaderFromFile {
 
                     line = fileTester.readLine();
                 }
-            } catch (IOException e) {
+            }
+            catch (IOException e)
+            {
                 System.out.println("fichier invalide");
                 return false;
             }
@@ -107,50 +132,66 @@ public class GameInformationLoaderFromFile {
         }
     }
 
-    public boolean fileExists(String fileLocation) throws FileNotFoundException {
+    public boolean fileExists(String fileLocation) throws FileNotFoundException
+    {
         File file = new File(fileLocation);
         return file.exists();
     }
 
-    public Map loadMapFromFile(String fileLocation) throws IOException, FileNotFoundException {
+    public Map loadMapFromFile(String fileLocation) throws IOException, FileNotFoundException
+    {
         this.fileReader = new BufferedReader(new FileReader(fileLocation));
         int mapXSize;
         int mapYSize;
-        try {
+        try
+        {
             String mapXSizeText = this.fileReader.readLine();
-            if (mapXSizeText == null) {
+            if (mapXSizeText == null)
+            {
                 mapXSize = Map.STANDARD_X_SIZE_VALUE;
-            } else {
+            }
+            else
+            {
                 mapXSize = Integer.parseInt(mapXSizeText);
             }
 
             String mapYSizeText = this.fileReader.readLine();
-            if (mapYSizeText == null) {
+            if (mapYSizeText == null)
+            {
                 mapYSize = Map.STANDARD_Y_SIZE_VALUE;
-            } else {
+            }
+            else
+            {
                 mapYSize = Integer.parseInt(mapYSizeText);
             }
 
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             System.out.println("Erreur");
             return null;
         }
         Map map = new Map(mapXSize, mapYSize);
 
-        try {
+        try
+        {
             String line = fileReader.readLine();
 
-            while ((line != null) && (!"".equals(line))) {
+            while ((line != null) && (!"".equals(line)))
+            {
 
                 String[] parts = line.split("\\s");
-                if (parts[0].charAt(0) == 'R') {
+                if (parts[0].charAt(0) == 'R')
+                {
                     int xStartFrame = Integer.parseInt(parts[1]);
                     int yStartFrame = Integer.parseInt(parts[2]);
                     int width = Integer.parseInt(parts[3]);
                     int height = Integer.parseInt(parts[4]);
                     Frame frameStatus = Frame.parseFrame(parts[5]);
                     map.changeStatusOfFrameRectangle(xStartFrame, yStartFrame, width, height, frameStatus);
-                } else if (parts[0].charAt(0) == 'C') {
+                }
+                else if (parts[0].charAt(0) == 'C')
+                {
                     int centerX = Integer.parseInt(parts[1]);
                     int centerY = Integer.parseInt(parts[2]);
                     int radius = Integer.parseInt(parts[3]);
@@ -161,7 +202,9 @@ public class GameInformationLoaderFromFile {
                 line = fileReader.readLine();
             }
 
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             System.out.println("Erreur dans le fichier");
             return null;
         }

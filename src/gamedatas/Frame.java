@@ -7,7 +7,8 @@ package gamedatas;
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @author WOERLY-MOUSSIER Joachim <joachim.woerly-moussier@iut-valence.fr>
  */
-public enum Frame {
+public enum Frame
+{
     /* ---------------------- START DECLARATIONS---------------------- */
 
     /**
@@ -48,7 +49,8 @@ public enum Frame {
 
     /* ---------------------- END PARAMETERS DECLARATIONS ---------------------- */
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
-    private Frame(boolean spies, boolean guards, String representation, String loadingRepresentation) {
+    private Frame(boolean spies, boolean guards, String representation, String loadingRepresentation)
+    {
         this.spiesCanWalk = spies;
         this.guardsCanWalk = guards;
         this.representation = representation;
@@ -58,14 +60,20 @@ public enum Frame {
 
     /* ---------------------- START FUNCTION(S) ---------------------- */
     @Override
-    public String toString() {
+    public String toString()
+    {
         return this.representation;
     }
 
-    public static Frame parseFrame(String string) {
-        for (Frame value : Frame.values()) {
-            if (!value.loadingRepresentation.equals(string)) {
-            } else {
+    public static Frame parseFrame(String string)
+    {
+        for (Frame value : Frame.values())
+        {
+            if (!value.loadingRepresentation.equals(string))
+            {
+            }
+            else
+            {
                 return value;
             }
         }
@@ -78,14 +86,16 @@ public enum Frame {
     /**
      * @return true if spies can walk on the frame
      */
-    public boolean isWalkableBySpies() {
+    public boolean isWalkableBySpies()
+    {
         return spiesCanWalk;
     }
 
     /**
      * @return true if guards can walk on the frame
      */
-    public boolean isWalkableByGuards() {
+    public boolean isWalkableByGuards()
+    {
         return guardsCanWalk;
     }
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */

@@ -2,6 +2,7 @@ package gamedatas;
 
 /**
  * Class which contains the game stats.
+ *
  * @author DUBOIS Thomas <thomas.dubois@iut-valence.fr>
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @author BEGOT William <william.begot@iut-valence.fr>
@@ -9,6 +10,7 @@ package gamedatas;
 public class GameMode
 {
     /* ---------------------- START DECLARATIONS ---------------------- */
+
     /**
      * the game status.
      */
@@ -24,7 +26,5 @@ public class GameMode
      */
     public Quests gameQuests;
     /* ---------------------- END DECLARATIONS ---------------------- */
-    
-    
-    
+
 }

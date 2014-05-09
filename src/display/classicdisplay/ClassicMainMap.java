@@ -6,7 +6,6 @@ import gamedatas.Map;
 public class ClassicMainMap
 {
 
-
     public void refreshMainMap(Map myMap, AllPlayers allPlayers)
     {
     }

@@ -12,7 +12,6 @@ public class GuardChiefPlayer extends Player
 {
 
     /* ---------------------- START DECLARATIONS ---------------------- */
-
     /**
      * Argent mis à disposition du Guard Chief.
      */
@@ -50,15 +49,15 @@ public class GuardChiefPlayer extends Player
     public GuardChiefPlayer()
     {
         super();
-        this.pseudo += DEFAULT_PSEUDO_FOR_GUARD_CHIEF;
+        this.pseudo += GuardChiefPlayer.DEFAULT_PSEUDO_FOR_GUARD_CHIEF;
         this.guardCoins = new Coins();
-        this.numberOfCams = NUMBER_OF_CAMS_DEFAULT;
-        this.cams = new Cam[NUMBER_OF_CAMS_MAXIMUM];
-        for (int i = 0; i < NUMBER_OF_CAMS_MAXIMUM - 1; i++) {
-            this.cams[i] = new Cam(i+1,0,0);
+        this.numberOfCams = GuardChiefPlayer.NUMBER_OF_CAMS_DEFAULT;
+        this.cams = new Cam[GuardChiefPlayer.NUMBER_OF_CAMS_MAXIMUM];
+        for (int i = 0; i < GuardChiefPlayer.NUMBER_OF_CAMS_MAXIMUM - 1; i++)
+        {
+            this.cams[i] = new Cam(i + 1, 0, 0);
         }
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
-
 
 }

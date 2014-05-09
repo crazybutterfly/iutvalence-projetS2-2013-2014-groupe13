@@ -67,7 +67,6 @@ public class Engine
     {
     }
 
-
     public void classicPlayerPlay()
     {
     }
@@ -87,5 +86,4 @@ public class Engine
 
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
-
 }

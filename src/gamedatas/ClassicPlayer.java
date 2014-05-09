@@ -12,7 +12,6 @@ public class ClassicPlayer extends Player
 {
 
     /* ---------------------- START DECLARATIONS ---------------------- */
-
     /**
      * Position en x du joueur.
      */
@@ -57,7 +56,7 @@ public class ClassicPlayer extends Player
      * Nombre de type d'item possédé pour savoir le nombre de case utilisé du
      * tableau items.
      */
-    protected int currentNumberOfItemTypePocessed;
+    protected int currentNumberOfTypeItemPocessed;
 
     /**
      * Statistique du joueur.
@@ -114,33 +113,31 @@ public class ClassicPlayer extends Player
      * possède un item. Si c'est un Spies, c'est un couteau et si c'est un
      * Guard, c'est un pistolet.
      */
-    public final static int CURRENT_NUMBER_OF_ITEM_TYPE_POCESSED_DEFAULT = 1;
-    
-    /**
-     * Empty item, used to initialize a item array when there are no item.
-     */
-    public final static Item EMPTY_ITEM = new Item("EmplyItem",false,false,0,0);
+    public final static int CURRENT_NUMBER_OF_TYPE_ITEM_POCESSED_DEFAULT = 1;
+
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
     public ClassicPlayer()
     {
         super();
-        this.posX = POS_X_DEFAULT;
-        this.posY = POS_Y_DEFAULT;
-        this.currentStatus = CURRENT_STATUTS_DEFAULT;
-        this.lastTimeBeforeRespawn = LAST_TIME_BEFORE_RESPAWN_DEFAULT;
-        this.remainingTimeBeforeRespawn = REMAINING_TIME_BEFORE_RESPAWN_DEFAULT;
-        this.initialNumberOfLives = INITIAL_NUMBER_OF_LIVES;
-        this.items = new Item[MAXIMUM_NUMBER_OF_ITEM_TYPE];
-        for (int i = 0; i < MAXIMUM_NUMBER_OF_ITEM_TYPE; i++) {
-            this.items[i] = EMPTY_ITEM;
+        this.posX = ClassicPlayer.POS_X_DEFAULT;
+        this.posY = ClassicPlayer.POS_Y_DEFAULT;
+        this.currentStatus = ClassicPlayer.CURRENT_STATUTS_DEFAULT;
+        this.lastTimeBeforeRespawn = ClassicPlayer.LAST_TIME_BEFORE_RESPAWN_DEFAULT;
+        this.remainingTimeBeforeRespawn = ClassicPlayer.REMAINING_TIME_BEFORE_RESPAWN_DEFAULT;
+        this.initialNumberOfLives = ClassicPlayer.INITIAL_NUMBER_OF_LIVES;
+        this.items = new Item[ClassicPlayer.MAXIMUM_NUMBER_OF_ITEM_TYPE];
+        for (int i = 0; i < ClassicPlayer.MAXIMUM_NUMBER_OF_ITEM_TYPE; i++)
+        {
+            this.items[i] = new Item();
         }
-        this.numberOfItemsByType = new int[MAXIMUM_NUMBER_OF_ITEM_TYPE];
-        for (int i = 0; i < MAXIMUM_NUMBER_OF_ITEM_TYPE; i++) {
-            this.numberOfItemsByType[i] = NUMBER_OF_ITEM_POCESSED_BY_TYPE_DEFAULT;
+        this.numberOfItemsByType = new int[ClassicPlayer.MAXIMUM_NUMBER_OF_ITEM_TYPE];
+        for (int i = 0; i < ClassicPlayer.MAXIMUM_NUMBER_OF_ITEM_TYPE; i++)
+        {
+            this.numberOfItemsByType[i] = ClassicPlayer.NUMBER_OF_ITEM_POCESSED_BY_TYPE_DEFAULT;
         }
-        this.currentNumberOfItemTypePocessed = CURRENT_NUMBER_OF_ITEM_TYPE_POCESSED_DEFAULT;
+        this.currentNumberOfTypeItemPocessed = ClassicPlayer.CURRENT_NUMBER_OF_TYPE_ITEM_POCESSED_DEFAULT;
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
     /* ---------------------- START FUNCTION(S) ---------------------- */
@@ -148,8 +145,8 @@ public class ClassicPlayer extends Player
     /**
      * Fonction mettant à jour la position(X,Y) du joueur.
      *
-     * @param newPosX Position X.
-     * @param newPosY Position Y.
+     * @param newPosX New X Position.
+     * @param newPosY New Y position.
      */
     public void updatePosition(int newPosX, int newPosY)
     {
@@ -171,12 +168,10 @@ public class ClassicPlayer extends Player
     /* ---------------------- END FUNCTION(S) ---------------------- */
 
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
-
     public Stats getStats()
     {
         return this.stats;
     }
-
 
     /**
      * @return the posX

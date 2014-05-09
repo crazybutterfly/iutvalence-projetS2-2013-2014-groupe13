@@ -24,22 +24,26 @@ public class Player
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
     public Player()
     {
-        this.pseudo = DEFAULT_PSEUDO_PREFIX;
+        this.pseudo = Player.DEFAULT_PSEUDO_PREFIX;
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 
     /* ---------------------- START FUNCTION(S) ---------------------- */
-    
     public boolean changePseudo(String[] allPlayersPseudos, String newPseudo)
     {
         for (String allPlayersPseudo : allPlayersPseudos)
+        {
             if (allPlayersPseudo.equals(newPseudo))
+            {
                 return false;
+            }
+        }
         this.pseudo = newPseudo;
         return true;
     }
     /* ---------------------- END FUNCTION(S) ---------------------- */
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
+
     /**
      * @return the pseudo
      */
@@ -48,6 +52,5 @@ public class Player
         return pseudo;
     }
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
-
 
 }

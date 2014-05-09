@@ -42,7 +42,7 @@ public class SpyPlayer extends ClassicPlayer
     public SpyPlayer(int NumberOfThePlayer)
     {
         super();
-        this.pseudo += DEFAULT_PSEUDO_PREFIX_FOR_SPY;
+        this.pseudo += SpyPlayer.DEFAULT_PSEUDO_PREFIX_FOR_SPY;
         this.pseudo += NumberOfThePlayer;
         this.myCoins = new Coins();
         this.stats = new SpyStats();
@@ -59,8 +59,10 @@ public class SpyPlayer extends ClassicPlayer
      */
     public void useKnife(GuardPlayer[] guardsArray, int numberOfGuards)
     {
-        for (int i = 0; i < numberOfGuards - 2; i++) {
-            if (guardsArray[i].getPosX() == this.posX && guardsArray[i].getPosY() == this.posY) {
+        for (int i = 0; i < numberOfGuards - 2; i++)
+        {
+            if (guardsArray[i].getPosX() == this.posX && guardsArray[i].getPosY() == this.posY)
+            {
                 guardsArray[i].playerHasBeenKilled();
             }
         }

@@ -19,12 +19,12 @@ public class GuardPlayer extends ClassicPlayer
      * Nom par défaut du Guard.
      */
     public final static String DEFAULT_PSEUDO_PREFIX_FOR_GUARD = "_GUARD_";
-    
+
     /**
      * the number of spies killed without de killed.
      */
     private int spiesKilledWithoutDying;
-    
+
     /**
      * the default number of spies killed without de killed.
      */
@@ -32,7 +32,6 @@ public class GuardPlayer extends ClassicPlayer
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
-
     /**
      * Ajoute un numéro au pseudo par défaut du Guard. Donne les stats du Guard.
      *
@@ -41,15 +40,13 @@ public class GuardPlayer extends ClassicPlayer
     public GuardPlayer(int NumberOfThePlayer)
     {
         super();
-        this.spiesKilledWithoutDying = SPIES_KILLED_WITHOUT_DYING_DEFAULT;
-        this.pseudo += DEFAULT_PSEUDO_PREFIX_FOR_GUARD;
+        this.spiesKilledWithoutDying = GuardPlayer.SPIES_KILLED_WITHOUT_DYING_DEFAULT;
+        this.pseudo += GuardPlayer.DEFAULT_PSEUDO_PREFIX_FOR_GUARD;
         this.pseudo += NumberOfThePlayer;
         this.stats = new Stats();
     }
 
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
-
-
     /* ---------------------- START FUNCTION(S) ---------------------- */
     /**
      * Fonction permettant à un Guard d'utiliser un pistolet.
@@ -67,7 +64,6 @@ public class GuardPlayer extends ClassicPlayer
     {
         this.stats = stats;
     }
-
 
     /**
      * function to increment the waiting_for_respawn time.

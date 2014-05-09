@@ -3,7 +3,7 @@ package gamedatas;
 import items.Item;
 
 /**
- * 
+ *
  * class Store is composed by two arrays : one is the list of all buyable items
  * and the other is the number of those items in the store. When players cant
  * buy them because ti's too early in the game or else, the number in the array
@@ -16,7 +16,6 @@ public abstract class Store
 {
 
     /* ---------------------- START DECLARATIONS ---------------------- */
-
     /**
      * declaration of an array composed with Item objects.
      */
@@ -30,35 +29,28 @@ public abstract class Store
      * the number of availible items.
      */
     public final static int NUMBER_OF_ITEMS_AVAILABLE = 20;
-    
+
     /**
      * Default number of items by type in the store.
      */
     public final static int STORE_CAPACITY_DEFAULT = 0;
-    
-        /**
-     * Empty item, used to initialize a item array when there are no item.
-     */
-    public final static Item EMPTY_ITEM = new Item("EmplyItem",false,false,0,0);
-    
-    
+
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
     public void Store()
     {
-        this.storedItems = new Item[NUMBER_OF_ITEMS_AVAILABLE];   
-        this.storeCapacity = new int[NUMBER_OF_ITEMS_AVAILABLE];
+        this.storedItems = new Item[Store.NUMBER_OF_ITEMS_AVAILABLE];
+        this.storeCapacity = new int[Store.NUMBER_OF_ITEMS_AVAILABLE];
         for (int i = 0; i < Store.NUMBER_OF_ITEMS_AVAILABLE; i++)
         {
-            this.storedItems[i] = Store.EMPTY_ITEM;
+            this.storedItems[i] = new Item();
             this.storeCapacity[i] = Store.STORE_CAPACITY_DEFAULT;
         }
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 
     /* ---------------------- START FUNCTION(S) ---------------------- */
-
     /**
      *
      * modificate the number of an item in the store.
@@ -71,7 +63,7 @@ public abstract class Store
         /**
          * A FINIR ----------------------------------------------------------
          */
-        
+
 //        if ((this.storeCapacity[this.getPositionItemFromName(itemName)] += modificator)<0){
 //            this.storeCapacity[this.getPositionItemFromName(itemName)] += modificator;
 //        }
@@ -83,13 +75,15 @@ public abstract class Store
      * get the position in the array with the item name.
      *
      * @param itemName name of the item to search.
+     *
      * @return position of the item in the array.
      */
     public int getPositionItemFromName(String itemName)
     {
         int itemPosition = 0;
         String currentItemName = "";
-        for (int i = 0; i < NUMBER_OF_ITEMS_AVAILABLE && !currentItemName.equals(itemName); i++) {
+        for (int i = 0; i < Store.NUMBER_OF_ITEMS_AVAILABLE && !currentItemName.equals(itemName); i++)
+        {
             currentItemName = this.storedItems[i].getItemName();
             itemPosition = i;
         }

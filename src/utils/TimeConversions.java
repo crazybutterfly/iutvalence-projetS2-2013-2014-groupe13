@@ -16,6 +16,7 @@ public class TimeConversions
      * Convert a time in milliseconds to a time in seconds.
      *
      * @param timeToConvert time to convert in milliseconds (long)
+     *
      * @return the time converted in seconds (float)
      */
     public float convertMillisecondsToSeconds(long timeToConvert)

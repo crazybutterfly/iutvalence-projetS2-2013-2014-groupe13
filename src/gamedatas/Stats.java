@@ -19,8 +19,8 @@ public class Stats
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
     public Stats()
     {
-        this.numberOfKills = NUMBER_OF_KILLS_DEFAULT;
-        this.numberOfDeaths = NUMBER_OF_DEATH_DEFAULT;
+        this.numberOfKills = Stats.NUMBER_OF_KILLS_DEFAULT;
+        this.numberOfDeaths = Stats.NUMBER_OF_DEATH_DEFAULT;
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 

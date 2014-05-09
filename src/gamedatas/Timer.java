@@ -33,8 +33,8 @@ public class Timer
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
     public Timer()
     {
-        this.maxGameTime = MAX_GAME_TIME_DEFAULT;
-        this.startGameTime = START_GAME_TIME;
+        this.maxGameTime = Timer.MAX_GAME_TIME_DEFAULT;
+        this.startGameTime = Timer.START_GAME_TIME;
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 
@@ -58,7 +58,6 @@ public class Timer
     /* ---------------------- START FUNCTION(S) ---------------------- */
 
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
-
     /**
      * @return the maxGameTime
      */

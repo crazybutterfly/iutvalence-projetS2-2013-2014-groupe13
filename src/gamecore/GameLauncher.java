@@ -10,8 +10,8 @@ public class GameLauncher
 
         Engine gameEngine;
         PlayerInputs playersInputs;
-        GameInformations initialGameInformations;     
-        
+        GameInformations initialGameInformations;
+
     }
 
     private GameInformations gameCreation()

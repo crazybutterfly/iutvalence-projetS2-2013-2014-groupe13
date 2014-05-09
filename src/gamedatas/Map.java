@@ -6,21 +6,21 @@ package gamedatas;
  * @author WOERLY-MOUSSIER Joachim <joachim.woerly-moussier@iut-valence.fr>
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  */
-public class Map {
+public class Map
+{
 
     /* ---------------------- START DECLARATIONS ---------------------- */
-    
-	/**
-	* the maximum lateral size of the map.
-	*/
-	public static final int MAX_X_SIZE = 13330;
-	
-	/**
-	* the maximum vertical size of the map.
-	*/
-	public static final int MAX_Y_SIZE = 13330;
-	
-	/**
+    /**
+     * the maximum lateral size of the map.
+     */
+    public static final int MAX_X_SIZE = 13330;
+
+    /**
+     * the maximum vertical size of the map.
+     */
+    public static final int MAX_Y_SIZE = 13330;
+
+    /**
      * the number of columns of the current map.
      */
     private final int numberOfColumns;
@@ -48,12 +48,15 @@ public class Map {
      * @param numberOfColumns the number of columns of the map.
      * @param numberOfLines the number of lines of the map.
      */
-    public Map(int numberOfColumns, int numberOfLines) {
+    public Map(int numberOfColumns, int numberOfLines)
+    {
         this.numberOfColumns = numberOfColumns;
         this.numberOfLines = numberOfLines;
         this.map = new Frame[this.numberOfColumns][this.numberOfLines];
-        for (int lineToDealWith = 0; lineToDealWith < this.numberOfLines; lineToDealWith++) {
-            for (int columnToDealWith = 0; columnToDealWith < this.numberOfColumns; columnToDealWith++) {
+        for (int lineToDealWith = 0; lineToDealWith < this.numberOfLines; lineToDealWith++)
+        {
+            for (int columnToDealWith = 0; columnToDealWith < this.numberOfColumns; columnToDealWith++)
+            {
                 this.map[columnToDealWith][lineToDealWith] = Frame.WALL;
             }
         }
@@ -73,9 +76,12 @@ public class Map {
      * @param frameStatus the frame status that is to be inserted into the
      * frames within the rectangle
      */
-    public void changeStatusOfFrameRectangle(int xStartCase, int yStartCase, int width, int height, Frame frameStatus) {
-        for (int lineToDealWith = yStartCase - 1; lineToDealWith < (yStartCase + height - 1); lineToDealWith++) {
-            for (int columnToDealWith = xStartCase - 1; columnToDealWith < (xStartCase + width - 1); columnToDealWith++) {
+    public void changeStatusOfFrameRectangle(int xStartCase, int yStartCase, int width, int height, Frame frameStatus)
+    {
+        for (int lineToDealWith = yStartCase - 1; lineToDealWith < (yStartCase + height - 1); lineToDealWith++)
+        {
+            for (int columnToDealWith = xStartCase - 1; columnToDealWith < (xStartCase + width - 1); columnToDealWith++)
+            {
                 this.map[columnToDealWith][lineToDealWith] = frameStatus;
             }
         }
@@ -91,7 +97,7 @@ public class Map {
     {
         this.map[xFrame][yFrame] = frame;
     }
-    
+
     /**
      *
      * @param centerX
@@ -99,48 +105,58 @@ public class Map {
      * @param radius
      * @param frame
      */
-    public void drawCircle(final int centerX, final int centerY, final int radius, final Frame frame) {
+    public void drawCircle(final int centerX, final int centerY, final int radius, final Frame frame)
+    {
 
-        for (int i = 0; i < radius; i++) {
+        for (int i = 0; i < radius; i++)
+        {
             int d = 3 - (2 * radius);
             int x = 0;
-            int y = radius-i;
+            int y = radius - i;
             Frame circleFrame = frame;
 
-            do {
+            do
+            {
                 this.changeStatusOfFrame(centerX + x, centerY + y, circleFrame);
-                this.changeStatusOfFrame(centerX + x, centerY + y-1, circleFrame);
+                this.changeStatusOfFrame(centerX + x, centerY + y - 1, circleFrame);
                 this.changeStatusOfFrame(centerX + x, centerY - y, circleFrame);
-                this.changeStatusOfFrame(centerX + x, centerY - y+1, circleFrame);
+                this.changeStatusOfFrame(centerX + x, centerY - y + 1, circleFrame);
                 this.changeStatusOfFrame(centerX - x, centerY + y, circleFrame);
-                this.changeStatusOfFrame(centerX - x, centerY + y-1, circleFrame);
+                this.changeStatusOfFrame(centerX - x, centerY + y - 1, circleFrame);
                 this.changeStatusOfFrame(centerX - x, centerY - y, circleFrame);
-                this.changeStatusOfFrame(centerX - x, centerY - y+1, circleFrame);
+                this.changeStatusOfFrame(centerX - x, centerY - y + 1, circleFrame);
                 this.changeStatusOfFrame(centerX + y, centerY + x, circleFrame);
-                this.changeStatusOfFrame(centerX + y-1, centerY + x, circleFrame);
+                this.changeStatusOfFrame(centerX + y - 1, centerY + x, circleFrame);
                 this.changeStatusOfFrame(centerX + y, centerY - x, circleFrame);
-                this.changeStatusOfFrame(centerX + y-1, centerY - x, circleFrame);
+                this.changeStatusOfFrame(centerX + y - 1, centerY - x, circleFrame);
                 this.changeStatusOfFrame(centerX - y, centerY + x, circleFrame);
-                this.changeStatusOfFrame(centerX - y+1, centerY + x, circleFrame);
+                this.changeStatusOfFrame(centerX - y + 1, centerY + x, circleFrame);
                 this.changeStatusOfFrame(centerX - y, centerY - x, circleFrame);
-                this.changeStatusOfFrame(centerX - y+1, centerY - x, circleFrame);
-                if (d < 0) {
+                this.changeStatusOfFrame(centerX - y + 1, centerY - x, circleFrame);
+                if (d < 0)
+                {
                     d = d + (4 * x) + 6;
-                } else {
+                }
+                else
+                {
                     d = d + 4 * (x - y) + 10;
                     y--;
                 }
                 x++;
-            } while (x <= y);
+            }
+            while (x <= y);
         }
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         String stringDescriptionOfMap = "";
 
-        for (int lineToDealWith = 0; lineToDealWith < this.numberOfLines; lineToDealWith++) {
-            for (int columnToDealWith = 0; columnToDealWith < this.numberOfColumns; columnToDealWith++) {
+        for (int lineToDealWith = 0; lineToDealWith < this.numberOfLines; lineToDealWith++)
+        {
+            for (int columnToDealWith = 0; columnToDealWith < this.numberOfColumns; columnToDealWith++)
+            {
                 stringDescriptionOfMap += this.map[columnToDealWith][lineToDealWith];
             }
             stringDescriptionOfMap += "\n";

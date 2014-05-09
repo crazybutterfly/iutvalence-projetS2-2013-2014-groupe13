@@ -22,8 +22,8 @@ public class SpyStats extends Stats
     public SpyStats()
     {
         super();
-        this.teamHasDocs = TEAM_HAS_DOCS_DEFAULT;
-        this.remainingLives = REMAINING_LIVES_DEFAULT;
+        this.teamHasDocs = SpyStats.TEAM_HAS_DOCS_DEFAULT;
+        this.remainingLives = SpyStats.REMAINING_LIVES_DEFAULT;
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 

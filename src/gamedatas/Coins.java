@@ -14,7 +14,6 @@ public class Coins
     private int quantity;
 
     /* ---------------------- END DECLARATIONS ---------------------- */
-
     /**
      * a procedure to add coins
      *
