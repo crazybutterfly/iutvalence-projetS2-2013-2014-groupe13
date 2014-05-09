@@ -3,6 +3,7 @@ package gamedatas;
 import items.Item;
 
 /**
+ * 
  * class Store is composed by two arrays : one is the list of all buyable items
  * and the other is the number of those items in the store. When players cant
  * buy them because ti's too early in the game or else, the number in the array
@@ -48,9 +49,16 @@ public abstract class Store
      * @param itemName name of the item you want to change.
      * @param modificator number of the modification.
      */
-    public void changeStoreCapacity(String itemName, int modificator)
+    public boolean changeStoreCapacity(String itemName, int modificator)
     {
-        this.storeCapacity[this.getPositionItemFromName(itemName)] += modificator;
+        /**
+         * A FINIR ----------------------------------------------------------
+         */
+        
+//        if ((this.storeCapacity[this.getPositionItemFromName(itemName)] += modificator)<0){
+//            this.storeCapacity[this.getPositionItemFromName(itemName)] += modificator;
+//        }
+        return true;
     }
 
     /**
