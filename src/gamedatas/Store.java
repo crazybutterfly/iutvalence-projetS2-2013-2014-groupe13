@@ -20,7 +20,7 @@ public abstract class Store
     /**
      * declaration of an array composed with Item objects.
      */
-    Item[] storeItems;
+    Item[] storedItems;
     /**
      * declaration of an array composed with integers.
      */
@@ -30,13 +30,30 @@ public abstract class Store
      * the number of availible items.
      */
     public final static int NUMBER_OF_ITEMS_AVAILABLE = 20;
+    
+    /**
+     * Default number of items by type in the store.
+     */
+    public final static int STORE_CAPACITY_DEFAULT = 0;
+    
+        /**
+     * Empty item, used to initialize a item array when there are no item.
+     */
+    public final static Item EMPTY_ITEM = new Item("EmplyItem",false,false,0,0);
+    
+    
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
     public void Store()
     {
-        this.storeItems = new Item[NUMBER_OF_ITEMS_AVAILABLE];
+        this.storedItems = new Item[NUMBER_OF_ITEMS_AVAILABLE];   
         this.storeCapacity = new int[NUMBER_OF_ITEMS_AVAILABLE];
+        for (int i = 0; i < Store.NUMBER_OF_ITEMS_AVAILABLE; i++)
+        {
+            this.storedItems[i] = Store.EMPTY_ITEM;
+            this.storeCapacity[i] = Store.STORE_CAPACITY_DEFAULT;
+        }
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 
@@ -73,7 +90,7 @@ public abstract class Store
         int itemPosition = 0;
         String currentItemName = "";
         for (int i = 0; i < NUMBER_OF_ITEMS_AVAILABLE && !currentItemName.equals(itemName); i++) {
-            currentItemName = this.storeItems[i].getItemName();
+            currentItemName = this.storedItems[i].getItemName();
             itemPosition = i;
         }
         return itemPosition;
@@ -86,9 +103,9 @@ public abstract class Store
         return this.storeCapacity;
     }
 
-    public Item[] getStoreItems()
+    public Item[] getStoredItems()
     {
-        return this.storeItems;
+        return this.storedItems;
     }
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
 }
