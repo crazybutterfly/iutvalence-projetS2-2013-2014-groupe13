@@ -13,7 +13,7 @@ public class SpyPlayer extends ClassicPlayer
     /**
      * Argent du Spy.
      */
-    public Coins myCoins;
+    private Coins myCoins;
 
     /**
      * Temps de réapparition du Spy.
@@ -76,5 +76,18 @@ public class SpyPlayer extends ClassicPlayer
     {
         return this.stats;
     }
+    
+    
+    
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
+
+    /**
+     * @return the myCoins
+     */
+    public Coins getMyCoins()
+    {
+        return myCoins;
+    }
+
+
 }

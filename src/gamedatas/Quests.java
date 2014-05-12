@@ -14,22 +14,20 @@ public class Quests
     /**
      * Si la quete est fini ou non.
      */
-    private boolean questFinished;
+    protected boolean questFinished;
 
     /**
      * La quete est, par defaut, en cours.
      */
-    public boolean QUEST_FINISHED_DEFAULT = false;
-
-    /**
-     * The spies quest
-     */
-    public Quests spiesQuest;
-
-    /**
-     * The quards quest
-     */
-    public Quests quardsQuest;
+    protected boolean QUEST_FINISHED_DEFAULT = false;
+   
     /* ---------------------- END DECLARATIONS ---------------------- */
 
+    /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
+    public Quests()
+    {
+        this.questFinished = QUEST_FINISHED_DEFAULT;
+  
+    }
+    /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 }

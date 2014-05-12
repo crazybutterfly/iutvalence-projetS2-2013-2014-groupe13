@@ -34,21 +34,16 @@ public class GameMode
     private Doc doc;
     
     /* ---------------------- END DECLARATIONS ---------------------- */
-
+    
+    /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
     public void GameMode()
     {
         
     }
+    /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
     
-    /**
-     * getter for the doc.
-     * @return the doc.
-     */
-    public Doc getDoc()
-    {
-        return this.doc;
-    }
-    
+    /* ---------------------- START FUNCTION(S) ---------------------- */
+
     /**
      * Places the doc.
      * @param posX the X position of the doc.
@@ -67,6 +62,18 @@ public class GameMode
     
     public void setQuests(int posX, int posY, boolean isPrimary, int number, int priceWon, int teamPriceWon)
     {
-        this.gameQuests[number] = new SpiesQuest(posX, posY, isPrimary, number, priceWon, teamPriceWon);
+        this.gameQuests[number] = new SpiesQuest(posX, posY, isPrimary, priceWon, teamPriceWon);
     }
+    /* ---------------------- END FUNCTION(S) ---------------------- */
+    
+    /* ---------------------- START GETTERS & SETTERS ---------------------- */
+        /**
+     * getter for the doc.
+     * @return the doc.
+     */
+    public Doc getDoc()
+    {
+        return this.doc;
+    }
+    /* ---------------------- END GETTERS AND SETTERS ---------------------- */
 }

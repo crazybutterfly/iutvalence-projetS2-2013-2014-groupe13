@@ -25,11 +25,6 @@ public class SpiesQuest extends Quests
     private boolean questIsPrimaryQuest;
 
     /**
-     * Numéro de quete.
-     */
-    private final int questNumber;
-
-    /**
      * Argent gagné par le joueur atteignant un checkpoint.
      */
     private final int priceWonIfQuestDone;
@@ -45,17 +40,17 @@ public class SpiesQuest extends Quests
      */
     public boolean QUEST_IS_DONE_DEFAULT = false;
 
-    /**
-     * Valeur par défaut de l'argent gagné par le joueur quand il atteint un
-     * checkpoint.
-     */
-    public int PRICE_WON_IF_CHECKPOINT_QUEST_DONE_DEFAULT = 200;
-
-    /**
-     * Valeur par défaut de l'argent gagné par l'équipe lorsque qu'un joueur
-     * atteint un checkpoint.
-     */
-    public int TEAM_PRICE_IF_CHECKPOINT_QUEST_DONE = 300;
+//    /**
+//     * Valeur par défaut de l'argent gagné par le joueur quand il atteint un
+//     * checkpoint.
+//     */
+//    public int PRICE_WON_IF_CHECKPOINT_QUEST_DONE_DEFAULT = 200;
+//
+//    /**
+//     * Valeur par défaut de l'argent gagné par l'équipe lorsque qu'un joueur
+//     * atteint un checkpoint.
+//     */
+//    public int TEAM_PRICE_IF_CHECKPOINT_QUEST_DONE = 300;
 
     /* ---------------------- END DECLARATIONS ---------------------- */
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
@@ -64,16 +59,15 @@ public class SpiesQuest extends Quests
      * @param posX Position X de la quete.
      * @param posY Position Y de la quete.
      * @param questIsPrimaryQuest Quete primaire ou secondaire.
-     * @param questNumber Numéro de quete.
      * @param priceWonIfQuestDone Argent gagné par le joueur.
      * @param teamPriceIfQuestDone Argent gagné par l'équipe.
      */
-    public SpiesQuest(int posX, int posY, boolean questIsPrimaryQuest, int questNumber, int priceWonIfQuestDone, int teamPriceIfQuestDone)
+    public SpiesQuest(int posX, int posY, boolean questIsPrimaryQuest, int priceWonIfQuestDone, int teamPriceIfQuestDone)
     {
+        super();
         this.posX = posX;
         this.posY = posY;
         this.questIsPrimaryQuest = questIsPrimaryQuest;
-        this.questNumber = questNumber;
         this.priceWonIfQuestDone = priceWonIfQuestDone;
         this.teamPriceIfQuestDone = teamPriceIfQuestDone;
     }
@@ -94,10 +88,10 @@ public class SpiesQuest extends Quests
             if (spiesArray[i].getPosX() == this.posX && spiesArray[i].getPosY() == this.posY)
             {
                 this.questIsDone = true;
-                spiesArray[i].myCoins.changeCoinQuantity(this.priceWonIfQuestDone);
+                spiesArray[i].getMyCoins().changeCoinQuantity(this.priceWonIfQuestDone);
                 for (int index = 0; index < spiesArray.length; index++)
                 {
-                    spiesArray[index].myCoins.changeCoinQuantity(this.teamPriceIfQuestDone);
+                    spiesArray[index].getMyCoins().changeCoinQuantity(this.teamPriceIfQuestDone);
                 }
             }
         }
@@ -106,13 +100,7 @@ public class SpiesQuest extends Quests
     /* ---------------------- END FUNCTION(S) ---------------------- */
 
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
-    /**
-     * @return the questNumber
-     */
-    public int getQuestNumber()
-    {
-        return questNumber;
-    }
+
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
 
 }
