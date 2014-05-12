@@ -1,11 +1,12 @@
 package gamecore;
 
+import java.io.IOException;
 import playersinteractions.PlayerInputs;
 
 public class GameLauncher
 {
 
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException
     {
 
         Engine gameEngine;

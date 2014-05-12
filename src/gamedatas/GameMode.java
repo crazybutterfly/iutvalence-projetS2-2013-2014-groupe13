@@ -21,12 +21,12 @@ public class GameMode
     /**
      * Statistics of the times.
      */
-    private Timer gameTimer;
+    private Timer gameTimer = new Timer();
 
     /**
      * Quests datas of the game.
      */
-    private Quests[] gameQuests;
+    private SpiesQuest[] gameQuests;
     
     /**
      * the doc on the map.
@@ -59,14 +59,24 @@ public class GameMode
         this.doc = new Doc(posX, posY);
     }
     
-    
-    public Quests[] getQuests()
+    public void setNumberOfQuests(int numberOfQuests)
     {
-        return this.gameQuests;
+        this.gameQuests = new SpiesQuest[numberOfQuests];
+    }
+    
+    
+    public SpiesQuest getQuests(int index)
+    {
+        return this.gameQuests[index];
     }
     
     public void setQuests(int posX, int posY, boolean isPrimary, int number, int priceWon, int teamPriceWon)
     {
-        this.gameQuests[number] = new SpiesQuest(posX, posY, isPrimary, number, priceWon, teamPriceWon);
+        this.gameQuests[number] = new SpiesQuest(posX, posY, isPrimary, priceWon, teamPriceWon);
+    }
+    
+    public void setTimer(int time)
+    {
+        this.gameTimer.setMaxGameTime(time);
     }
 }

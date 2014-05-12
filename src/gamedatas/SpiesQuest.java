@@ -7,12 +7,12 @@ public class SpiesQuest extends Quests
     /**
      * Position X de la Quest.
      */
-    public int posX;
+    private int posX;
 
     /**
      * Position Y de la Quest.
      */
-    public int posY;
+    private int posY;
 
     /**
      * Booléen définissant si une quete est terminée ou non.
@@ -23,11 +23,6 @@ public class SpiesQuest extends Quests
      * Booléen définissant si une quete est principale ou secondaire.
      */
     private boolean questIsPrimaryQuest;
-
-    /**
-     * Numéro de quete.
-     */
-    private final int questNumber;
 
     /**
      * Argent gagné par le joueur atteignant un checkpoint.
@@ -43,19 +38,19 @@ public class SpiesQuest extends Quests
      * Valeur par défaut de l'accomplissement de la quete.
      * Par défaut, elle n'est pas terminée.
      */
-    public boolean QUEST_IS_DONE_DEFAULT = false;
+    private boolean QUEST_IS_DONE_DEFAULT = false;
 
     /**
      * Valeur par défaut de l'argent gagné par le joueur quand il atteint un
      * checkpoint.
      */
-    public int PRICE_WON_IF_CHECKPOINT_QUEST_DONE_DEFAULT = 200;
+    private int PRICE_WON_IF_CHECKPOINT_QUEST_DONE_DEFAULT = 200;
 
     /**
      * Valeur par défaut de l'argent gagné par l'équipe lorsque qu'un joueur
      * atteint un checkpoint.
      */
-    public int TEAM_PRICE_IF_CHECKPOINT_QUEST_DONE = 300;
+    private int TEAM_PRICE_IF_CHECKPOINT_QUEST_DONE = 300;
 
     /* ---------------------- END DECLARATIONS ---------------------- */
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
@@ -64,16 +59,14 @@ public class SpiesQuest extends Quests
      * @param posX Position X de la quete.
      * @param posY Position Y de la quete.
      * @param questIsPrimaryQuest Quete primaire ou secondaire.
-     * @param questNumber Numéro de quete.
      * @param priceWonIfQuestDone Argent gagné par le joueur.
      * @param teamPriceIfQuestDone Argent gagné par l'équipe.
      */
-    public SpiesQuest(int posX, int posY, boolean questIsPrimaryQuest, int questNumber, int priceWonIfQuestDone, int teamPriceIfQuestDone)
+    public SpiesQuest(int posX, int posY, boolean questIsPrimaryQuest, int priceWonIfQuestDone, int teamPriceIfQuestDone)
     {
         this.posX = posX;
         this.posY = posY;
         this.questIsPrimaryQuest = questIsPrimaryQuest;
-        this.questNumber = questNumber;
         this.priceWonIfQuestDone = priceWonIfQuestDone;
         this.teamPriceIfQuestDone = teamPriceIfQuestDone;
     }
@@ -106,12 +99,13 @@ public class SpiesQuest extends Quests
     /* ---------------------- END FUNCTION(S) ---------------------- */
 
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
-    /**
-     * @return the questNumber
-     */
-    public int getQuestNumber()
+    public int getPosX()
     {
-        return questNumber;
+        return this.posX;
+    }
+    public int getPosY()
+    {
+        return this.posY;
     }
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
 
