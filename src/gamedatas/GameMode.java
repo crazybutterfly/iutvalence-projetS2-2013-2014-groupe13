@@ -34,21 +34,16 @@ public class GameMode
     private Doc doc;
     
     /* ---------------------- END DECLARATIONS ---------------------- */
-
+    
+    /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
     public void GameMode()
     {
         
     }
+    /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
     
-    /**
-     * getter for the doc.
-     * @return the doc.
-     */
-    public Doc getDoc()
-    {
-        return this.doc;
-    }
-    
+    /* ---------------------- START FUNCTION(S) ---------------------- */
+
     /**
      * Places the doc.
      * @param posX the X position of the doc.
@@ -79,4 +74,16 @@ public class GameMode
     {
         this.gameTimer.setMaxGameTime(time);
     }
+    /* ---------------------- END FUNCTION(S) ---------------------- */
+    
+    /* ---------------------- START GETTERS & SETTERS ---------------------- */
+        /**
+     * getter for the doc.
+     * @return the doc.
+     */
+    public Doc getDoc()
+    {
+        return this.doc;
+    }
+    /* ---------------------- END GETTERS AND SETTERS ---------------------- */
 }

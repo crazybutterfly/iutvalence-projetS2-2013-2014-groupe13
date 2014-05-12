@@ -3,11 +3,12 @@ package gamedatas;
 public class GuardQuest extends Quests
 {
     /* ---------------------- START DECLARATIONS ---------------------- */
-
-    private boolean questIsAchieve;
-
-    public boolean QUEST_IS_ACHIEVE_DEFAULT = false;
-
+    
+    private int numberOfConsecutiveKillsWithoutDie;
+    
+    public int NUMBER_OF_CONSECUTIVE_KILLS_WITHOUT_DIE_DEFAULT = 0;
+    
     /* ---------------------- END DECLARATIONS ---------------------- */
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
+    
 }
