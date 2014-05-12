@@ -1,6 +1,7 @@
 package utils;
 
 import gamedatas.Frame;
+import gamedatas.GameMode;
 import gamedatas.Map;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -29,7 +30,19 @@ public class GameInformationLoaderFromFile
     {
 
     }
+    /*-----------------CLASS FUNCTIONS---------------*/
+        public boolean fileExists(String fileLocation) throws FileNotFoundException
+    {
+        File file = new File(fileLocation);
+        return file.exists();
+    }
+    
+    
 
+        
+        
+        /*-------------------------MAP FUNCTIONS----------------------*/
+        
     /**
      * Creates a map from the file read.
      *
@@ -132,11 +145,7 @@ public class GameInformationLoaderFromFile
         }
     }
 
-    public boolean fileExists(String fileLocation) throws FileNotFoundException
-    {
-        File file = new File(fileLocation);
-        return file.exists();
-    }
+
 
     public Map loadMapFromFile(String fileLocation) throws IOException, FileNotFoundException
     {
@@ -211,4 +220,104 @@ public class GameInformationLoaderFromFile
         return map;
     }
 
+    /*-------------------------------QUEST FUNCTIONS---------------------------------------*/
+    
+      public boolean isQuestFileValid(String fileLocation) throws IOException, FileNotFoundException
+    {
+        if (!this.fileExists(fileLocation))
+        {
+            System.out.println("file not found");
+            return false;
+        }
+        else
+        {
+            BufferedReader fileTester = new BufferedReader(new FileReader(fileLocation));
+            try
+            {
+            int docXLocation = Integer.parseInt(fileTester.readLine());
+                int docYLocation = Integer.parseInt(fileTester.readLine());
+                if (docXLocation <0 || docYLocation<0)
+                {
+                    System.out.println("doc hors de la map");
+                    return false;
+                }
+                else
+                {
+                    int index = 0;
+                    String line = fileTester.readLine();
+                    
+                     while ((line != null) && (!"".equals(line)))
+            {
+
+                String[] parts = line.split("\\s");
+                    if (Integer.parseInt(parts[0]) <0){
+                        System.out.println("error at first param, quest "+index);
+                        return false;
+                    }
+                    if (Integer.parseInt(parts[1]) <0){
+                        System.out.println("error at second param, quest "+index);
+                        return false;
+                    }
+                    if (Integer.parseInt(parts[2]) <0){
+                        System.out.println("error at third param, quest "+index);
+                        return false;
+                    }
+                    if (Integer.parseInt(parts[3]) <0){
+                        System.out.println("error at fourth param, quest "+index);
+                        return false;
+                    }
+                  
+                                                  
+                line = fileTester.readLine();
+                index ++;
+            }
+                }
+            }
+            catch(IOException e)
+                    {
+                        System.out.println("invalid QuestFile");
+                        return false;
+                    }
+        }
+        return true;
+        }
+      
+      public GameMode loadQuestsFromFile(String fileLocation) throws IOException, FileNotFoundException
+      {
+            this.fileReader = new BufferedReader(new FileReader(fileLocation));
+            GameMode gameMode = new GameMode();
+            
+             try
+        {
+            String DocXLocationText = this.fileReader.readLine();
+            String QuestYlocationText = this.fileReader.readLine();
+           gameMode.setDoc(Integer.parseInt(DocXLocationText), Integer.parseInt(QuestYlocationText));
+           
+           String line = fileReader.readLine();
+           int index = 0;
+
+            while ((line != null) && (!"".equals(line)))
+            {
+
+                String[] parts = line.split("\\s");
+                    int posX = Integer.parseInt(parts[0]);
+                    int posY = Integer.parseInt(parts[1]);
+                    int PriceWon = Integer.parseInt(parts[2]);
+                    int TeamPriceWon = Integer.parseInt(parts[3]);
+                  gameMode.setQuests(posX, posY, false, index, PriceWon, TeamPriceWon);
+                                                  
+                line = fileReader.readLine();
+                index ++;
+            }
+           
+           return gameMode;
+
+        }
+        catch (IOException e)
+        {
+            System.out.println("Erreur");
+            return null;
+        }
+      }
+    
 }

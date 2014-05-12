@@ -18,22 +18,16 @@ public class Coins
      * a procedure to add coins
      *
      * @param quantity how many coins we add
+     * @return 
      */
 
     /* ---------------------- START FUNCTION(S) ---------------------- */
-    public void addingCoin(int quantity)
+    public boolean changeCoinQuantity(int quantity)
     {
-        this.quantity += quantity;
+            if (this.quantity + quantity < 0) return false;
+            this.quantity += quantity;
+            return true;
     }
 
-    /**
-     * a procedure to remove coins
-     *
-     * @param quantity how many coins we remove
-     */
-    public void removeCoin(int quantity)
-    {
-        this.quantity -= quantity;
-    }
     /* ---------------------- END FUNCTION(S) ---------------------- */
 }

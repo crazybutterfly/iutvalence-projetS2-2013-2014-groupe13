@@ -94,10 +94,10 @@ public class SpiesQuest extends Quests
             if (spiesArray[i].getPosX() == this.posX && spiesArray[i].getPosY() == this.posY)
             {
                 this.questIsDone = true;
-                spiesArray[i].myCoins.addingCoin(this.priceWonIfQuestDone);
+                spiesArray[i].myCoins.changeCoinQuantity(this.priceWonIfQuestDone);
                 for (int index = 0; index < spiesArray.length; index++)
                 {
-                    spiesArray[index].myCoins.addingCoin(this.teamPriceIfQuestDone);
+                    spiesArray[index].myCoins.changeCoinQuantity(this.teamPriceIfQuestDone);
                 }
             }
         }
