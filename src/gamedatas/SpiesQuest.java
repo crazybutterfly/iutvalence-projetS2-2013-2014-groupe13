@@ -40,17 +40,17 @@ public class SpiesQuest extends Quests
      */
     private boolean QUEST_IS_DONE_DEFAULT = false;
 
-//    /**
-//     * Valeur par défaut de l'argent gagné par le joueur quand il atteint un
-//     * checkpoint.
-//     */
-//    public int PRICE_WON_IF_CHECKPOINT_QUEST_DONE_DEFAULT = 200;
-//
-//    /**
-//     * Valeur par défaut de l'argent gagné par l'équipe lorsque qu'un joueur
-//     * atteint un checkpoint.
-//     */
-//    public int TEAM_PRICE_IF_CHECKPOINT_QUEST_DONE = 300;
+    /**
+     * Valeur par défaut de l'argent gagné par le joueur quand il atteint un
+     * checkpoint.
+     */
+    private int PRICE_WON_IF_CHECKPOINT_QUEST_DONE_DEFAULT = 200;
+
+    /**
+     * Valeur par défaut de l'argent gagné par l'équipe lorsque qu'un joueur
+     * atteint un checkpoint.
+     */
+    private int TEAM_PRICE_IF_CHECKPOINT_QUEST_DONE = 300;
 
     /* ---------------------- END DECLARATIONS ---------------------- */
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
@@ -64,7 +64,6 @@ public class SpiesQuest extends Quests
      */
     public SpiesQuest(int posX, int posY, boolean questIsPrimaryQuest, int priceWonIfQuestDone, int teamPriceIfQuestDone)
     {
-        super();
         this.posX = posX;
         this.posY = posY;
         this.questIsPrimaryQuest = questIsPrimaryQuest;
@@ -100,7 +99,14 @@ public class SpiesQuest extends Quests
     /* ---------------------- END FUNCTION(S) ---------------------- */
 
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
-
+    public int getPosX()
+    {
+        return this.posX;
+    }
+    public int getPosY()
+    {
+        return this.posY;
+    }
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
 
 }

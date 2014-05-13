@@ -12,15 +12,21 @@ public class ClassicPlayer extends Player
 {
 
     /* ---------------------- START DECLARATIONS ---------------------- */
+
     /**
-     * Position en x du joueur.
+     * Position en x en centième de case de map du joueur.
      */
     protected int posX;
 
     /**
-     * Position en y du joueur.
+     * Position en y en centième de case de map du joueur.
      */
     protected int posY;
+
+    /**
+     * Mouvements du joueur.
+     */
+    protected ClassicPlayerMoves currentMoves;
 
     /**
      * Statut actuel du joueur.
@@ -121,6 +127,7 @@ public class ClassicPlayer extends Player
     public ClassicPlayer()
     {
         super();
+        this.currentMoves = new ClassicPlayerMoves();
         this.posX = ClassicPlayer.POS_X_DEFAULT;
         this.posY = ClassicPlayer.POS_Y_DEFAULT;
         this.currentStatus = ClassicPlayer.CURRENT_STATUTS_DEFAULT;
@@ -128,13 +135,11 @@ public class ClassicPlayer extends Player
         this.remainingTimeBeforeRespawn = ClassicPlayer.REMAINING_TIME_BEFORE_RESPAWN_DEFAULT;
         this.initialNumberOfLives = ClassicPlayer.INITIAL_NUMBER_OF_LIVES;
         this.items = new Item[ClassicPlayer.MAXIMUM_NUMBER_OF_ITEM_TYPE];
-        for (int i = 0; i < ClassicPlayer.MAXIMUM_NUMBER_OF_ITEM_TYPE; i++)
-        {
+        for (int i = 0; i < ClassicPlayer.MAXIMUM_NUMBER_OF_ITEM_TYPE; i++) {
             this.items[i] = new Item();
         }
         this.numberOfItemsByType = new int[ClassicPlayer.MAXIMUM_NUMBER_OF_ITEM_TYPE];
-        for (int i = 0; i < ClassicPlayer.MAXIMUM_NUMBER_OF_ITEM_TYPE; i++)
-        {
+        for (int i = 0; i < ClassicPlayer.MAXIMUM_NUMBER_OF_ITEM_TYPE; i++) {
             this.numberOfItemsByType[i] = ClassicPlayer.NUMBER_OF_ITEM_POCESSED_BY_TYPE_DEFAULT;
         }
         this.currentNumberOfTypeItemPocessed = ClassicPlayer.CURRENT_NUMBER_OF_TYPE_ITEM_POCESSED_DEFAULT;
@@ -142,7 +147,7 @@ public class ClassicPlayer extends Player
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
     /* ---------------------- START FUNCTION(S) ---------------------- */
 
-    /**
+        /**
      * Fonction mettant à jour la position(X,Y) du joueur.
      *
      * @param newPosX New X Position.
@@ -150,10 +155,10 @@ public class ClassicPlayer extends Player
      */
     public void updatePosition(int newPosX, int newPosY)
     {
-        this.posX = newPosX;
-        this.posY = newPosY;
+        this.setPosX(newPosX);
+        this.setPosY(newPosY);
     }
-
+    
     /**
      * Fonction attribuant au joueur le statut "en attente de réapparition".
      * Fonction qui retirera un Spies en cas de mort définitive... à voir avec
@@ -165,15 +170,27 @@ public class ClassicPlayer extends Player
     {
 
     }
-    /* ---------------------- END FUNCTION(S) ---------------------- */
-
-    /* ---------------------- START GETTERS & SETTERS ---------------------- */
-    public Stats getStats()
+    
+           /**
+     * @return the posX
+     */
+    public int getPosXCase()
     {
-        return this.stats;
+        return posX/100;
     }
 
     /**
+     * @return the posY
+     */
+    public int getPosYCase()
+    {
+        return posY/100;
+    }
+    
+    /* ---------------------- END FUNCTION(S) ---------------------- */
+
+    /* ---------------------- START GETTERS & SETTERS ---------------------- */
+        /**
      * @return the posX
      */
     public int getPosX()
@@ -188,6 +205,28 @@ public class ClassicPlayer extends Player
     {
         return posY;
     }
+    
+        /**
+     * @param posX the posX to set
+     */
+    public void setPosX(int posX)
+    {
+        this.posX = posX;
+    }
+
+    /**
+     * @param posY the posY to set
+     */
+    public void setPosY(int posY)
+    {
+        this.posY = posY;
+    }
+    
+    public Stats getStats()
+    {
+        return this.stats;
+    }
+
 
     /**
      * @return the currentStatus
@@ -220,5 +259,17 @@ public class ClassicPlayer extends Player
     {
         this.remainingTimeBeforeRespawn = remainingTimeBeforeRespawn;
     }
+
+    /**
+     * @return the currentMoves
+     */
+    public ClassicPlayerMoves getCurrentMoves()
+    {
+        return currentMoves;
+    }
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
+
+
+
+
 }
