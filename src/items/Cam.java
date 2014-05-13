@@ -1,7 +1,8 @@
 package items;
 
-public class Cam extends ItemOnTheMap
-{
+import gamedatas.ClassicPlayer;
+
+public class Cam extends Item {
 
     /* ---------------------- START DECLARATIONS ---------------------- */
     private final int numCam;
@@ -20,8 +21,7 @@ public class Cam extends ItemOnTheMap
      * @param posX
      * @param posY
      */
-    public Cam(int camID, int posX, int posY)
-    {
+    public Cam(int camID, int posX, int posY) {
         super("Cam", Cam.USABLE_BY_SPY, Cam.USABLE_BY_GUARD, Cam.TIME_BEFORE_UNLOCK, Cam.PRICE, posX, posY);
         this.numCam = camID;
         this.camStatus = CamStatus.WORKING;
@@ -37,8 +37,7 @@ public class Cam extends ItemOnTheMap
     /**
      * @return the number of the cam
      */
-    public int getNumCam()
-    {
+    public int getNumCam() {
         return numCam;
     }
 
@@ -47,8 +46,7 @@ public class Cam extends ItemOnTheMap
      *
      * @return the status of the cam.
      */
-    public CamStatus getCamStatus()
-    {
+    public CamStatus getCamStatus() {
         return this.camStatus;
     }
 
@@ -57,9 +55,38 @@ public class Cam extends ItemOnTheMap
      *
      * @param status
      */
-    public void setCamStatus(CamStatus status)
-    {
+    public void setCamStatus(CamStatus status) {
         this.camStatus = status;
     }
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
+
+    @Override
+    public void useItem(ClassicPlayer player) {
+        this.repair(player.getItems(), player.getNumberOfItemsByType());
+    }
+
+    @Override
+    public void dropItem(ClassicPlayer player) {
+        this.putOnTheMap(player.getPosX(), player.getPosY());
+        this.isOnMapYet = true;
+        player.removeItem(this.itemName);
+    }
+
+    private void repair(Item[] items, int[] numberOfItems) {
+
+        int index = 0;
+        while (index < items.length) {
+            if (items[index].getItemName().equals("Material")) {
+                this.camStatus = CamStatus.WORKING;
+                if (numberOfItems[index] != 1) {
+                    numberOfItems[index] -= 1;
+                } else {
+                    items[index] = new EmptyItem();
+                }
+                return;
+            } else {
+                index++;
+            }
+        }
+    }
 }
