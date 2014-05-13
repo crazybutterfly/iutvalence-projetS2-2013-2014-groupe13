@@ -1,5 +1,6 @@
 package gamedatas;
 
+import items.EmptyItem;
 import items.Item;
 
 /**
@@ -12,8 +13,7 @@ import items.Item;
  * @author MITTOUX Hadrien <hadrien.mittoux@iut-valence.fr>
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  */
-public abstract class Store
-{
+public abstract class Store {
 
     /* ---------------------- START DECLARATIONS ---------------------- */
     /**
@@ -38,13 +38,11 @@ public abstract class Store
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
-    public void Store()
-    {
+    public void Store() {
         this.storedItems = new Item[Store.NUMBER_OF_ITEMS_AVAILABLE];
         this.storeCapacity = new int[Store.NUMBER_OF_ITEMS_AVAILABLE];
-        for (int i = 0; i < Store.NUMBER_OF_ITEMS_AVAILABLE; i++)
-        {
-            this.storedItems[i] = new Item();
+        for (int i = 0; i < Store.NUMBER_OF_ITEMS_AVAILABLE; i++) {
+            this.storedItems[i] = new EmptyItem();
             this.storeCapacity[i] = Store.STORE_CAPACITY_DEFAULT;
         }
     }
@@ -57,33 +55,34 @@ public abstract class Store
      *
      * @param itemName name of the item you want to change.
      * @param modificator number of the modification.
+     * @return true if the change took place correctly, false otherwise.
      */
-    public boolean changeStoreCapacity(String itemName, int modificator)
-    {
+    public boolean changeStoreCapacity(String itemName, int modificator) {
+            if ((this.storeCapacity[this.getPositionItemFromName(itemName)] += modificator) < 0) {
+                this.storeCapacity[this.getPositionItemFromName(itemName)] += modificator;
+                return true;
+            } else {
+                if ((this.storeCapacity[this.getPositionItemFromName(itemName)] += modificator) == 0) {
+                    this.storeCapacity[this.getPositionItemFromName(itemName)] = 1;
+                    this.storedItems[this.getPositionItemFromName(itemName)] = new EmptyItem();
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
         /**
-         * A FINIR ----------------------------------------------------------
+         *
+         * get the position in the array with the item name.
+         *
+         * @param itemName name of the item to search.
+         *
+         * @return position of the item in the array.
          */
-
-//        if ((this.storeCapacity[this.getPositionItemFromName(itemName)] += modificator)<0){
-//            this.storeCapacity[this.getPositionItemFromName(itemName)] += modificator;
-//        }
-        return true;
-    }
-
-    /**
-     *
-     * get the position in the array with the item name.
-     *
-     * @param itemName name of the item to search.
-     *
-     * @return position of the item in the array.
-     */
-    public int getPositionItemFromName(String itemName)
-    {
+    public int getPositionItemFromName(String itemName) {
         int itemPosition = 0;
         String currentItemName = "";
-        for (int i = 0; i < Store.NUMBER_OF_ITEMS_AVAILABLE && !currentItemName.equals(itemName); i++)
-        {
+        for (int i = 0; i < Store.NUMBER_OF_ITEMS_AVAILABLE && !currentItemName.equals(itemName); i++) {
             currentItemName = this.storedItems[i].getItemName();
             itemPosition = i;
         }
@@ -92,13 +91,11 @@ public abstract class Store
     /* ---------------------- END FUNCTION(S) ---------------------- */
 
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
-    public int[] getStoreCapacity()
-    {
+    public int[] getStoreCapacity() {
         return this.storeCapacity;
     }
 
-    public Item[] getStoredItems()
-    {
+    public Item[] getStoredItems() {
         return this.storedItems;
     }
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
