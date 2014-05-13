@@ -9,7 +9,8 @@ import items.Item;
  * @author BEGOT William <william.begot@iut-valence.fr>
  * @author DUBOIS Thomas <thomas.dubois@iut-valence.fr>
  */
-public class ClassicPlayer extends Player {
+public class ClassicPlayer extends Player
+{
 
     /* ---------------------- START DECLARATIONS ---------------------- */
 
@@ -124,7 +125,8 @@ public class ClassicPlayer extends Player {
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
-    public ClassicPlayer() {
+    public ClassicPlayer()
+    {
         super();
         this.currentMoves = new ClassicPlayerMoves();
         this.posX = ClassicPlayer.POS_X_DEFAULT;
@@ -146,17 +148,18 @@ public class ClassicPlayer extends Player {
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
     /* ---------------------- START FUNCTION(S) ---------------------- */
 
-        /**
+    /**
      * Fonction mettant à jour la position(X,Y) du joueur.
      *
      * @param newPosX New X Position.
      * @param newPosY New Y position.
      */
-    public void updatePosition(int newPosX, int newPosY) {
+    public void updatePosition(int newPosX, int newPosY)
+    {
         this.posX = newPosX;
         this.posY = newPosY;
     }
-    
+
     /**
      * Fonction attribuant au joueur le statut "en attente de réapparition".
      * Fonction qui retirera un Spies en cas de mort définitive... à voir avec
@@ -164,44 +167,61 @@ public class ClassicPlayer extends Player {
      * de temps de réapparition. Plus le Guard meurt plus le temps de
      * réapparition augmente... à voir avec autre fonction ?
      */
-    public void playerHasBeenKilled() {
+    public void playerHasBeenKilled()
+    {
 
     }
-    
-           /**
-     * @return the posX
-     */
-    public int getPosXCase()
+
+    public void removeItem(String itemName)
     {
-        return posX/100;
+        int index = 0;
+        while (!this.items[index].getItemName().equals(itemName)) {
+            index++;
+        }
+        if (this.numberOfItemsByType[index] != 1) {
+            this.numberOfItemsByType[index] -= 1;
+        }
+        else {
+            this.items[index] = new EmptyItem();
+        }
     }
 
     /**
-     * @return the posY
+     * @return the map case X position.
+     */
+    public int getPosXCase()
+    {
+        return posX / 100;
+    }
+
+    /**
+     * @return the map case Y position.
      */
     public int getPosYCase()
     {
-        return posY/100;
+        return posY / 100;
     }
-    
+
     /* ---------------------- END FUNCTION(S) ---------------------- */
 
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
-        /**
+    /**
      * @return the posX
      */
-    public int getPosX() {
+    public int getPosX()
+    {
         return this.posX;
     }
 
     /**
      * @return the posY
      */
-    public int getPosY() {
+    public int getPosY()
+    {
         return this.posY;
     }
-    
-        /**
+
+    /**
      * @param posX the posX to set
      */
     public void setPosX(int posX)
@@ -216,7 +236,7 @@ public class ClassicPlayer extends Player {
     {
         this.posY = posY;
     }
-    
+
     public Stats getStats()
     {
         return this.stats;
@@ -226,53 +246,46 @@ public class ClassicPlayer extends Player {
     /**
      * @return the currentStatus
      */
-    public PlayerStatus getCurrentStatus() {
+    public PlayerStatus getCurrentStatus()
+    {
         return this.currentStatus;
     }
 
     /**
      * @param currentStatus the currentStatus to set
      */
-    public void setCurrentStatus(PlayerStatus currentStatus) {
+    public void setCurrentStatus(PlayerStatus currentStatus)
+    {
         this.currentStatus = currentStatus;
     }
 
     /**
      * @return the remainingTimeBeforeRespawn
      */
-    public int getRemainingTimeBeforeRespawn() {
+    public int getRemainingTimeBeforeRespawn()
+    {
         return this.remainingTimeBeforeRespawn;
     }
 
     /**
      * @param remainingTimeBeforeRespawn the remainingTimeBeforeRespawn to set
      */
-    public void setRemainingTimeBeforeRespawn(int remainingTimeBeforeRespawn) {
+    public void setRemainingTimeBeforeRespawn(int remainingTimeBeforeRespawn)
+    {
         this.remainingTimeBeforeRespawn = remainingTimeBeforeRespawn;
     }
 
-    public Item[] getItems() {
+    public Item[] getItems()
+    {
         return this.items;
     }
 
-    public void removeItem(String itemName) {
-        int index = 0;
-        while (!this.items[index].getItemName().equals(itemName)) {
-            index++;
-        }
-        if (this.numberOfItemsByType[index] != 1) {
-            this.numberOfItemsByType[index] -= 1;
-        } else {
-            this.items[index] = new EmptyItem();
-        }
-    }
 
-    public int[] getNumberOfItemsByType() {
+    public int[] getNumberOfItemsByType()
+    {
         return this.numberOfItemsByType;
     }
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
-
-
 
 
 }

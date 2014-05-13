@@ -67,13 +67,10 @@ public enum Frame
 
     public static Frame parseFrame(String string)
     {
-        for (Frame value : Frame.values())
-        {
-            if (!value.loadingRepresentation.equals(string))
-            {
+        for (Frame value : Frame.values()) {
+            if (!value.loadingRepresentation.equals(string)) {
             }
-            else
-            {
+            else {
                 return value;
             }
         }

@@ -9,7 +9,8 @@ import gamedatas.ClassicPlayer;
  * @author Woerly-Moussier Joachim <joachim.woerly-moussier@iut-valence.fr>
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  */
-public abstract class Item {
+public abstract class Item
+{
 
     /* ---------------------- START DECLARATIONS ---------------------- */
     protected String itemName;
@@ -60,7 +61,8 @@ public abstract class Item {
     /**
      * Generates an empty item.
      */
-    public Item() {
+    public Item()
+    {
         this.itemName = Item.EMPTY_ITEM_NAME;
         this.itemPrice = Item.EMPTY_ITEM_PRICE;
         this.timeBeforeUnlock = Item.EMPTY_ITEM_UNLOCK_TIME;
@@ -70,7 +72,8 @@ public abstract class Item {
         this.posY = 0;
     }
 
-    public Item(String name, boolean spy, boolean guard, int time, int price, int posX, int posY) {
+    public Item(String name, boolean spy, boolean guard, int time, int price, int posX, int posY)
+    {
         this.itemName = name;
         this.itemPrice = price;
         this.timeBeforeUnlock = time;
@@ -82,7 +85,8 @@ public abstract class Item {
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 
     /* ---------------------- START FUNCTION(S) ---------------------- */
-    public void putOnTheMap(int posX, int posY) {
+    public void putOnTheMap(int posX, int posY)
+    {
         this.isOnMapYet = true;
         this.setXPos(posX);
         this.setYPos(posY);
@@ -107,7 +111,8 @@ public abstract class Item {
     /**
      * @return the itemName
      */
-    public String getItemName() {
+    public String getItemName()
+    {
         return itemName;
     }
 
@@ -116,7 +121,8 @@ public abstract class Item {
      *
      * @return
      */
-    public int getXPos() {
+    public int getXPos()
+    {
         return this.posX;
     }
 
@@ -125,7 +131,8 @@ public abstract class Item {
      *
      * @return
      */
-    public int getYPos() {
+    public int getYPos()
+    {
         return this.posY;
     }
 
@@ -134,7 +141,8 @@ public abstract class Item {
      *
      * @param posX
      */
-    public void setXPos(int posX) {
+    public void setXPos(int posX)
+    {
         this.posX = posX;
     }
 
@@ -143,7 +151,8 @@ public abstract class Item {
      *
      * @param posY
      */
-    public void setYPos(int posY) {
+    public void setYPos(int posY)
+    {
         this.posY = posY;
     }
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */

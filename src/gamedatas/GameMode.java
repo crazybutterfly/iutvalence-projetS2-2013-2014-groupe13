@@ -27,25 +27,26 @@ public class GameMode
      * Quests datas of the game.
      */
     private SpiesQuest[] gameQuests;
-    
+
     /**
      * the doc on the map.
      */
     private Doc doc;
-    
+
     /* ---------------------- END DECLARATIONS ---------------------- */
-    
+
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
     public void GameMode()
     {
-        
+
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
-    
+
     /* ---------------------- START FUNCTION(S) ---------------------- */
 
     /**
      * Places the doc.
+     *
      * @param posX the X position of the doc.
      * @param posY the Y position of the doc.
      */
@@ -53,32 +54,33 @@ public class GameMode
     {
         this.doc = new Doc(posX, posY);
     }
-    
+
     public void setNumberOfQuests(int numberOfQuests)
     {
         this.gameQuests = new SpiesQuest[numberOfQuests];
     }
-    
-    
+
+
     public SpiesQuest getQuests(int index)
     {
         return this.gameQuests[index];
     }
-    
+
     public void setQuests(int posX, int posY, boolean isPrimary, int number, int priceWon, int teamPriceWon)
     {
         this.gameQuests[number] = new SpiesQuest(posX, posY, isPrimary, priceWon, teamPriceWon);
     }
-    
+
     public void setTimer(int time)
     {
         this.gameTimer.setMaxGameTime(time);
     }
     /* ---------------------- END FUNCTION(S) ---------------------- */
-    
+
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
-        /**
+    /**
      * getter for the doc.
+     *
      * @return the doc.
      */
     public Doc getDoc()

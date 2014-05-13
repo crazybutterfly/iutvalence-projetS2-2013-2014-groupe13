@@ -35,8 +35,8 @@ public class SpiesQuest extends Quests
     private final int teamPriceIfQuestDone;
 
     /**
-     * Valeur par défaut de l'accomplissement de la quete.
-     * Par défaut, elle n'est pas terminée.
+     * Valeur par défaut de l'accomplissement de la quete. Par défaut, elle
+     * n'est pas terminée.
      */
     private boolean QUEST_IS_DONE_DEFAULT = false;
 
@@ -82,14 +82,11 @@ public class SpiesQuest extends Quests
      */
     public void checkpointQuest(SpyPlayer[] spiesArray)
     {
-        for (int i = 0; i < spiesArray.length; i++)
-        {
-            if (spiesArray[i].getPosX() == this.posX && spiesArray[i].getPosY() == this.posY)
-            {
+        for (int i = 0; i < spiesArray.length; i++) {
+            if (spiesArray[i].getPosX() == this.posX && spiesArray[i].getPosY() == this.posY) {
                 this.questIsDone = true;
                 spiesArray[i].getMyCoins().changeCoinQuantity(this.priceWonIfQuestDone);
-                for (int index = 0; index < spiesArray.length; index++)
-                {
+                for (int index = 0; index < spiesArray.length; index++) {
                     spiesArray[index].getMyCoins().changeCoinQuantity(this.teamPriceIfQuestDone);
                 }
             }
@@ -103,6 +100,7 @@ public class SpiesQuest extends Quests
     {
         return this.posX;
     }
+
     public int getPosY()
     {
         return this.posY;

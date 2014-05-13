@@ -48,8 +48,7 @@ public class GuardStorage
     {
         int itemPosition = 0;
         String currentItemName = "";
-        for (int i = 0; i < Store.NUMBER_OF_ITEMS_AVAILABLE && !currentItemName.equals(itemName); i++)
-        {
+        for (int i = 0; i < Store.NUMBER_OF_ITEMS_AVAILABLE && !currentItemName.equals(itemName); i++) {
             currentItemName = this.storeItems[i].getItemName();
             itemPosition = i;
         }

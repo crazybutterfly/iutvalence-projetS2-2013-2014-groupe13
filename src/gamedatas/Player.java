@@ -31,10 +31,8 @@ public class Player
     /* ---------------------- START FUNCTION(S) ---------------------- */
     public boolean changePseudo(String[] allPlayersPseudos, String newPseudo)
     {
-        for (String allPlayersPseudo : allPlayersPseudos)
-        {
-            if (allPlayersPseudo.equals(newPseudo))
-            {
+        for (String allPlayersPseudo : allPlayersPseudos) {
+            if (allPlayersPseudo.equals(newPseudo)) {
                 return false;
             }
         }

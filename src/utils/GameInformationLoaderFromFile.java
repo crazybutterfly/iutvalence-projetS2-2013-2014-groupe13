@@ -14,7 +14,8 @@ import java.io.File;
  * @author WOERLY-MOUSSIER Joachim <joachim.woerly-moussier@iut-valence.fr>
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  */
-public class GameInformationLoaderFromFile {
+public class GameInformationLoaderFromFile
+{
 
     /**
      * création d'un lecteur pour récupérer les données entrées par le joueur
@@ -25,12 +26,14 @@ public class GameInformationLoaderFromFile {
      * Creates a file reader.
      *
      */
-    public GameInformationLoaderFromFile() {
+    public GameInformationLoaderFromFile()
+    {
 
     }
     /*-----------------CLASS FUNCTIONS---------------*/
 
-    public boolean fileExists(String fileLocation) throws FileNotFoundException {
+    public boolean fileExists(String fileLocation) throws FileNotFoundException
+    {
         File file = new File(fileLocation);
         return file.exists();
     }
@@ -46,11 +49,13 @@ public class GameInformationLoaderFromFile {
      * @throws java.io.IOException
      * @throws java.io.FileNotFoundException
      */
-    public boolean isMapFileValid(String fileLocation) throws IOException, FileNotFoundException {
+    public boolean isMapFileValid(String fileLocation) throws IOException, FileNotFoundException
+    {
         if (!this.fileExists(fileLocation)) {
             System.out.println("file not found");
             return false;
-        } else {
+        }
+        else {
 
             BufferedReader fileTester = new BufferedReader(new FileReader(fileLocation));
             try {
@@ -91,7 +96,8 @@ public class GameInformationLoaderFromFile {
                             System.out.println("erreur format case ligne " + index);
                             return false;
                         }
-                    } else if (parts[0].charAt(0) == 'C') {
+                    }
+                    else if (parts[0].charAt(0) == 'C') {
                         if ((Integer.parseInt(parts[1]) <= Integer.parseInt(parts[3])) || (Integer.parseInt(parts[1]) >= mapXSizeTest - Integer.parseInt(parts[3]))) {
                             System.out.println("erreur premier param cercle ligne " + index);
                             return false;
@@ -108,7 +114,8 @@ public class GameInformationLoaderFromFile {
 
                     line = fileTester.readLine();
                 }
-            } catch (IOException e) {
+            }
+            catch (IOException e) {
                 System.out.println("fichier invalide");
                 return false;
             }
@@ -117,7 +124,8 @@ public class GameInformationLoaderFromFile {
         }
     }
 
-    public Map loadMapFromFile(String fileLocation) throws IOException, FileNotFoundException {
+    public Map loadMapFromFile(String fileLocation) throws IOException, FileNotFoundException
+    {
         this.fileReader = new BufferedReader(new FileReader(fileLocation));
         int mapXSize;
         int mapYSize;
@@ -125,18 +133,21 @@ public class GameInformationLoaderFromFile {
             String mapXSizeText = this.fileReader.readLine();
             if (mapXSizeText == null) {
                 mapXSize = Map.STANDARD_X_SIZE_VALUE;
-            } else {
+            }
+            else {
                 mapXSize = Integer.parseInt(mapXSizeText);
             }
 
             String mapYSizeText = this.fileReader.readLine();
             if (mapYSizeText == null) {
                 mapYSize = Map.STANDARD_Y_SIZE_VALUE;
-            } else {
+            }
+            else {
                 mapYSize = Integer.parseInt(mapYSizeText);
             }
 
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             System.out.println("Erreur");
             return null;
         }
@@ -155,7 +166,8 @@ public class GameInformationLoaderFromFile {
                     int height = Integer.parseInt(parts[4]);
                     Frame frameStatus = Frame.parseFrame(parts[5]);
                     map.changeStatusOfFrameRectangle(xStartFrame, yStartFrame, width, height, frameStatus);
-                } else if (parts[0].charAt(0) == 'C') {
+                }
+                else if (parts[0].charAt(0) == 'C') {
                     int centerX = Integer.parseInt(parts[1]);
                     int centerY = Integer.parseInt(parts[2]);
                     int radius = Integer.parseInt(parts[3]);
@@ -166,7 +178,8 @@ public class GameInformationLoaderFromFile {
                 line = fileReader.readLine();
             }
 
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             System.out.println("Erreur dans le fichier");
             return null;
         }
@@ -174,11 +187,13 @@ public class GameInformationLoaderFromFile {
     }
 
     /*-------------------------------QUEST FUNCTIONS---------------------------------------*/
-    public boolean isQuestFileValid(String fileLocation) throws IOException, FileNotFoundException {
+    public boolean isQuestFileValid(String fileLocation) throws IOException, FileNotFoundException
+    {
         if (!this.fileExists(fileLocation)) {
             System.out.println("file not found");
             return false;
-        } else {
+        }
+        else {
             BufferedReader fileTester = new BufferedReader(new FileReader(fileLocation));
             try {
                 int timer = Integer.parseInt(fileTester.readLine());
@@ -188,11 +203,13 @@ public class GameInformationLoaderFromFile {
                 if (docXLocation < 0 || docYLocation < 0) {
                     System.out.println("doc hors de la map");
                     return false;
-                } else {
+                }
+                else {
                     if (0 >= numberOfQuests) {
                         System.out.println("invalid number of quests");
                         return false;
-                    } else {
+                    }
+                    else {
                         int index = 0;
                         String line = fileTester.readLine();
 
@@ -219,26 +236,26 @@ public class GameInformationLoaderFromFile {
                             line = fileTester.readLine();
                             index++;
                         }
-                        if (numberOfQuests != index)
-                        {
+                        if (numberOfQuests != index) {
                             System.out.println("incorrect number of quests");
-                           return false;
+                            return false;
                         }
-                        else
-                        {
+                        else {
                             System.out.println("valid file");
                             return true;
                         }
                     }
                 }
-            } catch (IOException e) {
+            }
+            catch (IOException e) {
                 System.out.println("invalid QuestFile");
                 return false;
             }
         }
     }
 
-    public GameMode loadQuestsFromFile(String fileLocation) throws IOException, FileNotFoundException {
+    public GameMode loadQuestsFromFile(String fileLocation) throws IOException, FileNotFoundException
+    {
         this.fileReader = new BufferedReader(new FileReader(fileLocation));
         GameMode gameMode = new GameMode();
 
@@ -268,7 +285,8 @@ public class GameInformationLoaderFromFile {
 
             return gameMode;
 
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             System.out.println("Erreur");
             return null;
         }

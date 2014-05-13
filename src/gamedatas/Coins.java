@@ -18,15 +18,17 @@ public class Coins
      * a procedure to add coins
      *
      * @param quantity how many coins we add
-     * @return 
+     * @return
      */
 
     /* ---------------------- START FUNCTION(S) ---------------------- */
     public boolean changeCoinQuantity(int quantity)
     {
-            if (this.quantity + quantity < 0) return false;
-            this.quantity += quantity;
-            return true;
+        if (this.quantity + quantity < 0) {
+            return false;
+        }
+        this.quantity += quantity;
+        return true;
     }
 
     /* ---------------------- END FUNCTION(S) ---------------------- */

@@ -10,7 +10,6 @@ public class ClassicPlayerMoves
     /* ---------------------- START DECLARATIONS ---------------------- */
 
 
-
     /**
      * Vitesse du joueur sur l'axe X.
      */
@@ -20,7 +19,6 @@ public class ClassicPlayerMoves
      * Vitesse du joueur sur l'axe Y.
      */
     private int yPlayerSpeed;
-
 
 
     /**
@@ -45,8 +43,6 @@ public class ClassicPlayerMoves
     /* ---------------------- START FUNCTION(S) ---------------------- */
 
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
-
-
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
 
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */

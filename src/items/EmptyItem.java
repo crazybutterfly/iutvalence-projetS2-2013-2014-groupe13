@@ -11,18 +11,22 @@ import gamedatas.ClassicPlayer;
  *
  * @author UCDP_Brony
  */
-public class EmptyItem extends Item {
+public class EmptyItem extends Item
+{
 
-    public EmptyItem() {
+    public EmptyItem()
+    {
         super();
     }
 
     @Override
-    public void useItem(ClassicPlayer player) {
+    public void useItem(ClassicPlayer player)
+    {
     }
 
     @Override
-    public void dropItem(ClassicPlayer player) {
+    public void dropItem(ClassicPlayer player)
+    {
     }
 
 }

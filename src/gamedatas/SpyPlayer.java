@@ -59,10 +59,8 @@ public class SpyPlayer extends ClassicPlayer
      */
     public void useKnife(GuardPlayer[] guardsArray, int numberOfGuards)
     {
-        for (int i = 0; i < numberOfGuards - 2; i++)
-        {
-            if (guardsArray[i].getPosX() == this.posX && guardsArray[i].getPosY() == this.posY)
-            {
+        for (int i = 0; i < numberOfGuards - 2; i++) {
+            if (guardsArray[i].getPosX() == this.posX && guardsArray[i].getPosY() == this.posY) {
                 guardsArray[i].playerHasBeenKilled();
             }
         }
@@ -76,11 +74,9 @@ public class SpyPlayer extends ClassicPlayer
     {
         return this.stats;
     }
-    
-    
-    
-    /* ---------------------- END GETTERS AND SETTERS ---------------------- */
 
+
+    /* ---------------------- END GETTERS AND SETTERS ---------------------- */
     /**
      * @return the myCoins
      */
