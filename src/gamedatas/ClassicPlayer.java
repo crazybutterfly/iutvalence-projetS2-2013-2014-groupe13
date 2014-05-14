@@ -54,10 +54,6 @@ public class ClassicPlayer extends Player
      */
     protected Item[] items;
 
-    /**
-     * Tableau recensant le nombre d'item par type d'item.
-     */
-    protected int[] numberOfItemsByType;
 
     /**
      * Nombre de type d'item possédé pour savoir le nombre de case utilisé du
@@ -139,10 +135,6 @@ public class ClassicPlayer extends Player
         for (int i = 0; i < ClassicPlayer.MAXIMUM_NUMBER_OF_ITEM_TYPE; i++) {
             this.items[i] = new EmptyItem();
         }
-        this.numberOfItemsByType = new int[ClassicPlayer.MAXIMUM_NUMBER_OF_ITEM_TYPE];
-        for (int i = 0; i < ClassicPlayer.MAXIMUM_NUMBER_OF_ITEM_TYPE; i++) {
-            this.numberOfItemsByType[i] = ClassicPlayer.NUMBER_OF_ITEM_POCESSED_BY_TYPE_DEFAULT;
-        }
         this.currentNumberOfTypeItemPocessed = ClassicPlayer.CURRENT_NUMBER_OF_TYPE_ITEM_POCESSED_DEFAULT;
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
@@ -178,13 +170,15 @@ public class ClassicPlayer extends Player
         while (!this.items[index].getItemName().equals(itemName)) {
             index++;
         }
-        if (this.numberOfItemsByType[index] != 1) {
-            this.numberOfItemsByType[index] -= 1;
+        if (this.items[index].getNumberOfItemsOfThisType()!= 1) {
+            this.items[index].setNumberOfItemsOfThisType(this.items[index].getNumberOfItemsOfThisType()-1);
         }
         else {
             this.items[index] = new EmptyItem();
         }
     }
+    
+    
 
     /**
      * @return the map case X position.
@@ -281,10 +275,7 @@ public class ClassicPlayer extends Player
     }
 
 
-    public int[] getNumberOfItemsByType()
-    {
-        return this.numberOfItemsByType;
-    }
+
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
 
 

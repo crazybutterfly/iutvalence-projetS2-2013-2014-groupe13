@@ -59,7 +59,7 @@ public class SpyPlayer extends ClassicPlayer
      */
     public void useKnife(GuardPlayer[] guardsArray, int numberOfGuards)
     {
-        for (int i = 0; i < numberOfGuards - 2; i++) {
+        for (int i = 0; i < numberOfGuards - 1; i++) {
             if (guardsArray[i].getPosX() == this.posX && guardsArray[i].getPosY() == this.posY) {
                 guardsArray[i].playerHasBeenKilled();
             }

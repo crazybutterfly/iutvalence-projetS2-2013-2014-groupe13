@@ -23,25 +23,9 @@ public abstract class Item
 
     protected int itemPrice;
 
-    /**
-     * Name used for an Empty Item.
-     */
-    public final static String EMPTY_ITEM_NAME = "EmplyItem";
+    private int numberOfItemsOfThisType;
 
-    /**
-     * Usability by spies and guards for an Empty Item.
-     */
-    public final static boolean EMPTY_ITEM_USABILITY = false;
 
-    /**
-     * Time before unlock for an Empty item.
-     */
-    public final static int EMPTY_ITEM_UNLOCK_TIME = 0;
-
-    /**
-     * Price used of an Empty Item.
-     */
-    public final static int EMPTY_ITEM_PRICE = 0;
 
     /**
      * the x position of the item.
@@ -52,24 +36,18 @@ public abstract class Item
      * the y position of the item.
      */
     protected int posY;
+    
+    public final static int DEFAULT_NUMBER_OF_ITEMS_OF_THIS_TYPE = 0;
 
     protected boolean isOnMapYet = false;
 
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
-    /**
-     * Generates an empty item.
-     */
+
     public Item()
     {
-        this.itemName = Item.EMPTY_ITEM_NAME;
-        this.itemPrice = Item.EMPTY_ITEM_PRICE;
-        this.timeBeforeUnlock = Item.EMPTY_ITEM_UNLOCK_TIME;
-        this.usableByAGuard = Item.EMPTY_ITEM_USABILITY;
-        this.usableByASpy = Item.EMPTY_ITEM_USABILITY;
-        this.posX = 0;
-        this.posY = 0;
+        
     }
 
     public Item(String name, boolean spy, boolean guard, int time, int price, int posX, int posY)
@@ -103,7 +81,17 @@ public abstract class Item
      *
      * @param player
      */
-    public abstract void dropItem(ClassicPlayer player);
+    public void dropItem(ClassicPlayer player)
+    {
+        this.putOnTheMap(player.getPosX(), player.getPosY());
+        this.isOnMapYet = true;
+        player.removeItem(this.itemName);
+    }
+    
+    public void deleteItem(ClassicPlayer player)
+    {
+        player.removeItem(this.itemName);
+    }
 
     /* ---------------------- END FUNCTION(S) ---------------------- */
 
@@ -155,6 +143,22 @@ public abstract class Item
     {
         this.posY = posY;
     }
+    
+    /**
+     * @return the numberOfItemsOfThisType
+     */
+    public int getNumberOfItemsOfThisType() {
+        return numberOfItemsOfThisType;
+    }
+
+    /**
+     * @param numberOfItemsOfThisType the numberOfItemsOfThisType to set
+     */
+    public void setNumberOfItemsOfThisType(int numberOfItemsOfThisType) {
+        this.numberOfItemsOfThisType = numberOfItemsOfThisType;
+    }
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
+
+
 
 }

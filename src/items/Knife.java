@@ -19,14 +19,7 @@ public class Knife extends Item
     {
         // mouse.getPosX(), getPosY(); verify if character undermouse;
         //if distance <10px, player.attack(the ennemy);
-    }
-
-    @Override
-    public void dropItem(ClassicPlayer player)
-    {
-        this.putOnTheMap(player.getPosX(), player.getPosY());
-        this.isOnMapYet = true;
-        player.removeItem(this.itemName);
+        //else, attack(levide);
     }
 
 }
