@@ -195,7 +195,30 @@ public class ClassicPlayer extends Player
     {
         return posY / 100;
     }
-
+    
+    public boolean getItemFromName(String itemName)
+    {
+        boolean exist = false;
+        String currentItemName = "";
+        for (int i = 0; i < this.currentNumberOfTypeItemPocessed && !currentItemName.equals(itemName); i++) {
+            currentItemName = this.items[i].getItemName();
+            if (currentItemName.equals(itemName)){
+                exist=true;                
+            }
+        }
+        return exist;
+    }
+    
+    public int getPositionItemFromName(String itemName)
+    {
+        int itemPosition = 0;
+        String currentItemName = "";
+        for (int i = 0; i < this.currentNumberOfTypeItemPocessed && !currentItemName.equals(itemName); i++) {
+            currentItemName = this.items[i].getItemName();
+            itemPosition = i;
+        }
+        return itemPosition;
+    }
     /* ---------------------- END FUNCTION(S) ---------------------- */
 
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
@@ -268,14 +291,14 @@ public class ClassicPlayer extends Player
     {
         this.remainingTimeBeforeRespawn = remainingTimeBeforeRespawn;
     }
-
+    
     public Item[] getItems()
     {
         return this.items;
     }
 
 
-
+      
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
 
 

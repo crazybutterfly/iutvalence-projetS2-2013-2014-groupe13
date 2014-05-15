@@ -1,5 +1,4 @@
 package gamedatas;
-
 /**
  *
  * SpyStore class
@@ -22,15 +21,26 @@ public class SpyStore extends Store
      *
      * @param item name of the item to transfer
      * @param number number of items to transfer
-     * @param store store to buy in.
+     * @param player current player
      */
-//    public void addItemPlayer(String item, int number, Store store)
-//    {
-//        store.changeStoreCapacity(item, number);
-//        
-//        ClassicPlayer.setItems[ClassicPlayer.currentNumberOfItemTypePocessed];
-//        
-//    }
+    public void addItemPlayer(String item, int number, ClassicPlayer player)
+    {
+       
+        if (this.changeStoreCapacity(item, number)){
+            if (player.getItemFromName(item)){
+                player.getItems()[player.getPositionItemFromName(item)].setNumberOfItemsOfThisType(player.getItems()[player.getPositionItemFromName(item)].getNumberOfItemsOfThisType()+number);
+            }
+            else{
+                // message d'alerte
+            }
+            
+        }
+        else{
+            //message d'alerte
+        }
+        
+        
+    }
     /* ---------------------- END FUNCTION(S) ---------------------- */
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
