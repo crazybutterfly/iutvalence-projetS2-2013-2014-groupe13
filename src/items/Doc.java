@@ -22,20 +22,17 @@ public class Doc extends Item
     public Doc(int posX, int posY)
     {
         super("Doc", Doc.CAN_SPIES_USE_DOC, Doc.CAN_GUARDS_USE_DOC, Doc.TIME_BEFORE_DOC_SPAWNS, Doc.DOC_PRICE, posX, posY);
-        this.isOnMapYet = true;
+    }
+
+    @Override
+    public Item getNewItem()
+    {
+        return new Doc(this.posX, this.posY);
     }
 
     @Override
     public void useItem(ClassicPlayer player)
     {
-    }
-
-    @Override
-    public void dropItem(ClassicPlayer player)
-    {
-        this.putOnTheMap(player.getPosX(), player.getPosY());
-        this.isOnMapYet = true;
-        player.removeItem(this.itemName);
     }
 
 }

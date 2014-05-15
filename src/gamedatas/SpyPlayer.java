@@ -39,9 +39,9 @@ public class SpyPlayer extends ClassicPlayer
      *
      * @param NumberOfThePlayer Numéro du Spy.
      */
-    public SpyPlayer(int NumberOfThePlayer)
+    public SpyPlayer(int NumberOfThePlayer, Map refToMap)
     {
-        super();
+        super(refToMap);
         this.pseudo += SpyPlayer.DEFAULT_PSEUDO_PREFIX_FOR_SPY;
         this.pseudo += NumberOfThePlayer;
         this.myCoins = new Coins();

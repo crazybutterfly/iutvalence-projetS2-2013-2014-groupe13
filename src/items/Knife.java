@@ -14,12 +14,23 @@ import gamedatas.ClassicPlayer;
 public class Knife extends Item
 {
 
+    public Knife()
+    {
+        super();
+    }
+
     @Override
     public void useItem(ClassicPlayer player)
     {
         // mouse.getPosX(), getPosY(); verify if character undermouse;
         //if distance <10px, player.attack(the ennemy);
         //else, attack(levide);
+    }
+
+    @Override
+    public Item getNewItem()
+    {
+        return new Knife();
     }
 
 }

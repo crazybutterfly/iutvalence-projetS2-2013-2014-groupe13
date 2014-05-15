@@ -27,7 +27,6 @@ public class Cam extends Item
         super("Cam", Cam.USABLE_BY_SPY, Cam.USABLE_BY_GUARD, Cam.TIME_BEFORE_UNLOCK, Cam.PRICE, posX, posY);
         this.numCam = camID;
         this.camStatus = CamStatus.WORKING;
-        this.isOnMapYet = true;
 
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
@@ -72,7 +71,6 @@ public class Cam extends Item
     }
 
 
-
     private void repair(ClassicPlayer player)
     {
 
@@ -88,5 +86,11 @@ public class Cam extends Item
                 index++;
             }
         }
+    }
+
+    @Override
+    public Item getNewItem()
+    {
+        return new Cam(this.getNumberOfItemsOfThisType() + 1, this.posX, this.posY);
     }
 }

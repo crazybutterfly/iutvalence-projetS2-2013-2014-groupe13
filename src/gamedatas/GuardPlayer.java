@@ -37,9 +37,9 @@ public class GuardPlayer extends ClassicPlayer
      *
      * @param NumberOfThePlayer Numéro du Guard.
      */
-    public GuardPlayer(int NumberOfThePlayer)
+    public GuardPlayer(int NumberOfThePlayer, Map refToMap)
     {
-        super();
+        super(refToMap);
         this.spiesKilledWithoutDying = GuardPlayer.SPIES_KILLED_WITHOUT_DYING_DEFAULT;
         this.pseudo += GuardPlayer.DEFAULT_PSEUDO_PREFIX_FOR_GUARD;
         this.pseudo += NumberOfThePlayer;

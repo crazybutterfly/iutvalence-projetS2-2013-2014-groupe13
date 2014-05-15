@@ -16,14 +16,20 @@ public class Player
     protected String pseudo;
 
     /**
+     * Référence vers la map.
+     */
+    protected Map currentMap;
+
+    /**
      * Pseudo par défaut d'un joueur.
      */
     public final static String DEFAULT_PSEUDO_PREFIX = "PLAYER";
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
-    public Player()
+    public Player(Map mapRef)
     {
+        this.currentMap = mapRef;
         this.pseudo = Player.DEFAULT_PSEUDO_PREFIX;
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */

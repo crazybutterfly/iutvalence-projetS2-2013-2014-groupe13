@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package items;
 
 import gamedatas.ClassicPlayer;
@@ -13,9 +8,9 @@ import gamedatas.ClassicPlayer;
  */
 public class EmptyItem extends Item
 {
-    
+
     private static final String EMPTY_ITEM_NAME = "EmptyItem";
-    
+
     /**
      * Usability by spies and guards for an Empty Item.
      */
@@ -31,7 +26,7 @@ public class EmptyItem extends Item
      */
     public final static int EMPTY_ITEM_PRICE = 0;
 
-        /**
+    /**
      * Generates an empty item.
      */
     public EmptyItem()
@@ -47,13 +42,13 @@ public class EmptyItem extends Item
     }
 
     @Override
-    public void useItem(ClassicPlayer player)
+    public Item getNewItem()
     {
+        return new EmptyItem();
     }
 
     @Override
-    public void dropItem(ClassicPlayer player)
+    public void useItem(ClassicPlayer player)
     {
     }
-
 }

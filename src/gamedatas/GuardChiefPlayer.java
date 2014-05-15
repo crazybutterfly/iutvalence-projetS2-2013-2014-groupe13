@@ -46,9 +46,9 @@ public class GuardChiefPlayer extends Player
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
-    public GuardChiefPlayer()
+    public GuardChiefPlayer(Map refToMap)
     {
-        super();
+        super(refToMap);
         this.pseudo += GuardChiefPlayer.DEFAULT_PSEUDO_FOR_GUARD_CHIEF;
         this.guardCoins = new Coins();
         this.numberOfCams = GuardChiefPlayer.NUMBER_OF_CAMS_DEFAULT;

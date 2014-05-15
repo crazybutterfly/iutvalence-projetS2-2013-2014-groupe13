@@ -26,7 +26,6 @@ public abstract class Item
     private int numberOfItemsOfThisType;
 
 
-
     /**
      * the x position of the item.
      */
@@ -36,18 +35,16 @@ public abstract class Item
      * the y position of the item.
      */
     protected int posY;
-    
+
     public final static int DEFAULT_NUMBER_OF_ITEMS_OF_THIS_TYPE = 0;
 
-    protected boolean isOnMapYet = false;
 
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
-
     public Item()
     {
-        
+
     }
 
     public Item(String name, boolean spy, boolean guard, int time, int price, int posX, int posY)
@@ -63,13 +60,6 @@ public abstract class Item
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 
     /* ---------------------- START FUNCTION(S) ---------------------- */
-    public void putOnTheMap(int posX, int posY)
-    {
-        this.isOnMapYet = true;
-        this.setXPos(posX);
-        this.setYPos(posY);
-
-    }
 
     /**
      *
@@ -77,21 +67,12 @@ public abstract class Item
      */
     public abstract void useItem(ClassicPlayer player);
 
+
     /**
      *
-     * @param player
+     * @return
      */
-    public void dropItem(ClassicPlayer player)
-    {
-        this.putOnTheMap(player.getPosX(), player.getPosY());
-        this.isOnMapYet = true;
-        player.removeItem(this.itemName);
-    }
-    
-    public void deleteItem(ClassicPlayer player)
-    {
-        player.removeItem(this.itemName);
-    }
+    public abstract Item getNewItem();
 
     /* ---------------------- END FUNCTION(S) ---------------------- */
 
@@ -143,22 +124,23 @@ public abstract class Item
     {
         this.posY = posY;
     }
-    
+
     /**
      * @return the numberOfItemsOfThisType
      */
-    public int getNumberOfItemsOfThisType() {
+    public int getNumberOfItemsOfThisType()
+    {
         return numberOfItemsOfThisType;
     }
 
     /**
      * @param numberOfItemsOfThisType the numberOfItemsOfThisType to set
      */
-    public void setNumberOfItemsOfThisType(int numberOfItemsOfThisType) {
+    public void setNumberOfItemsOfThisType(int numberOfItemsOfThisType)
+    {
         this.numberOfItemsOfThisType = numberOfItemsOfThisType;
     }
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
-
 
 
 }

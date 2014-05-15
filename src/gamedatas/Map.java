@@ -1,5 +1,9 @@
 package gamedatas;
 
+import items.Doc;
+import items.EmptyItem;
+import items.Item;
+
 /**
  * This is the "Map" class, made to represent a map in the game engine.
  *
@@ -26,7 +30,7 @@ public class Map
     private final int numberOfColumns;
 
     /**
-     * the numer of lines of the current map.
+     * the number of lines of the current map.
      */
     private final int numberOfLines;
 
@@ -34,6 +38,13 @@ public class Map
      * the current map (an array of Frames).
      */
     private final Frame[][] map;
+
+    /**
+     * items put on the map.
+     */
+    private Item[] itemsOnTheMap;
+
+    private int numberOfItemsOnTheMap;
 
     public static final int STANDARD_X_SIZE_VALUE = 1000;
 
@@ -58,7 +69,11 @@ public class Map
                 this.map[columnToDealWith][lineToDealWith] = Frame.WALL;
             }
         }
-
+        for (int i = 0; i < 10000; i++) {
+            this.itemsOnTheMap[i] = new EmptyItem();
+        }
+        this.itemsOnTheMap[0] = new Doc(0, 0);
+        this.numberOfItemsOnTheMap = 1;
     }
 
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
@@ -152,7 +167,12 @@ public class Map
             stringDescriptionOfMap += "\n";
         }
         return stringDescriptionOfMap;
+    }
 
+    public void addItemOnTheMap(Item itemToAdd)
+    {
+        this.itemsOnTheMap[this.numberOfItemsOnTheMap] = itemToAdd.getNewItem();
+        this.numberOfItemsOnTheMap++;
     }
     /* ---------------------- END FUNCTION(S) ---------------------- */
 }

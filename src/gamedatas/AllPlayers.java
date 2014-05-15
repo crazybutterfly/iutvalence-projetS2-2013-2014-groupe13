@@ -53,20 +53,21 @@ public class AllPlayers
      *
      * @param numberOfGuards nombre de Guards.
      * @param numberOfSpies nombre de Spies.
+     * @param refToMap référence vers la map.
      */
-    public AllPlayers(int numberOfGuards, int numberOfSpies)
+    public AllPlayers(int numberOfGuards, int numberOfSpies, Map refToMap)
     {
         this.numberOfGuards = numberOfGuards;
         this.numberOfSpies = numberOfSpies;
         this.guardsArray = new GuardPlayer[this.numberOfGuards - 1];
         this.spiesArray = new SpyPlayer[this.numberOfSpies];
         for (int i = 0; i < this.numberOfGuards - 1; i++) {
-            this.guardsArray[i] = new GuardPlayer(i + 1);
+            this.guardsArray[i] = new GuardPlayer(i + 1, refToMap);
         }
         for (int i = 0; i < this.numberOfSpies; i++) {
-            this.spiesArray[i] = new SpyPlayer(i + 1);
+            this.spiesArray[i] = new SpyPlayer(i + 1, refToMap);
         }
-        this.guardChiefPlayer = new GuardChiefPlayer();
+        this.guardChiefPlayer = new GuardChiefPlayer(refToMap);
         this.guardTeamStats = new Stats();
         this.spyTeamStats = new SpyStats();
     }

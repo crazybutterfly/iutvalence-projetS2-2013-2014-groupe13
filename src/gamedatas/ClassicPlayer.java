@@ -25,6 +25,16 @@ public class ClassicPlayer extends Player
     protected int posY;
 
     /**
+     * Orientationn en X du joueur.
+     */
+    protected int xPlayerOrientation;
+
+    /**
+     * Orientation en Y du joueur.
+     */
+    protected int yPlayerOrientation;
+
+    /**
      * Mouvements du joueur.
      */
     protected ClassicPlayerMoves currentMoves;
@@ -54,6 +64,10 @@ public class ClassicPlayer extends Player
      */
     protected Item[] items;
 
+    /**
+     * Item sélectionné dans l'inventaire
+     */
+    protected int selectedItemInInventory;
 
     /**
      * Nombre de type d'item possédé pour savoir le nombre de case utilisé du
@@ -75,6 +89,16 @@ public class ClassicPlayer extends Player
      * Valeur par défaut de la position Y.
      */
     public final static int POS_Y_DEFAULT = 0;
+
+    /**
+     * Valeur par défaut de l'orientation X du joueur.
+     */
+    public final static int X_PLAYER_ORIENTATION_DEFAULT = 0;
+
+    /**
+     * Valeur par défaut de l'orientation X du joueur.
+     */
+    public final static int Y_PLAYER_ORIENTATION_DEFAULT = 1;
 
     /**
      * Statut actuel du joueur par défaut. Ici le joueur est en vie.
@@ -118,15 +142,22 @@ public class ClassicPlayer extends Player
      */
     public final static int CURRENT_NUMBER_OF_TYPE_ITEM_POCESSED_DEFAULT = 1;
 
+    /**
+     * item selectionné par défaut dans l'inventaire.
+     */
+    public final static int SELECTED_NUMBER_ITEM_IN_INVENTORY = 0;
+
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
-    public ClassicPlayer()
+    public ClassicPlayer(Map refToMap)
     {
-        super();
+        super(refToMap);
         this.currentMoves = new ClassicPlayerMoves();
         this.posX = ClassicPlayer.POS_X_DEFAULT;
         this.posY = ClassicPlayer.POS_Y_DEFAULT;
+        this.xPlayerOrientation = ClassicPlayer.X_PLAYER_ORIENTATION_DEFAULT;
+        this.yPlayerOrientation = ClassicPlayer.Y_PLAYER_ORIENTATION_DEFAULT;
         this.currentStatus = ClassicPlayer.CURRENT_STATUTS_DEFAULT;
         this.lastTimeBeforeRespawn = ClassicPlayer.LAST_TIME_BEFORE_RESPAWN_DEFAULT;
         this.remainingTimeBeforeRespawn = ClassicPlayer.REMAINING_TIME_BEFORE_RESPAWN_DEFAULT;
@@ -136,6 +167,7 @@ public class ClassicPlayer extends Player
             this.items[i] = new EmptyItem();
         }
         this.currentNumberOfTypeItemPocessed = ClassicPlayer.CURRENT_NUMBER_OF_TYPE_ITEM_POCESSED_DEFAULT;
+        this.selectedItemInInventory = ClassicPlayer.SELECTED_NUMBER_ITEM_IN_INVENTORY;
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
     /* ---------------------- START FUNCTION(S) ---------------------- */
@@ -161,24 +193,20 @@ public class ClassicPlayer extends Player
      */
     public void playerHasBeenKilled()
     {
-
+        
     }
-
-    public void removeItem(String itemName)
+    
+    public void removeItem(int inventoryItemIndexToRemove)
     {
-        int index = 0;
-        while (!this.items[index].getItemName().equals(itemName)) {
-            index++;
-        }
-        if (this.items[index].getNumberOfItemsOfThisType()!= 1) {
-            this.items[index].setNumberOfItemsOfThisType(this.items[index].getNumberOfItemsOfThisType()-1);
+        if (this.items[inventoryItemIndexToRemove].getNumberOfItemsOfThisType() != 1) {
+            this.items[inventoryItemIndexToRemove].setNumberOfItemsOfThisType(this.items[inventoryItemIndexToRemove].getNumberOfItemsOfThisType() - 1);
+            this.currentMap.addItemOnTheMap(this.items[inventoryItemIndexToRemove].getNewItem());
         }
         else {
-            this.items[index] = new EmptyItem();
+            this.items[inventoryItemIndexToRemove] = new EmptyItem();
         }
     }
-    
-    
+
 
     /**
      * @return the map case X position.
@@ -230,7 +258,7 @@ public class ClassicPlayer extends Player
     {
         this.posY = posY;
     }
-
+    
     public Stats getStats()
     {
         return this.stats;
@@ -268,7 +296,7 @@ public class ClassicPlayer extends Player
     {
         this.remainingTimeBeforeRespawn = remainingTimeBeforeRespawn;
     }
-
+    
     public Item[] getItems()
     {
         return this.items;
@@ -277,6 +305,4 @@ public class ClassicPlayer extends Player
 
 
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
-
-
 }
