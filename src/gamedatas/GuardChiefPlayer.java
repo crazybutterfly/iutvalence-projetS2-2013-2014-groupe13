@@ -59,4 +59,14 @@ public class GuardChiefPlayer extends Player
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 
+    /* ---------------------- START GETTERS & SETTERS ---------------------- */
+    /**
+     * @return the guardCoins
+     */
+    public Coins getGuardCoins()
+    {
+        return guardCoins;
+    }
+    /* ---------------------- END GETTERS AND SETTERS ---------------------- */
+
 }
