@@ -21,10 +21,7 @@ public abstract class Store
      * declaration of an array composed with Item objects.
      */
     Item[] storedItems;
-    /**
-     * declaration of an array composed with integers.
-     */
-    int[] storeCapacity;
+
 
     /**
      * the number of availible items.
@@ -42,10 +39,8 @@ public abstract class Store
     public void Store()
     {
         this.storedItems = new Item[Store.NUMBER_OF_ITEMS_AVAILABLE];
-        this.storeCapacity = new int[Store.NUMBER_OF_ITEMS_AVAILABLE];
         for (int i = 0; i < Store.NUMBER_OF_ITEMS_AVAILABLE; i++) {
             this.storedItems[i] = new EmptyItem();
-            this.storeCapacity[i] = Store.STORE_CAPACITY_DEFAULT;
         }
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
@@ -61,14 +56,16 @@ public abstract class Store
      */
     public boolean changeStoreCapacity(String itemName, int modificator)
     {
-        if ((this.storeCapacity[this.getPositionItemFromName(itemName)] += modificator) < 0) {
-            this.storeCapacity[this.getPositionItemFromName(itemName)] += modificator;
+        if ((this.storedItems[this.getPositionItemFromName(itemName)].getNumberOfItemsOfThisType() + modificator) > 0 )
+        {
+            this.storedItems[this.getPositionItemFromName(itemName)].setNumberOfItemsOfThisType(this.storedItems[this.getPositionItemFromName(itemName)].getNumberOfItemsOfThisType() + modificator);
             return true;
         }
         else {
-            if ((this.storeCapacity[this.getPositionItemFromName(itemName)] += modificator) == 0) {
-                this.storeCapacity[this.getPositionItemFromName(itemName)] = 1;
+            if ((this.storedItems[this.getPositionItemFromName(itemName)].getNumberOfItemsOfThisType() + modificator) == 0 )
+            {                
                 this.storedItems[this.getPositionItemFromName(itemName)] = new EmptyItem();
+                this.storedItems[this.getPositionItemFromName(itemName)].setNumberOfItemsOfThisType(1);
                 return true;
             }
             else {
@@ -98,10 +95,7 @@ public abstract class Store
     /* ---------------------- END FUNCTION(S) ---------------------- */
 
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
-    public int[] getStoreCapacity()
-    {
-        return this.storeCapacity;
-    }
+
 
     public Item[] getStoredItems()
     {
