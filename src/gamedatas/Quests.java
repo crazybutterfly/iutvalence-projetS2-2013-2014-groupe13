@@ -27,7 +27,6 @@ public class Quests
     public Quests()
     {
         this.questFinished = QUEST_FINISHED_DEFAULT;
-
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 }

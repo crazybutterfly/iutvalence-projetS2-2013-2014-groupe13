@@ -32,7 +32,7 @@ public class GameMode
      * the doc on the map.
      */
     private Doc doc;
-
+    
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
