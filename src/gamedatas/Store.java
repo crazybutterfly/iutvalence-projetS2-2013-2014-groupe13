@@ -56,14 +56,12 @@ public abstract class Store
      */
     public boolean changeStoreCapacity(String itemName, int modificator)
     {
-        if ((this.storedItems[this.getPositionItemFromName(itemName)].getNumberOfItemsOfThisType() + modificator) > 0 )
-        {
+        if ((this.storedItems[this.getPositionItemFromName(itemName)].getNumberOfItemsOfThisType() + modificator) > 0) {
             this.storedItems[this.getPositionItemFromName(itemName)].setNumberOfItemsOfThisType(this.storedItems[this.getPositionItemFromName(itemName)].getNumberOfItemsOfThisType() + modificator);
             return true;
         }
         else {
-            if ((this.storedItems[this.getPositionItemFromName(itemName)].getNumberOfItemsOfThisType() + modificator) == 0 )
-            {                
+            if ((this.storedItems[this.getPositionItemFromName(itemName)].getNumberOfItemsOfThisType() + modificator) == 0) {
                 this.storedItems[this.getPositionItemFromName(itemName)] = new EmptyItem();
                 this.storedItems[this.getPositionItemFromName(itemName)].setNumberOfItemsOfThisType(1);
                 return true;
@@ -95,7 +93,6 @@ public abstract class Store
     /* ---------------------- END FUNCTION(S) ---------------------- */
 
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
-
 
     public Item[] getStoredItems()
     {

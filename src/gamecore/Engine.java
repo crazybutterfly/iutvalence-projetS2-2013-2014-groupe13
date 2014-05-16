@@ -4,7 +4,6 @@ import gamedatas.AllPlayers;
 import playersinteractions.PlayerInputs;
 import gamedatas.Store;
 import display.MainDisplay;
-import gamedatas.ChatDatas;
 import gamedatas.GameMode;
 import gamedatas.Map;
 
@@ -32,11 +31,6 @@ public class Engine
      * All players informations.
      */
     public AllPlayers allPlayers;
-
-    /**
-     * All chat datas (not used).
-     */
-    public ChatDatas chatDatas;
 
     /**
      * Datas of the different quests of the game.

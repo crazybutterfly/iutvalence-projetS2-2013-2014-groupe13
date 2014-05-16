@@ -3,18 +3,18 @@ package gamedatas;
 /**
  * a class where stats are defined.
  *
+ * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @author WOERLY-MOUSSIER Joachim <joachim.woerly-moussier@iut-valence.fr>
  */
-
-/* ---------------------- START DECLARATIONS ---------------------- */
 public class SpyStats extends Stats
 {
+    /* ---------------------- START DECLARATIONS ---------------------- */
 
     private boolean teamHasDocs;
     private int remainingLives;
 
     public final static boolean TEAM_HAS_DOCS_DEFAULT = false;
-    public final static int REMAINING_LIVES_DEFAULT = 0;
+    public final static int REMAINING_LIVES_DEFAULT = 10;
 
     /* ---------------------- END DECLARATIONS ---------------------- */
 
@@ -27,6 +27,13 @@ public class SpyStats extends Stats
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 
+    /* ---------------------- START FUNCTION(S) ---------------------- */
+
+    public void decrementRemainingLives()
+    {
+        this.remainingLives--;
+    }
+    /* ---------------------- END FUNCTION(S) ---------------------- */
 
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
     /**
@@ -37,13 +44,6 @@ public class SpyStats extends Stats
         return this.remainingLives;
     }
 
-    /**
-     * @param remainingLives the remainingLives to set
-     */
-    public void setRemainingLives(int remainingLives)
-    {
-        this.remainingLives = remainingLives;
-    }
 
     /**
      * @return the teamHasDocs
@@ -60,5 +60,15 @@ public class SpyStats extends Stats
     {
         this.teamHasDocs = teamHasDocs;
     }
+
+    /**
+     * @param remainingLives the remainingLives to set
+     */
+    public void setRemainingLives(int remainingLives)
+    {
+        this.remainingLives = remainingLives;
+    }
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
+
+
 }

@@ -16,11 +16,6 @@ public class SpyPlayer extends ClassicPlayer
     private Coins myCoins;
 
     /**
-     * Temps de réapparition du Spy.
-     */
-    private int timeToRespawn;
-
-    /**
      * Stats du Spy.
      */
     protected SpyStats stats;
@@ -29,6 +24,11 @@ public class SpyPlayer extends ClassicPlayer
      * Pseudo par défaut du Spy.
      */
     public final static String DEFAULT_PSEUDO_PREFIX_FOR_SPY = "_SPY_";
+
+    /**
+     * Temps à ajouter pour le prochain respawn.
+     */
+    public final static int SPY_TIME_TO_INCREMENT_FOR_RESAWN_TIME = 5;
 
 
     /* ---------------------- END DECLARATIONS ---------------------- */
@@ -49,22 +49,22 @@ public class SpyPlayer extends ClassicPlayer
     }
 
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
-
-    /* ---------------------- START FUNCTION(S) ---------------------- */
-    /**
-     * Fonction permettant au Spy de tuer un Guard avec son couteau.
-     *
-     * @param guardsArray tableau des cibles Guard potentiel du Spy.
-     * @param numberOfGuards Cible Guard du Spy.
-     */
-    public void useKnife(GuardPlayer[] guardsArray, int numberOfGuards)
+    @Override
+    public void playerHasBeenKilled()
     {
-        for (int i = 0; i < numberOfGuards - 1; i++) {
-            if (guardsArray[i].getPosX() == this.posX && guardsArray[i].getPosY() == this.posY) {
-                guardsArray[i].playerHasBeenKilled();
-            }
+        this.stats.decrementRemainingLives();
+        if (this.stats.getRemainingLives() == 0) {
+            this.currentStatus = PlayerStatus.DEAD;
+        }
+        else {
+            this.currentStatus = PlayerStatus.WAITING_FOR_RESPAWN;
+            this.respawnTime = (this.nextTimeBeforeRespawn * 1000) + System.currentTimeMillis();
+            this.nextTimeBeforeRespawn += SpyPlayer.SPY_TIME_TO_INCREMENT_FOR_RESAWN_TIME;
+            this.currentStatus = PlayerStatus.WAITING_FOR_RESPAWN;
         }
     }
+    /* ---------------------- START FUNCTION(S) ---------------------- */
+
 
     /* ---------------------- END FUNCTION(S) ---------------------- */
 
@@ -75,8 +75,6 @@ public class SpyPlayer extends ClassicPlayer
         return this.stats;
     }
 
-
-    /* ---------------------- END GETTERS AND SETTERS ---------------------- */
     /**
      * @return the myCoins
      */
@@ -86,4 +84,5 @@ public class SpyPlayer extends ClassicPlayer
     }
 
 
+    /* ---------------------- END GETTERS AND SETTERS ---------------------- */
 }

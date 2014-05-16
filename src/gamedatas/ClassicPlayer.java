@@ -45,14 +45,14 @@ public class ClassicPlayer extends Player
     protected PlayerStatus currentStatus;
 
     /**
-     * Dernier temps d'attente de réapparition du joueur.
+     * prochain temps d'attente de réapparition du joueur.
      */
-    protected int lastTimeBeforeRespawn;
+    protected int nextTimeBeforeRespawn;
 
     /**
      * Temps restant avant réapparition du joueur.
      */
-    protected int remainingTimeBeforeRespawn;
+    protected long respawnTime;
 
     /**
      * Nombre de vie initial du joueur.
@@ -106,15 +106,15 @@ public class ClassicPlayer extends Player
     public final static PlayerStatus CURRENT_STATUTS_DEFAULT = PlayerStatus.ALIVE;
 
     /**
-     * Dernier temps d'attente de réapparition du joueur par défaut. Ici il est
-     * de 0.
+     * Dernier temps d'attente de réapparition du joueur par défaut en secondes.
+     * Ici, 10 secondes pour tout le monde.
      */
-    public final static int LAST_TIME_BEFORE_RESPAWN_DEFAULT = 0;
+    public final static int LAST_TIME_BEFORE_RESPAWN_DEFAULT = 10;
 
     /**
-     * Temps d'attente du joueur avant réapparition par défaut. Ici il est de 0.
+     * Heure d'attente avant le respawn. Ici il est de 0.
      */
-    public final static int REMAINING_TIME_BEFORE_RESPAWN_DEFAULT = 0;
+    public final static long RESPAWN_TIME_DEFAULT = 0;
 
     /**
      * Nombre de vie initial du joueur. Ici, elle ne sont pas encore définies
@@ -127,13 +127,6 @@ public class ClassicPlayer extends Player
      * porter que 10 items au maximum.
      */
     public final static int MAXIMUM_NUMBER_OF_ITEM_TYPE = 10;
-
-    /**
-     * Nombre d'item que le joueur possède par type d'item. Il possède un item
-     * du type d'item de base : couteau ou pistolet selon si c'est un Guard ou
-     * un Spie.
-     */
-    public final static int NUMBER_OF_ITEM_POCESSED_BY_TYPE_DEFAULT = 1;
 
     /**
      * Nombre de type d'item que le joueur possède en début de partie. Le joueur
@@ -159,8 +152,8 @@ public class ClassicPlayer extends Player
         this.xPlayerOrientation = ClassicPlayer.X_PLAYER_ORIENTATION_DEFAULT;
         this.yPlayerOrientation = ClassicPlayer.Y_PLAYER_ORIENTATION_DEFAULT;
         this.currentStatus = ClassicPlayer.CURRENT_STATUTS_DEFAULT;
-        this.lastTimeBeforeRespawn = ClassicPlayer.LAST_TIME_BEFORE_RESPAWN_DEFAULT;
-        this.remainingTimeBeforeRespawn = ClassicPlayer.REMAINING_TIME_BEFORE_RESPAWN_DEFAULT;
+        this.nextTimeBeforeRespawn = ClassicPlayer.LAST_TIME_BEFORE_RESPAWN_DEFAULT;
+        this.respawnTime = ClassicPlayer.RESPAWN_TIME_DEFAULT;
         this.initialNumberOfLives = ClassicPlayer.INITIAL_NUMBER_OF_LIVES;
         this.items = new Item[ClassicPlayer.MAXIMUM_NUMBER_OF_ITEM_TYPE];
         for (int i = 0; i < ClassicPlayer.MAXIMUM_NUMBER_OF_ITEM_TYPE; i++) {
@@ -193,13 +186,28 @@ public class ClassicPlayer extends Player
      */
     public void playerHasBeenKilled()
     {
-        
+        this.stats.numberOfDeaths++;
     }
-    
+
+    public void refeshKilledPlayerStatuts()
+    {
+        if ((System.currentTimeMillis() >= this.respawnTime) && (this.currentStatus != PlayerStatus.DEAD)) {
+            this.currentStatus = PlayerStatus.ALIVE;
+        }
+    }
+
+    public int timeBeforeRespawnInSeconds()
+    {
+        long currentSystemTime = System.currentTimeMillis();
+        return (int) ((this.respawnTime - currentSystemTime) / 1000);
+    }
+
     public void removeItem(int inventoryItemIndexToRemove)
     {
         if (this.items[inventoryItemIndexToRemove].getNumberOfItemsOfThisType() != 1) {
             this.items[inventoryItemIndexToRemove].setNumberOfItemsOfThisType(this.items[inventoryItemIndexToRemove].getNumberOfItemsOfThisType() - 1);
+            this.items[inventoryItemIndexToRemove].setXPos(this.posX);
+            this.items[inventoryItemIndexToRemove].setYPos(this.posY);
             this.currentMap.addItemOnTheMap(this.items[inventoryItemIndexToRemove].getNewItem());
         }
         else {
@@ -223,20 +231,20 @@ public class ClassicPlayer extends Player
     {
         return posY / 100;
     }
-    
+
     public boolean getItemFromName(String itemName)
     {
         boolean exist = false;
         String currentItemName = "";
         for (int i = 0; i < this.currentNumberOfTypeItemPocessed && !currentItemName.equals(itemName); i++) {
             currentItemName = this.items[i].getItemName();
-            if (currentItemName.equals(itemName)){
-                exist=true;                
+            if (currentItemName.equals(itemName)) {
+                exist = true;
             }
         }
         return exist;
     }
-    
+
     public int getPositionItemFromName(String itemName)
     {
         int itemPosition = 0;
@@ -281,7 +289,7 @@ public class ClassicPlayer extends Player
     {
         this.posY = posY;
     }
-    
+
     public Stats getStats()
     {
         return this.stats;
@@ -305,27 +313,18 @@ public class ClassicPlayer extends Player
     }
 
     /**
-     * @return the remainingTimeBeforeRespawn
+     * @return the respawnTime
      */
-    public int getRemainingTimeBeforeRespawn()
+    public long getRespawnTime()
     {
-        return this.remainingTimeBeforeRespawn;
+        return this.respawnTime;
     }
 
-    /**
-     * @param remainingTimeBeforeRespawn the remainingTimeBeforeRespawn to set
-     */
-    public void setRemainingTimeBeforeRespawn(int remainingTimeBeforeRespawn)
-    {
-        this.remainingTimeBeforeRespawn = remainingTimeBeforeRespawn;
-    }
-    
     public Item[] getItems()
     {
         return this.items;
     }
 
 
-      
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
 }

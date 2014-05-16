@@ -21,14 +21,10 @@ public class GuardPlayer extends ClassicPlayer
     public final static String DEFAULT_PSEUDO_PREFIX_FOR_GUARD = "_GUARD_";
 
     /**
-     * the number of spies killed without de killed.
+     * Temps à ajouter pour le prochain respawn.
      */
-    private int spiesKilledWithoutDying;
+    public final static int GUARD_TIME_TO_INCREMENT_FOR_RESAWN_TIME = 15;
 
-    /**
-     * the default number of spies killed without de killed.
-     */
-    public final static int SPIES_KILLED_WITHOUT_DYING_DEFAULT = 0;
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
@@ -40,7 +36,6 @@ public class GuardPlayer extends ClassicPlayer
     public GuardPlayer(int NumberOfThePlayer, Map refToMap)
     {
         super(refToMap);
-        this.spiesKilledWithoutDying = GuardPlayer.SPIES_KILLED_WITHOUT_DYING_DEFAULT;
         this.pseudo += GuardPlayer.DEFAULT_PSEUDO_PREFIX_FOR_GUARD;
         this.pseudo += NumberOfThePlayer;
         this.stats = new Stats();
@@ -48,31 +43,13 @@ public class GuardPlayer extends ClassicPlayer
 
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
     /* ---------------------- START FUNCTION(S) ---------------------- */
-    /**
-     * Fonction permettant à un Guard d'utiliser un pistolet.
-     *
-     * @param classicPlayers
-     */
-    public void useGun(ClassicPlayer classicPlayers)
-    {
-    }
 
-    /**
-     * Fonction permettant à un Guard de voir ses stats de partie.
-     */
-    public void guardPlayer()
+    @Override
+    public void playerHasBeenKilled()
     {
-        this.stats = stats;
-    }
-
-    /**
-     * function to increment the waiting_for_respawn time.
-     *
-     * @param time how much time we add the the waiting_for_respawn timer.
-     */
-    public void incrementTimeToRespawn(int time)
-    {
-        this.timeToRespawn += time;
+        this.respawnTime = (this.nextTimeBeforeRespawn * 1000) + System.currentTimeMillis();
+        this.nextTimeBeforeRespawn += GuardPlayer.GUARD_TIME_TO_INCREMENT_FOR_RESAWN_TIME;
+        this.currentStatus = PlayerStatus.WAITING_FOR_RESPAWN;
     }
     /* ---------------------- END FUNCTION(S) ---------------------- */
 }
