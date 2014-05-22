@@ -6,6 +6,9 @@
 package items;
 
 import gamedatas.ClassicPlayer;
+import gamedatas.Frame;
+import gamedatas.Map;
+import gamedatas.PlayerOrientation;
 
 /**
  *
@@ -26,8 +29,35 @@ public class Gun extends Item
         }
         else {
             this.numberOfAmmoInGun -= 1;
-            // mouse.getPosX(), getPosY(); verify if character undermouse;
-            //if distance < 1000px && noWalls=true, player.attack(the ennemy);
+               int bulletPosX = player.getPosX();
+               int bulletPosY = player.getPosY();
+            
+               while ((player.getMap().getFrameStatus(bulletPosX, bulletPosY) != Frame.WALL) &&((bulletPosX<Map.MAX_X_SIZE&&bulletPosX!=0)&&(bulletPosY<Map.MAX_Y_SIZE&&bulletPosY!=0)))
+               {
+                    for (int index = 0; index < player.getPlayerArray().getNumberOfSpies(); index ++)
+                    { 
+                       if ((player.getPlayerArray().getSpiesArray()[index].getPosX() == bulletPosX)&&(player.getPlayerArray().getSpiesArray()[index].getPosY() == bulletPosY))
+                        {
+                            player.getPlayerArray().getSpiesArray()[index].playerHasBeenKilled();
+                        }
+                    }
+                    if (player.getPlayerOrientation() == PlayerOrientation.UP) 
+                    {
+                        bulletPosY--;
+                    }
+                    if (player.getPlayerOrientation() == PlayerOrientation.LEFT)
+                    {
+                        bulletPosX--;
+                    }
+                    if (player.getPlayerOrientation() == PlayerOrientation.DOWN)
+                    {
+                        bulletPosY++;
+                    }
+                    if (player.getPlayerOrientation() == PlayerOrientation.RIGHT)
+                    {
+                        bulletPosX++;
+                    }
+               }
         }
     }
 

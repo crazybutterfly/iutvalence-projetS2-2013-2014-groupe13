@@ -19,6 +19,11 @@ public class Player
      * Référence vers la map.
      */
     protected Map currentMap;
+  
+    /**
+     * Référence vers les joueurs.
+     */
+    protected AllPlayers players;
 
     /**
      * Pseudo par défaut d'un joueur.
@@ -27,9 +32,10 @@ public class Player
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
-    public Player(Map mapRef)
+    public Player(Map mapRef, AllPlayers players)
     {
         this.currentMap = mapRef;
+        this.players = players;
         this.pseudo = Player.DEFAULT_PSEUDO_PREFIX;
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
@@ -54,6 +60,16 @@ public class Player
     public String getPseudo()
     {
         return pseudo;
+    }
+    
+    public AllPlayers getPlayerArray()
+    {
+        return this.players;
+    }
+    
+    public Map getMap()
+    {
+        return this.currentMap;
     }
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
 

@@ -32,13 +32,16 @@ public class GuardPlayer extends ClassicPlayer
      * Ajoute un numéro au pseudo par défaut du Guard. Donne les stats du Guard.
      *
      * @param NumberOfThePlayer Numéro du Guard.
+     * @param refToMap
+     * @param refToPlayers
      */
-    public GuardPlayer(int NumberOfThePlayer, Map refToMap)
+    public GuardPlayer(int NumberOfThePlayer, Map refToMap, AllPlayers refToPlayers)
     {
-        super(refToMap);
+        super(refToMap, refToPlayers);
         this.pseudo += GuardPlayer.DEFAULT_PSEUDO_PREFIX_FOR_GUARD;
         this.pseudo += NumberOfThePlayer;
         this.stats = new Stats();
+        this.currentMoves = new GuardPlayerMoves(this);
     }
 
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */

@@ -24,12 +24,12 @@ public class AllPlayers
     /**
      * Tableau listant tous les Guards de la partie.
      */
-    private GuardPlayer[] guardsArray;
+    private final GuardPlayer[] guardsArray;
 
     /**
      * Tableau listant tous les Spies de la partie.
      */
-    private SpyPlayer[] spiesArray;
+    private final SpyPlayer[] spiesArray;
 
     /**
      * Objet de stockage des statistiques de l'équipe des Guards.
@@ -62,12 +62,12 @@ public class AllPlayers
         this.guardsArray = new GuardPlayer[this.numberOfGuards - 1];
         this.spiesArray = new SpyPlayer[this.numberOfSpies];
         for (int i = 0; i < this.numberOfGuards - 1; i++) {
-            this.guardsArray[i] = new GuardPlayer(i + 1, refToMap);
+            this.guardsArray[i] = new GuardPlayer(i + 1, refToMap, this);
         }
         for (int i = 0; i < this.numberOfSpies; i++) {
-            this.spiesArray[i] = new SpyPlayer(i + 1, refToMap);
+            this.spiesArray[i] = new SpyPlayer(i + 1, refToMap, this);
         }
-        this.guardChiefPlayer = new GuardChiefPlayer(refToMap);
+        this.guardChiefPlayer = new GuardChiefPlayer(refToMap, this);
         this.guardTeamStats = new Stats();
         this.spyTeamStats = new SpyStats();
     }
@@ -84,8 +84,8 @@ public class AllPlayers
         Stats newGuardTeamStats;
         newGuardTeamStats = new Stats();
         for (int i = 0; i < getNumberOfGuards() - 2; i++) {
-            newGuardTeamStats.setNumberOfKills(this.guardsArray[i].getStats().getNumberOfKills() + newGuardTeamStats.getNumberOfKills());
-            newGuardTeamStats.setNumberOfDeaths(this.guardsArray[i].getStats().getNumberOfDeaths() + newGuardTeamStats.getNumberOfDeaths());
+            newGuardTeamStats.setNumberOfKills(this.getGuardsArray()[i].getStats().getNumberOfKills() + newGuardTeamStats.getNumberOfKills());
+            newGuardTeamStats.setNumberOfDeaths(this.getGuardsArray()[i].getStats().getNumberOfDeaths() + newGuardTeamStats.getNumberOfDeaths());
         }
         this.guardTeamStats = newGuardTeamStats;
     }
@@ -98,10 +98,10 @@ public class AllPlayers
         SpyStats newSpyTeamStats;
         newSpyTeamStats = new SpyStats();
         for (int i = 0; i < getNumberOfSpies() - 1; i++) {
-            newSpyTeamStats.setNumberOfKills(this.spiesArray[i].getStats().getNumberOfKills() + newSpyTeamStats.getNumberOfKills());
-            newSpyTeamStats.setNumberOfDeaths(this.spiesArray[i].getStats().getNumberOfDeaths() + newSpyTeamStats.getNumberOfDeaths());
-            newSpyTeamStats.setRemainingLives(this.spiesArray[i].getStats().getRemainingLives() + newSpyTeamStats.getRemainingLives());
-            if (this.spiesArray[i].getStats().getTeamHasDocs()) {
+            newSpyTeamStats.setNumberOfKills(this.getSpiesArray()[i].getStats().getNumberOfKills() + newSpyTeamStats.getNumberOfKills());
+            newSpyTeamStats.setNumberOfDeaths(this.getSpiesArray()[i].getStats().getNumberOfDeaths() + newSpyTeamStats.getNumberOfDeaths());
+            newSpyTeamStats.setRemainingLives(this.getSpiesArray()[i].getStats().getRemainingLives() + newSpyTeamStats.getRemainingLives());
+            if (this.getSpiesArray()[i].getStats().getTeamHasDocs()) {
                 newSpyTeamStats.setTeamHasDocs(true);
             }
         }
@@ -114,10 +114,10 @@ public class AllPlayers
         String[] allPlayersPseudos = new String[totalNumberOfPlayers];
         allPlayersPseudos[0] = this.guardChiefPlayer.getPseudo();
         for (int i = 1; i < this.numberOfGuards; i++) {
-            allPlayersPseudos[i] = this.guardsArray[i - 1].getPseudo();
+            allPlayersPseudos[i] = this.getGuardsArray()[i - 1].getPseudo();
         }
         for (int i = this.numberOfGuards; i < totalNumberOfPlayers; i++) {
-            allPlayersPseudos[i] = this.spiesArray[i - this.numberOfGuards].getPseudo();
+            allPlayersPseudos[i] = this.getSpiesArray()[i - this.numberOfGuards].getPseudo();
         }
         return allPlayersPseudos;
     }
@@ -157,5 +157,19 @@ public class AllPlayers
         return spyTeamStats;
     }
     /* ---------------------- END GETTERS & SETTERS ---------------------- */
+
+    /**
+     * @return the guardsArray
+     */
+    public GuardPlayer[] getGuardsArray() {
+        return guardsArray;
+    }
+
+    /**
+     * @return the spiesArray
+     */
+    public SpyPlayer[] getSpiesArray() {
+        return spiesArray;
+    }
 
 }

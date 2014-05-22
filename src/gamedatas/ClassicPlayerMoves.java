@@ -5,7 +5,7 @@ package gamedatas;
  *
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  */
-public class ClassicPlayerMoves
+public abstract class ClassicPlayerMoves
 {
     /* ---------------------- START DECLARATIONS ---------------------- */
 
@@ -13,12 +13,14 @@ public class ClassicPlayerMoves
     /**
      * Vitesse du joueur sur l'axe X.
      */
-    private int xPlayerSpeed;
+    protected int xPlayerSpeed;
 
     /**
      * Vitesse du joueur sur l'axe Y.
      */
-    private int yPlayerSpeed;
+    protected int yPlayerSpeed;
+    
+    protected ClassicPlayer player;
 
 
     /**
@@ -33,15 +35,24 @@ public class ClassicPlayerMoves
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
-    public ClassicPlayerMoves()
+    public ClassicPlayerMoves(ClassicPlayer player)
     {
         this.xPlayerSpeed = ClassicPlayerMoves.X_PLAYER_SPEED_DEFAULT;
         this.yPlayerSpeed = ClassicPlayerMoves.Y_PLAYER_SPEED_DEFAULT;
+        this.player = player;
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 
     /* ---------------------- START FUNCTION(S) ---------------------- */
+    public abstract void moveUp();
 
+    
+    public abstract void moveDown();
+    
+    public abstract void moveLeft();
+   
+    public abstract void moveRight();
+    
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
 

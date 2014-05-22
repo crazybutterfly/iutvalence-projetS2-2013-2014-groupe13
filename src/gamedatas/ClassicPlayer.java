@@ -25,14 +25,10 @@ public class ClassicPlayer extends Player
     protected int posY;
 
     /**
-     * Orientationn en X du joueur.
+     * Orientation du joueur.
      */
-    protected int xPlayerOrientation;
+    protected PlayerOrientation playerOrientation;
 
-    /**
-     * Orientation en Y du joueur.
-     */
-    protected int yPlayerOrientation;
 
     /**
      * Mouvements du joueur.
@@ -90,15 +86,11 @@ public class ClassicPlayer extends Player
      */
     public final static int POS_Y_DEFAULT = 0;
 
-    /**
-     * Valeur par défaut de l'orientation X du joueur.
-     */
-    public final static int X_PLAYER_ORIENTATION_DEFAULT = 0;
 
     /**
-     * Valeur par défaut de l'orientation X du joueur.
+     * Valeur par défaut de l'orientation du joueur.
      */
-    public final static int Y_PLAYER_ORIENTATION_DEFAULT = 1;
+    public final static PlayerOrientation PLAYER_ORIENTATION_DEFAULT = PlayerOrientation.UP;
 
     /**
      * Statut actuel du joueur par défaut. Ici le joueur est en vie.
@@ -143,14 +135,12 @@ public class ClassicPlayer extends Player
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
-    public ClassicPlayer(Map refToMap)
+    public ClassicPlayer(Map refToMap, AllPlayers refToPlayers)
     {
-        super(refToMap);
-        this.currentMoves = new ClassicPlayerMoves();
+        super(refToMap, refToPlayers);
         this.posX = ClassicPlayer.POS_X_DEFAULT;
         this.posY = ClassicPlayer.POS_Y_DEFAULT;
-        this.xPlayerOrientation = ClassicPlayer.X_PLAYER_ORIENTATION_DEFAULT;
-        this.yPlayerOrientation = ClassicPlayer.Y_PLAYER_ORIENTATION_DEFAULT;
+        this.playerOrientation = ClassicPlayer.PLAYER_ORIENTATION_DEFAULT;
         this.currentStatus = ClassicPlayer.CURRENT_STATUTS_DEFAULT;
         this.nextTimeBeforeRespawn = ClassicPlayer.LAST_TIME_BEFORE_RESPAWN_DEFAULT;
         this.respawnTime = ClassicPlayer.RESPAWN_TIME_DEFAULT;
@@ -216,21 +206,6 @@ public class ClassicPlayer extends Player
     }
 
 
-    /**
-     * @return the map case X position.
-     */
-    public int getPosXCase()
-    {
-        return posX / 100;
-    }
-
-    /**
-     * @return the map case Y position.
-     */
-    public int getPosYCase()
-    {
-        return posY / 100;
-    }
 
     public boolean getItemFromName(String itemName)
     {
@@ -324,7 +299,28 @@ public class ClassicPlayer extends Player
     {
         return this.items;
     }
+    
+    public PlayerOrientation getPlayerOrientation()
+    {
+        return this.playerOrientation;
+    }
+    
+    public void setPlayerOrientation(PlayerOrientation orientation)
+    {
+        this.playerOrientation = orientation;
+    }
 
 
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
+
+    public void deleteItem(String item) {
+        if (this.items[this.getPositionItemFromName(item)].getNumberOfItemsOfThisType() == 1) {
+            this.items[this.getPositionItemFromName(item)] = new EmptyItem();
+        }
+        else
+        {
+            this.items[this.getPositionItemFromName(item)].setNumberOfItemsOfThisType(this.items[this.getPositionItemFromName(item)].getNumberOfItemsOfThisType() - 1);
+        }
+            
+    }
 }

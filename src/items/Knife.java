@@ -6,6 +6,7 @@
 package items;
 
 import gamedatas.ClassicPlayer;
+import gamedatas.SpyPlayer;
 
 /**
  *
@@ -22,9 +23,13 @@ public class Knife extends Item
     @Override
     public void useItem(ClassicPlayer player)
     {
-        // mouse.getPosX(), getPosY(); verify if character undermouse;
-        //if distance <10px, player.attack(the ennemy);
-        //else, attack(levide);
+        for (int index = 0; index < player.getPlayerArray().getNumberOfGuards(); index ++)
+        {
+            if ((player.getPlayerArray().getGuardsArray()[index].getPosX() == player.getPosX())&&(player.getPlayerArray().getGuardsArray()[index].getPosY() == player.getPosY()))
+            {
+                player.getPlayerArray().getGuardsArray()[index].playerHasBeenKilled();
+            }
+        }
     }
 
     @Override

@@ -78,7 +78,7 @@ public class Cam extends Item
         while (index < player.getItems().length) {
             if (player.getItems()[index].getItemName().equals("Material")) {
                 this.camStatus = CamStatus.WORKING;
-                player.getItems()[index].deleteItem(player);
+                player.deleteItem("Material");
                 System.out.println("Material deleted");
                 return;
             }

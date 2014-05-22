@@ -175,4 +175,9 @@ public class Map
         this.numberOfItemsOnTheMap++;
     }
     /* ---------------------- END FUNCTION(S) ---------------------- */
+    
+    public Frame getFrameStatus(int posX,int posY)
+    {
+        return this.map[posX][posY];
+    }
 }
