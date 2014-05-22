@@ -42,7 +42,7 @@ public class Map
     /**
      * items put on the map.
      */
-    private Item[] itemsOnTheMap;
+    private Item[] itemsOnTheMap = new Item[10000];
 
     private int numberOfItemsOnTheMap;
 
