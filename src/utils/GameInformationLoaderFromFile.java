@@ -32,7 +32,7 @@ public class GameInformationLoaderFromFile
     }
     /*-----------------CLASS FUNCTIONS---------------*/
 
-    public boolean fileExists(String fileLocation) throws FileNotFoundException
+    public static boolean fileExists(String fileLocation) throws FileNotFoundException
     {
         File file = new File(fileLocation);
         return file.exists();
@@ -49,9 +49,9 @@ public class GameInformationLoaderFromFile
      * @throws java.io.IOException
      * @throws java.io.FileNotFoundException
      */
-    public boolean isMapFileValid(String fileLocation) throws IOException, FileNotFoundException
+    public static boolean isMapFileValid(String fileLocation) throws IOException, FileNotFoundException
     {
-        if (!this.fileExists(fileLocation)) {
+        if (!GameInformationLoaderFromFile.fileExists(fileLocation)) {
             System.out.println("file not found");
             return false;
         }
@@ -80,8 +80,14 @@ public class GameInformationLoaderFromFile
                             System.out.println("erreur premier param rectangle ligne " + index);
                             return false;
                         }
-                        if ((Integer.parseInt(parts[2]) > mapYSizeTest) || (Integer.parseInt(parts[2]) < 0)) {
-                            System.out.println("erreur second param rectangle ligne " + index);
+                        if ((Integer.parseInt(parts[2]) > mapYSizeTest))
+                        {
+                            System.out.println("erreur second param rectangle ligne : "+index+", param "+Integer.parseInt(parts[2])+"supérieur à "+mapYSizeTest);
+                            return false;
+                        }
+                            
+                                if(Integer.parseInt(parts[2]) < 0) {
+                            System.out.println("erreur second param rectangle ligne : "+index+",inferieur à 0 ");
                             return false;
                         }
                         if ((Integer.parseInt(parts[3]) > mapXSizeTest) || (Integer.parseInt(parts[3]) < 0)) {
@@ -124,13 +130,17 @@ public class GameInformationLoaderFromFile
         }
     }
 
-    public Map loadMapFromFile(String fileLocation) throws IOException, FileNotFoundException
+    public static Map loadMapFromFile(String fileLocation) throws IOException, FileNotFoundException
     {
-        this.fileReader = new BufferedReader(new FileReader(fileLocation));
+            /**
+     * création d'un lecteur pour récupérer les données entrées par le joueur
+     */
+     BufferedReader fileReader;
+        fileReader = new BufferedReader(new FileReader(fileLocation));
         int mapXSize;
         int mapYSize;
         try {
-            String mapXSizeText = this.fileReader.readLine();
+            String mapXSizeText = fileReader.readLine();
             if (mapXSizeText == null) {
                 mapXSize = Map.STANDARD_X_SIZE_VALUE;
             }
@@ -138,7 +148,7 @@ public class GameInformationLoaderFromFile
                 mapXSize = Integer.parseInt(mapXSizeText);
             }
 
-            String mapYSizeText = this.fileReader.readLine();
+            String mapYSizeText = fileReader.readLine();
             if (mapYSizeText == null) {
                 mapYSize = Map.STANDARD_Y_SIZE_VALUE;
             }
@@ -174,7 +184,6 @@ public class GameInformationLoaderFromFile
                     Frame frameStatus = Frame.parseFrame(parts[4]);
                     map.drawCircle(centerX - 1, centerY - 1, radius, frameStatus);
                 }
-
                 line = fileReader.readLine();
             }
 

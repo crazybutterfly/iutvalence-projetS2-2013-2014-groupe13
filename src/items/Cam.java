@@ -67,7 +67,7 @@ public class Cam extends Item
     @Override
     public void useItem(ClassicPlayer player)
     {
-        this.repair(player);
+//        this.repair(player);
     }
 
 
