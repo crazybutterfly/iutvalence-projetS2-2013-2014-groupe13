@@ -67,26 +67,26 @@ public class Cam extends Item
     @Override
     public void useItem(ClassicPlayer player)
     {
-        this.repair(player);
+//        this.repair(player);
     }
 
 
-    private void repair(ClassicPlayer player)
-    {
-
-        int index = 0;
-        while (index < player.getItems().length) {
-            if (player.getItems()[index].getItemName().equals("Material")) {
-                this.camStatus = CamStatus.WORKING;
-                player.getItems()[index].deleteItem(player);
-                System.out.println("Material deleted");
-                return;
-            }
-            else {
-                index++;
-            }
-        }
-    }
+//    private void repair(ClassicPlayer player)
+//    {
+//
+//        int index = 0;
+//        while (index < player.getItems().length) {
+//            if (player.getItems()[index].getItemName().equals("Material")) {
+//                this.camStatus = CamStatus.WORKING;
+//                player.getItems()[index].deleteItem(player);
+//                System.out.println("Material deleted");
+//                return;
+//            }
+//            else {
+//                index++;
+//            }
+//        }
+//    }
 
     @Override
     public Item getNewItem()

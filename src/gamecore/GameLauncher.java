@@ -1,7 +1,6 @@
 package gamecore;
 
 import java.io.IOException;
-import playersinteractions.PlayerInputs;
 
 public class GameLauncher
 {
@@ -9,15 +8,22 @@ public class GameLauncher
     public static void main(String[] args) throws IOException
     {
 
+        /**
+         * The game engine.
+         */
         Engine gameEngine;
-        PlayerInputs playersInputs;
+
+        /**
+         * the initial game informations
+         */
         GameInformations initialGameInformations;
 
-    }
+        // Game informations creation
+        initialGameInformations = new GameInformations();
+        // Game informations parameter
+        initialGameInformations.setParameters();
 
-    private GameInformations gameCreation()
-    {
-        return null;
+
     }
 
     private void gameStart(GameInformations gameInfos)

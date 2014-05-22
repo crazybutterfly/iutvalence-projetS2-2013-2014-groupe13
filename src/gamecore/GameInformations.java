@@ -1,5 +1,8 @@
 package gamecore;
 
+import display.InitialParametersInput;
+import javax.swing.SwingUtilities;
+
 /**
  * Game informations used to initialise the game engine.
  *
@@ -20,9 +23,24 @@ public class GameInformations
     private int numberOfSpies;
 
     /**
+     * the map location.
+     */
+    private String mapLocation;
+    
+    /**
+     * the quests location.
+     */
+    private String questsLocation;
+    
+    /**
+     * the Frame used to enter game informations.
+     */
+    private final InitialParametersInput InputFrame;
+    
+    /**
      * the default number of guards for a game.
      */
-    public static final int NUMBER_OF_GUARDS_DEFAULMT = 2;
+    public static final int NUMBER_OF_GUARDS_DEFAULT = 2;
 
     /**
      * the default number of spies for a game.
@@ -34,12 +52,20 @@ public class GameInformations
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
     public GameInformations()
     {
-        this.numberOfGuards = NUMBER_OF_GUARDS_DEFAULMT;
+        this.numberOfGuards = NUMBER_OF_GUARDS_DEFAULT;
         this.numberOfSpies = NUMBER_OF_SPIES_DEFAULT;
+        this.InputFrame = new InitialParametersInput(this);
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 
     /* ---------------------- START FUNCTION(S) ---------------------- */
+    public void setParameters()
+    {
+        SwingUtilities.invokeLater(this.InputFrame);
+        while (!this.InputFrame.isInputFinish())
+        {
+        }
+    }
     /* ---------------------- END FUNCTION(S) ---------------------- */
 
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
