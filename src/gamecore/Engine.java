@@ -52,13 +52,14 @@ public class Engine
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
     public void Engine(GameInformations gameInfos)
     {
-
+        
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 
     /* ---------------------- START FUNCTION(S) ---------------------- */
     public void doInteraction(PlayerInputs playerInput)
     {
+        
     }
 
     public void classicPlayerPlay()
