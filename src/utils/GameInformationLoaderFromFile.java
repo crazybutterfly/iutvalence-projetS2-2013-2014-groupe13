@@ -200,6 +200,35 @@ public class GameInformationLoaderFromFile
                 int numberOfQuests = Integer.parseInt(fileTester.readLine());
                 int docXLocation = Integer.parseInt(fileTester.readLine());
                 int docYLocation = Integer.parseInt(fileTester.readLine());
+                String respawnPoints = fileTester.readLine();
+                String[] respawnLineParts = respawnPoints.split("\\s");
+                int xPosSpy = Integer.parseInt(respawnLineParts[0]);
+                int yPosSpy = Integer.parseInt(respawnLineParts[1]);
+                int xPosGuard = Integer.parseInt(respawnLineParts[2]);
+                int yPosGuard = Integer.parseInt(respawnLineParts[3]);
+                
+                if (xPosSpy <=0)
+                {
+                    System.out.println("posX du point de respawn des Spies inférieur ou égal à 0. Valeur : "+ xPosSpy);
+                    return false;
+                }
+                if (xPosGuard <=0)
+                {
+                    System.out.println("posX du point de respawn des Guards inférieur ou égal à 0. Valeur : "+ xPosSpy);
+                    return false;
+                }
+                if (yPosSpy <=0)
+                {
+                    System.out.println("posY du point de respawn des Spies inférieur ou égal à 0. Valeur : "+ xPosSpy);
+                    return false;
+                }
+                if (yPosGuard <=0)
+                {
+                    System.out.println("posY du point de respawn des Guards inférieur ou égal à 0. Valeur : "+ xPosSpy);
+                    return false;
+                }
+                
+                                
                 if (docXLocation < 0 || docYLocation < 0) {
                     System.out.println("doc hors de la map");
                     return false;
@@ -266,6 +295,17 @@ public class GameInformationLoaderFromFile
             String docXLocationText = this.fileReader.readLine();
             String QuestYlocationText = this.fileReader.readLine();
             gameMode.setDoc(Integer.parseInt(docXLocationText), Integer.parseInt(QuestYlocationText));
+            String respawnPoints = this.fileReader.readLine();
+            String[] StringParts = respawnPoints.split("\\s");
+            int spyRespawnPosX = Integer.parseInt(StringParts[0]);
+            int spyRespawnPosY = Integer.parseInt(StringParts[1]);
+            int guardRespawnPosX = Integer.parseInt(StringParts[2]);
+            int guardRespawnPosY = Integer.parseInt(StringParts[3]);
+            gameMode.setSpiesRespawnPoint(spyRespawnPosX, spyRespawnPosY);
+            gameMode.setGuardsRespawnPoint(guardRespawnPosX, guardRespawnPosY);
+            
+            
+            
 
             String line = fileReader.readLine();
             int index = 0;

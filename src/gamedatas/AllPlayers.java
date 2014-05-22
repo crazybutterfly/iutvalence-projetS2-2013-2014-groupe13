@@ -45,6 +45,8 @@ public class AllPlayers
      * Attribut stockant les caractéristiques du joueur Guard Chief.
      */
     private GuardChiefPlayer guardChiefPlayer;
+    
+    private GameMode gameMode;
 
     /* ---------------------- END DECLARATIONS ---------------------- */
 
@@ -55,7 +57,7 @@ public class AllPlayers
      * @param numberOfSpies nombre de Spies.
      * @param refToMap référence vers la map.
      */
-    public AllPlayers(int numberOfGuards, int numberOfSpies, Map refToMap)
+    public AllPlayers(int numberOfGuards, int numberOfSpies, Map refToMap, GameMode gameMode)
     {
         this.numberOfGuards = numberOfGuards;
         this.numberOfSpies = numberOfSpies;
@@ -70,6 +72,7 @@ public class AllPlayers
         this.guardChiefPlayer = new GuardChiefPlayer(refToMap, this);
         this.guardTeamStats = new Stats();
         this.spyTeamStats = new SpyStats();
+        this.gameMode = gameMode;
     }
 
 
@@ -170,6 +173,11 @@ public class AllPlayers
      */
     public SpyPlayer[] getSpiesArray() {
         return spiesArray;
+    }
+    
+    public GameMode getGameMode()
+    {
+        return this.gameMode;
     }
 
 }

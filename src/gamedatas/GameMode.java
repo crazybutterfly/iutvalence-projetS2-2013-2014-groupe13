@@ -32,6 +32,13 @@ public class GameMode
      * the doc on the map.
      */
     private Doc doc;
+    
+    private int spiesRespawnPointPosX;
+    private int spiesRespawnPointPosY;
+
+    private int guardsRespawnPointPosX;
+    private int guardsRespawnPointPosY;
+
 
     /* ---------------------- END DECLARATIONS ---------------------- */
 
@@ -88,4 +95,31 @@ public class GameMode
         return this.doc;
     }
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
+
+    public void setSpiesRespawnPoint(int spyRespawnPosX, int spyRespawnPosY) {
+        this.spiesRespawnPointPosX = spyRespawnPosX;
+        this.spiesRespawnPointPosY = spyRespawnPosY;
+    }
+
+    public void setGuardsRespawnPoint(int guardsRespawnPosX, int guardsRespawnPosY) {
+        this.guardsRespawnPointPosX = guardsRespawnPosX;
+        this.guardsRespawnPointPosY = guardsRespawnPosY;
+    }
+    
+    public int getSpyRespawnPointPosX()
+    {
+        return this.spiesRespawnPointPosX;
+    }
+    public int getSpyRespawnPointPosY()
+    {
+        return this.spiesRespawnPointPosY;
+    }
+    public int getGuardRespawnPointPosX()
+    {
+        return this.guardsRespawnPointPosX;
+    }       
+    public int getGuardRespawnPointPosY()
+    {
+        return this.guardsRespawnPointPosY;
+    }
 }
