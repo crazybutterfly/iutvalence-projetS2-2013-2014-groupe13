@@ -8,8 +8,7 @@ import javax.swing.SwingUtilities;
  *
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  */
-public class GameInformations
-{
+public class GameInformations {
 
     /* ---------------------- START DECLARATIONS ---------------------- */
     /**
@@ -26,17 +25,17 @@ public class GameInformations
      * the map location.
      */
     private String mapLocation;
-    
+
     /**
      * the quests location.
      */
     private String questsLocation;
-    
+
     /**
      * the Frame used to enter game informations.
      */
     private final InitialParametersInput InputFrame;
-    
+
     /**
      * the default number of guards for a game.
      */
@@ -50,8 +49,7 @@ public class GameInformations
 
 
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
-    public GameInformations()
-    {
+    public GameInformations() {
         this.numberOfGuards = NUMBER_OF_GUARDS_DEFAULT;
         this.numberOfSpies = NUMBER_OF_SPIES_DEFAULT;
         this.InputFrame = new InitialParametersInput(this);
@@ -59,12 +57,11 @@ public class GameInformations
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 
     /* ---------------------- START FUNCTION(S) ---------------------- */
-    public void setParameters()
-    {
+    public void setParameters() {
         SwingUtilities.invokeLater(this.InputFrame);
-        while (!this.InputFrame.isInputFinish())
-        {
+        while (this.InputFrame.isInputFinish()) {
         }
+        
     }
     /* ---------------------- END FUNCTION(S) ---------------------- */
 
@@ -72,34 +69,58 @@ public class GameInformations
     /**
      * @return the numberOfGuards
      */
-    public int getNumberOfGuards()
-    {
+    public int getNumberOfGuards() {
         return numberOfGuards;
     }
 
     /**
      * @param numberOfGuards the numberOfGuards to set
      */
-    public void setNumberOfGuards(int numberOfGuards)
-    {
+    public void setNumberOfGuards(int numberOfGuards) {
         this.numberOfGuards = numberOfGuards;
     }
 
     /**
      * @return the numberOfSpies
      */
-    public int getNumberOfSpies()
-    {
+    public int getNumberOfSpies() {
         return numberOfSpies;
     }
 
     /**
      * @param numberOfSpies the numberOfSpies to set
      */
-    public void setNumberOfSpies(int numberOfSpies)
-    {
+    public void setNumberOfSpies(int numberOfSpies) {
         this.numberOfSpies = numberOfSpies;
     }
 
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
+
+    /**
+     * @return the mapLocation
+     */
+    public String getMapLocation() {
+        return mapLocation;
+    }
+
+    /**
+     * @param mapLocation the mapLocation to set
+     */
+    public void setMapLocation(String mapLocation) {
+        this.mapLocation = mapLocation;
+    }
+
+    /**
+     * @return the questsLocation
+     */
+    public String getQuestsLocation() {
+        return questsLocation;
+    }
+
+    /**
+     * @param questsLocation the questsLocation to set
+     */
+    public void setQuestsLocation(String questsLocation) {
+        this.questsLocation = questsLocation;
+    }
 }
