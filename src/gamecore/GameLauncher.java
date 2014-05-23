@@ -22,6 +22,10 @@ public class GameLauncher
         initialGameInformations = new GameInformations();
         // Game informations parameter
         initialGameInformations.setParameters();
+        // Game engine creation
+        gameEngine = new Engine(initialGameInformations);
+        // Game launch
+        gameEngine.startGame();
 
 
     }

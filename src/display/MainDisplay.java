@@ -9,7 +9,6 @@ import gamedatas.Map;
 import display.guardchiefdisplay.GuardChiefStoreScreen;
 import gamedatas.Store;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JMenu;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
@@ -28,7 +27,7 @@ public class MainDisplay implements Runnable, ActionListener
     public MiniMap myMiniMap;
     public GuardChiefMainMap myGuardChiefMainMap;
     public GuardChiefStoreScreen myGuardChiefStoreScreen;
-
+    
     public void refreshDisplay(Map myMap, Store stores, AllPlayers players)
     {
     }
@@ -50,11 +49,14 @@ public class MainDisplay implements Runnable, ActionListener
     @Override
     public void run()
     {
-        this.fenetre = new JFrame();
         
+        this.fenetre = new JFrame();
+
         this.fenetre.setTitle("Spies & Guards");
         this.fenetre.setSize(720,610);
         this.fenetre.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        
+        
         
         JMenuBar barreDeMenu = new JMenuBar();
         
@@ -71,17 +73,15 @@ public class MainDisplay implements Runnable, ActionListener
         
         this.menuJoueur.addActionListener(this);
         
-        menu.add(this.menuItem);
-        
+//        menu.add(this.menuItem);
         
         barreDeMenu.add(menu);
         barreDeMenu.add(Joueur);
         
         this.fenetre.setJMenuBar(barreDeMenu);
         this.fenetre.setVisible(true);
-             
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        
+                 }
 
     @Override
     public void actionPerformed(ActionEvent event)
@@ -101,7 +101,6 @@ public class MainDisplay implements Runnable, ActionListener
 
             this.fenetre.dispose();
         }
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

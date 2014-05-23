@@ -59,9 +59,10 @@ public class GameInformations {
     /* ---------------------- START FUNCTION(S) ---------------------- */
     public void setParameters() {
         SwingUtilities.invokeLater(this.InputFrame);
-        while (this.InputFrame.isInputFinish()) {
+        int i = 0;
+        while (!this.InputFrame.isInputFinish()) {
+            System.out.println(i++);
         }
-        
     }
     /* ---------------------- END FUNCTION(S) ---------------------- */
 
@@ -95,7 +96,6 @@ public class GameInformations {
     }
 
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
-
     /**
      * @return the mapLocation
      */

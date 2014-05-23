@@ -43,7 +43,7 @@ public class GameMode
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
-    public void GameMode()
+    public GameMode()
     {
 
     }

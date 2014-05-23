@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import javax.swing.JTextField;
 import utils.GameInformationLoaderFromFile;
-import static utils.GameInformationLoaderFromFile.fileExists;
 import utils.ValidFileRapport;
 
 /**
@@ -113,7 +112,7 @@ public class InitialParametersInput implements Runnable, ActionListener {
         JButton selectedButton = (JButton) actionSelected.getSource();
 
         if (selectedButton == this.mapLoaderButton) {
-            JFileChooser mapFileChooser = new JFileChooser();
+            JFileChooser mapFileChooser = new JFileChooser(new File("./src/externalFiles"));
             int returnVal = mapFileChooser.showOpenDialog(null);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 this.refToGameInformations.setMapLocation(mapFileChooser.getSelectedFile().getAbsolutePath());
@@ -121,7 +120,7 @@ public class InitialParametersInput implements Runnable, ActionListener {
         }
 
         if (selectedButton == this.questLoaderButton) {
-            JFileChooser questFileChooser = new JFileChooser();
+            JFileChooser questFileChooser = new JFileChooser(new File("./src/externalFiles"));
             int returnVal = questFileChooser.showOpenDialog(null);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 this.refToGameInformations.setQuestsLocation(questFileChooser.getSelectedFile().getAbsolutePath());

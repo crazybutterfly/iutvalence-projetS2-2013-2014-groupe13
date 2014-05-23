@@ -4,7 +4,6 @@ import gamedatas.Frame;
 import gamedatas.GameMode;
 import gamedatas.Map;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.File;
@@ -125,16 +124,18 @@ public class GameInformationLoaderFromFile {
         return mapStatus;
     }
 
-    public static Map loadMapFromFile(String fileLocation) throws IOException, FileNotFoundException {
+    public static Map loadMapFromFile(String fileLocation) {
         /**
          * création d'un lecteur pour récupérer les données entrées par le
          * joueur
          */
-        BufferedReader fileReader;
-        fileReader = new BufferedReader(new FileReader(fileLocation));
-        int mapXSize;
-        int mapYSize;
+
         try {
+            int mapXSize;
+            int mapYSize;
+            BufferedReader fileReader;
+            fileReader = new BufferedReader(new FileReader(fileLocation));
+
             String mapXSizeText = fileReader.readLine();
             if (mapXSizeText == null) {
                 mapXSize = Map.STANDARD_X_SIZE_VALUE;
@@ -149,13 +150,8 @@ public class GameInformationLoaderFromFile {
                 mapYSize = Integer.parseInt(mapYSizeText);
             }
 
-        } catch (IOException e) {
-            System.out.println("Error during map file reading");
-            return null;
-        }
-        Map map = new Map(mapXSize, mapYSize);
+            Map map = new Map(mapXSize, mapYSize);
 
-        try {
             String line = fileReader.readLine();
 
             while ((line != null) && (!"".equals(line))) {
@@ -178,11 +174,12 @@ public class GameInformationLoaderFromFile {
                 line = fileReader.readLine();
             }
 
+            return map;
         } catch (IOException e) {
-            System.out.println("Erreur dans le fichier");
+            System.out.println("Error during map file reading");
             return null;
         }
-        return map;
+
     }
 
     /*-------------------------------QUEST FUNCTIONS---------------------------------------*/
@@ -271,18 +268,17 @@ public class GameInformationLoaderFromFile {
 
     }
 
-    public GameMode loadQuestsFromFile(String fileLocation) throws IOException, FileNotFoundException {
-        this.fileReader = new BufferedReader(new FileReader(fileLocation));
-        GameMode gameMode = new GameMode();
+    public static GameMode loadQuestsFromFile(String fileLocation) { 
 
         try {
-
-            gameMode.setTimer(Integer.parseInt(this.fileReader.readLine()));
-            gameMode.setNumberOfQuests(Integer.parseInt(this.fileReader.readLine()));
-            String docXLocationText = this.fileReader.readLine();
-            String QuestYlocationText = this.fileReader.readLine();
+            BufferedReader fileReader  = new BufferedReader(new FileReader(fileLocation));
+            GameMode gameMode = new GameMode();
+            gameMode.setTimer(Integer.parseInt(fileReader.readLine()));
+            gameMode.setNumberOfQuests(Integer.parseInt(fileReader.readLine()));
+            String docXLocationText = fileReader.readLine();
+            String QuestYlocationText = fileReader.readLine();
             gameMode.setDoc(Integer.parseInt(docXLocationText), Integer.parseInt(QuestYlocationText));
-            String respawnPoints = this.fileReader.readLine();
+            String respawnPoints = fileReader.readLine();
             String[] StringParts = respawnPoints.split("\\s");
             int spyRespawnPosX = Integer.parseInt(StringParts[0]);
             int spyRespawnPosY = Integer.parseInt(StringParts[1]);
@@ -310,7 +306,7 @@ public class GameInformationLoaderFromFile {
             return gameMode;
 
         } catch (IOException e) {
-            System.out.println("Erreur");
+            System.out.println("quest file load fail");
             return null;
         }
     }

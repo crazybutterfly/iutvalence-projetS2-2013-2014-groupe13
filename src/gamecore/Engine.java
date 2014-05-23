@@ -6,6 +6,8 @@ import gamedatas.Store;
 import display.MainDisplay;
 import gamedatas.GameMode;
 import gamedatas.Map;
+import javax.swing.SwingUtilities;
+import utils.GameInformationLoaderFromFile;
 
 /**
  * Game Engine. Primordial class used during the game, process cycles for
@@ -13,8 +15,7 @@ import gamedatas.Map;
  *
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  */
-public class Engine
-{
+public class Engine {
 
     /* ---------------------- START DECLARATIONS ---------------------- */
     /**
@@ -35,7 +36,7 @@ public class Engine
     /**
      * Datas of the different quests of the game.
      */
-    public GameMode myGameMode;
+    public GameMode gameMode;
 
     /**
      * All Map datas.
@@ -50,32 +51,32 @@ public class Engine
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
-    public void Engine(GameInformations gameInfos)
-    {
-        
+    public Engine(GameInformations gameInfos) {
+        this.numberOfPlayer = gameInfos.getNumberOfGuards() + gameInfos.getNumberOfSpies();
+        this.map = GameInformationLoaderFromFile.loadMapFromFile(gameInfos.getMapLocation());
+        this.gameMode = GameInformationLoaderFromFile.loadQuestsFromFile(gameInfos.getQuestsLocation());
+        this.allPlayers = new AllPlayers(gameInfos.getNumberOfGuards(), gameInfos.getNumberOfSpies(), this.map, this.gameMode);
+        this.mainDisplay = new MainDisplay();
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 
     /* ---------------------- START FUNCTION(S) ---------------------- */
-    public void doInteraction(PlayerInputs playerInput)
-    {
+    public void doInteraction(PlayerInputs playerInput) {
+
+    }
+
+    public void classicPlayerPlay() {
+    }
+
+    public void classicPlayerWaitingRespawn() {
+    }
+
+    public void classicPlayerDead() {
+    }
+
+    public void startGame() {
         
-    }
-
-    public void classicPlayerPlay()
-    {
-    }
-
-    public void classicPlayerWaitingRespawn()
-    {
-    }
-
-    public void classicPlayerDead()
-    {
-    }
-
-    public void startCycle()
-    {
+        SwingUtilities.invokeLater(this.mainDisplay);
     }
     /* ---------------------- END FUNCTION(S) ---------------------- */
 
