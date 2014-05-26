@@ -180,4 +180,9 @@ public class AllPlayers
         return this.gameMode;
     }
 
+    public GuardChiefPlayer getGuardChiefPlayer() {
+        return guardChiefPlayer;
+    }
+    
+
 }

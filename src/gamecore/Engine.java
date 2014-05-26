@@ -56,7 +56,7 @@ public class Engine {
         this.map = GameInformationLoaderFromFile.loadMapFromFile(gameInfos.getMapLocation());
         this.gameMode = GameInformationLoaderFromFile.loadQuestsFromFile(gameInfos.getQuestsLocation());
         this.allPlayers = new AllPlayers(gameInfos.getNumberOfGuards(), gameInfos.getNumberOfSpies(), this.map, this.gameMode);
-        this.mainDisplay = new MainDisplay();
+        this.mainDisplay = new MainDisplay(this.allPlayers, this.map, this.gameMode);
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 
