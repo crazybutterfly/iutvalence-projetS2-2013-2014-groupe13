@@ -17,6 +17,7 @@ public class Knife extends Item {
     public Knife()
     {
         super();
+        this.itemName = "Knife";
     }
 
     @Override
@@ -35,6 +36,12 @@ public class Knife extends Item {
     public Item getNewItem()
     {
         return new Knife();
+    }
+
+    @Override
+    public void reload()
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

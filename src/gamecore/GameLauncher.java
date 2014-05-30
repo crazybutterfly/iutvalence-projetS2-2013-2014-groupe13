@@ -25,8 +25,8 @@ public class GameLauncher {
         gameEngine = new Engine(initialGameInformations);
         // Game launch
         gameEngine.startGame();
-        
-        
+
+
 
 
     }
@@ -38,4 +38,5 @@ public class GameLauncher {
     private void teamSelect(GameInformations gameInfos)
     {
     }
+
 }

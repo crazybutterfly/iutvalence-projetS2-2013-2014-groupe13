@@ -83,7 +83,10 @@ public class Engine {
     {
 
         SwingUtilities.invokeLater(this.mainDisplay);
-        
+        while (0 != 1) // élémentaire mon cher watson! (Charles Morel)
+        {
+            this.allPlayers.updateAllStatuses();
+        }
     }
     /* ---------------------- END FUNCTION(S) ---------------------- */
 

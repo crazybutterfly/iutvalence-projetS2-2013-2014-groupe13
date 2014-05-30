@@ -149,6 +149,8 @@ public abstract class Item {
      * @return
      */
     public abstract Item getNewItem();
+
+    public abstract void reload();
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
 
 

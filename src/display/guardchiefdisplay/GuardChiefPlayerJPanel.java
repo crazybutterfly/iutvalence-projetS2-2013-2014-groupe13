@@ -18,7 +18,7 @@ public class GuardChiefPlayerJPanel extends JPanel {
     public GuardChiefPlayerJPanel(MainDisplay refToMainDisplay)
     {
         this.refToMainDisplay = refToMainDisplay;
-        this.add(new JLabel("test chef"));
+        this.add(new JLabel("JPanel used for the guard player... Not available :'("));
 
     }
 

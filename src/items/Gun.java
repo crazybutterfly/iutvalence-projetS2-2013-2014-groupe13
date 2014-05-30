@@ -63,12 +63,15 @@ public class Gun extends Item {
     public Gun()
     {
         super();
+        this.numberOfAmmoInGun = 8;
+        this.numberOfAmmoOwned = 16;
     }
 
 
     /**
      * reload the gun.
      */
+    @Override
     public void reload()
     {
         this.numberOfAmmoOwned -= this.numberOfAmmoInGun;

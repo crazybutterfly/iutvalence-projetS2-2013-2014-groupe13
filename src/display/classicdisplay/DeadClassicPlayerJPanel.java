@@ -1,7 +1,7 @@
 package display.classicdisplay;
 
 import display.MainDisplay;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 /**
  *
@@ -18,6 +18,7 @@ public class DeadClassicPlayerJPanel extends JPanel {
     public DeadClassicPlayerJPanel(MainDisplay refToMainDisplay)
     {
         this.refToMainDisplay = refToMainDisplay;
+        this.add(new JLabel("The player is dead"));
     }
 
 }

@@ -35,13 +35,9 @@ public class MouseAndKeybordListener implements MouseListener, KeyListener {
         }
         else
         {
-            if (this.refToMainDisplay.getPlayerSelected() < this.refToMainDisplay.getRefToGamePlayers().getNumberOfGuards())
+            if (this.refToMainDisplay.getPlayerSelected() < this.refToMainDisplay.getRefToGamePlayers().getNumberOfGuards() && this.refToMainDisplay.getRefToGamePlayers().getGuardsArray()[this.refToMainDisplay.getPlayerSelected() - 1].getSelectedItemInInventory() == 0)
             {
-                this.refToMainDisplay.getRefToGamePlayers().getGuardsArray()[this.refToMainDisplay.getPlayerSelected() - 1].dropSelectedItem();
-            }
-            else
-            {
-                this.refToMainDisplay.getRefToGamePlayers().getSpiesArray()[this.refToMainDisplay.getPlayerSelected() - this.refToMainDisplay.getRefToGamePlayers().getNumberOfGuards()].dropSelectedItem();
+                this.refToMainDisplay.getRefToGamePlayers().getGuardsArray()[this.refToMainDisplay.getPlayerSelected() - 1].getItems()[0].reload();
             }
         }
         this.refToMainDisplay.getCurrentJPanel().getInventory().refreshInventory();
@@ -114,7 +110,8 @@ public class MouseAndKeybordListener implements MouseListener, KeyListener {
                 this.refToMainDisplay.getRefToGamePlayers().getSpiesArray()[this.refToMainDisplay.getPlayerSelected() - this.refToMainDisplay.getRefToGamePlayers().getNumberOfGuards()].getCurrentMoves().moveRight();
             }
         }
-        this.refToMainDisplay.getCurrentJPanel().getMainMap().refreshMainMap();
+//        this.refToMainDisplay.getCurrentJPanel().getMainMap().refreshMainMap();
+        this.refToMainDisplay.getCurrentJPanel().getMiniMap().refreshMiniMap();
 
     }
 

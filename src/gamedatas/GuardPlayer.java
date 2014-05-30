@@ -36,7 +36,7 @@ public class GuardPlayer extends ClassicPlayer {
      * @param refToMap
      * @param refToPlayers
      */
-    public GuardPlayer(int NumberOfThePlayer, Map refToMap, AllPlayers refToPlayers)
+    public GuardPlayer(int NumberOfThePlayer, Map refToMap, AllPlayers refToPlayers, GameMode refToGameMode)
     {
         super(refToMap, refToPlayers);
         this.pseudo += GuardPlayer.DEFAULT_PSEUDO_PREFIX_FOR_GUARD;
@@ -44,6 +44,8 @@ public class GuardPlayer extends ClassicPlayer {
         this.items[0] = new Gun();
         this.stats = new Stats();
         this.currentMoves = new GuardPlayerMoves(this);
+        this.posX = refToGameMode.getGuardRespawnPointPosX();
+        this.posY = refToGameMode.getGuardRespawnPointPosY();
     }
 
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
@@ -56,13 +58,14 @@ public class GuardPlayer extends ClassicPlayer {
         this.nextTimeBeforeRespawn += GuardPlayer.GUARD_TIME_TO_INCREMENT_FOR_RESAWN_TIME;
         this.currentStatus = PlayerStatus.WAITING_FOR_RESPAWN;
     }
-    
-       @Override
+
+    @Override
     public void refeshKilledPlayerStatuts()
     {
-         if ((System.currentTimeMillis() >= this.respawnTime) && (this.currentStatus == PlayerStatus.WAITING_FOR_RESPAWN)) {
+        if ((System.currentTimeMillis() >= this.respawnTime) && (this.currentStatus == PlayerStatus.WAITING_FOR_RESPAWN))
+        {
             this.currentStatus = PlayerStatus.ALIVE;
-            this.updatePosition(this.getPlayerArray().getGameMode().getGuardRespawnPointPosX(),this.getPlayerArray().getGameMode().getGuardRespawnPointPosY());
+            this.updatePosition(this.getPlayerArray().getGameMode().getGuardRespawnPointPosX(), this.getPlayerArray().getGameMode().getGuardRespawnPointPosY());
         }
 
     }

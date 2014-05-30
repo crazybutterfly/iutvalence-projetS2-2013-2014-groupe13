@@ -99,6 +99,7 @@ public class JMenuMainDisplay extends JMenuBar implements ActionListener {
             if (JOptionPane.showConfirmDialog(this.refToMainDisplay.getMainFrame(), "Are-you sure to close application?", "Confirmation", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.OK_OPTION)
             {
                 this.refToMainDisplay.getMainFrame().dispose();
+                System.exit(0);
             }
         }
 

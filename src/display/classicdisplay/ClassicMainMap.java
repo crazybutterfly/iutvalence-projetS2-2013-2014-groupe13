@@ -77,39 +77,39 @@ public class ClassicMainMap extends JPanel {
         {
             for (int j = 0; j < NUMBER_OF_COLUMNS_VISIBLE; j++)
             {
-                this.mapFrame[i][j] = new JPanel();
-                this.mapFrame[i][j].setPreferredSize(new Dimension(50, 50));
-                this.mapFrame[i][j].setMinimumSize(new Dimension(50, 50));
-                this.mapFrame[i][j].setMaximumSize(new Dimension(50, 50));
-                this.mapFrame[i][j].setBorder(null);
-                this.add(this.mapFrame[i][j]);
+                this.mapFrame[j][i] = new JPanel();
+                this.mapFrame[j][i].setPreferredSize(new Dimension(50, 50));
+                this.mapFrame[j][i].setMinimumSize(new Dimension(50, 50));
+                this.mapFrame[j][i].setMaximumSize(new Dimension(50, 50));
+                this.mapFrame[j][i].setBorder(null);
+                this.add(this.mapFrame[j][i]);
             }
         }
-        refreshMainMap();
+//        refreshMainMap();
     }
 
     public void refreshMainMap()
     {
         updateViewCoordonnees();
-        for (int i = this.startLineNumberOfTheView; i <= this.endLineNumberOfTheView; i++)
+        for (int i = this.startLineNumberOfTheView; i < this.endLineNumberOfTheView; i++)
         {
-            for (int j = this.startColumnNumberOfTheView; j <= this.endColumnNumberOfTheView; j++)
+            for (int j = this.startColumnNumberOfTheView; j < this.endColumnNumberOfTheView; j++)
             {
-                if (this.refToGameMap.getMap()[i][j] == WALL)
+                if (this.refToGameMap.getMap()[j][i] == WALL)
                 {
-                    this.mapFrame[i - this.startColumnNumberOfTheView + 1][j - this.startLineNumberOfTheView + 1].setBackground(Color.BLACK);
+                    this.mapFrame[j - this.startColumnNumberOfTheView + 1][i - this.startLineNumberOfTheView + 1].setBackground(Color.BLACK);
                 }
-                if (this.refToGameMap.getMap()[i][j] == FLOOR)
+                if (this.refToGameMap.getMap()[j][i] == FLOOR)
                 {
-                    this.mapFrame[i - this.startColumnNumberOfTheView + 1][j - this.startLineNumberOfTheView + 1].setBackground(Color.WHITE);
+                    this.mapFrame[j - this.startColumnNumberOfTheView + 1][i - this.startLineNumberOfTheView + 1].setBackground(Color.WHITE);
                 }
-                if (this.refToGameMap.getMap()[i - this.startColumnNumberOfTheView + 1][j - this.startLineNumberOfTheView + 1] == GUARDSFLOOR)
+                if (this.refToGameMap.getMap()[j - this.startColumnNumberOfTheView + 1][i - this.startLineNumberOfTheView + 1] == GUARDSFLOOR)
                 {
-                    this.mapFrame[i - this.startColumnNumberOfTheView + 1][j - this.startLineNumberOfTheView + 1].setBackground(Color.GRAY);
+                    this.mapFrame[j - this.startColumnNumberOfTheView + 1][i - this.startLineNumberOfTheView + 1].setBackground(Color.GRAY);
                 }
-                if (this.refToGameMap.getMap()[i - this.startColumnNumberOfTheView + 1][j - this.startLineNumberOfTheView + 1] == SPIESFLOOR)
+                if (this.refToGameMap.getMap()[j - this.startColumnNumberOfTheView + 1][i - this.startLineNumberOfTheView + 1] == SPIESFLOOR)
                 {
-                    this.mapFrame[i - this.startColumnNumberOfTheView + 1][j - this.startLineNumberOfTheView + 1].setBackground(Color.LIGHT_GRAY);
+                    this.mapFrame[j - this.startColumnNumberOfTheView + 1][i - this.startLineNumberOfTheView + 1].setBackground(Color.LIGHT_GRAY);
                 }
             }
         }

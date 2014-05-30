@@ -24,4 +24,10 @@ public class Material extends Item {
         return new Material();
     }
 
+    @Override
+    public void reload()
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

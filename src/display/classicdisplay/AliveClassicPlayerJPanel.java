@@ -67,4 +67,10 @@ public class AliveClassicPlayerJPanel extends JPanel {
         return mainMap;
     }
 
+    public MiniMap getMiniMap()
+    {
+        return miniMap;
+    }
+
+
 }

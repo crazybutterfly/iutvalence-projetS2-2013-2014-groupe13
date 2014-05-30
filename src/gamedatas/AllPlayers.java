@@ -64,11 +64,11 @@ public class AllPlayers {
         this.spiesArray = new SpyPlayer[this.numberOfSpies];
         for (int i = 0; i < this.numberOfGuards - 1; i++)
         {
-            this.guardsArray[i] = new GuardPlayer(i + 1, refToMap, this);
+            this.guardsArray[i] = new GuardPlayer(i + 1, refToMap, this, gameMode);
         }
         for (int i = 0; i < this.numberOfSpies; i++)
         {
-            this.spiesArray[i] = new SpyPlayer(i + 1, refToMap, this);
+            this.spiesArray[i] = new SpyPlayer(i + 1, refToMap, this, gameMode);
         }
         this.guardChiefPlayer = new GuardChiefPlayer(refToMap, this);
         this.guardTeamStats = new Stats();
@@ -192,16 +192,18 @@ public class AllPlayers {
     {
         return guardChiefPlayer;
     }
-    
+
     public void updateAllStatuses()
     {
-        for (int i = 0; i < this.numberOfGuards - 1; i++) {
+        for (int i = 0; i < this.numberOfGuards - 1; i++)
+        {
             this.guardsArray[i].refeshKilledPlayerStatuts();
         }
-        for (int i = 0; i < this.numberOfSpies; i++) {
+        for (int i = 0; i < this.numberOfSpies; i++)
+        {
             this.spiesArray[i].refeshKilledPlayerStatuts();
         }
     }
-    
+
 
 }

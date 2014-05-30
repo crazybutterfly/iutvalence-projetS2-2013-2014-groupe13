@@ -1,5 +1,7 @@
 package gamedatas;
 
+import items.Knife;
+
 /**
  *
  * @author MOREL Charles <charles.morel@iut-valence.fr>
@@ -38,7 +40,7 @@ public class SpyPlayer extends ClassicPlayer {
      *
      * @param NumberOfThePlayer Numéro du Spy.
      */
-    public SpyPlayer(int NumberOfThePlayer, Map refToMap, AllPlayers refToPlayers)
+    public SpyPlayer(int NumberOfThePlayer, Map refToMap, AllPlayers refToPlayers, GameMode refToGameMode)
     {
         super(refToMap, refToPlayers);
         this.pseudo += SpyPlayer.DEFAULT_PSEUDO_PREFIX_FOR_SPY;
@@ -46,6 +48,9 @@ public class SpyPlayer extends ClassicPlayer {
         this.myCoins = new Coins();
         this.stats = new SpyStats();
         this.currentMoves = new SpyPlayerMoves(this);
+        this.posX = refToGameMode.getSpyRespawnPointPosX();
+        this.posY = refToGameMode.getSpyRespawnPointPosY();
+        this.items[0] = new Knife();
     }
 
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
@@ -65,14 +70,15 @@ public class SpyPlayer extends ClassicPlayer {
             this.currentStatus = PlayerStatus.WAITING_FOR_RESPAWN;
         }
     }
-    
+
 
     @Override
     public void refeshKilledPlayerStatuts()
     {
-         if ((System.currentTimeMillis() >= this.respawnTime) && (this.currentStatus == PlayerStatus.WAITING_FOR_RESPAWN)) {
+        if ((System.currentTimeMillis() >= this.respawnTime) && (this.currentStatus == PlayerStatus.WAITING_FOR_RESPAWN))
+        {
             this.currentStatus = PlayerStatus.ALIVE;
-            this.updatePosition(this.getPlayerArray().getGameMode().getSpyRespawnPointPosX(),this.getPlayerArray().getGameMode().getSpyRespawnPointPosY());
+            this.updatePosition(this.getPlayerArray().getGameMode().getSpyRespawnPointPosX(), this.getPlayerArray().getGameMode().getSpyRespawnPointPosY());
         }
     }
     /* ---------------------- START FUNCTION(S) ---------------------- */

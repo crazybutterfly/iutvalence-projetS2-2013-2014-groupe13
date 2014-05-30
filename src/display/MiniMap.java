@@ -44,12 +44,12 @@ public class MiniMap extends JPanel {
         {
             for (int j = 0; j < this.refToGameMap.getNumberOfColumns(); j++)
             {
-                this.mapFrame[i][j] = new JPanel();
-                this.mapFrame[i][j].setPreferredSize(new Dimension(2, 2));
-                this.mapFrame[i][j].setMinimumSize(new Dimension(2, 2));
-                this.mapFrame[i][j].setMaximumSize(new Dimension(2, 2));
-                this.mapFrame[i][j].setBorder(null);
-                this.add(this.mapFrame[i][j]);
+                this.mapFrame[j][i] = new JPanel();
+                this.mapFrame[j][i].setPreferredSize(new Dimension(2, 2));
+                this.mapFrame[j][i].setMinimumSize(new Dimension(2, 2));
+                this.mapFrame[j][i].setMaximumSize(new Dimension(2, 2));
+                this.mapFrame[j][i].setBorder(null);
+                this.add(this.mapFrame[j][i]);
             }
         }
         refreshMiniMap();
@@ -59,23 +59,23 @@ public class MiniMap extends JPanel {
     {
         for (int i = 0; i < this.refToGameMap.getNumberOfLines(); i++)
         {
-            for (int j = 0; j < this.refToGameMap.getNumberOfLines(); j++)
+            for (int j = 0; j < this.refToGameMap.getNumberOfColumns(); j++)
             {
-                if (this.refToGameMap.getMap()[i][j] == WALL)
+                if (this.refToGameMap.getMap()[j][i] == WALL)
                 {
-                    this.mapFrame[i][j].setBackground(Color.BLACK);
+                    this.mapFrame[j][i].setBackground(Color.BLACK);
                 }
-                if (this.refToGameMap.getMap()[i][j] == FLOOR)
+                if (this.refToGameMap.getMap()[j][i] == FLOOR)
                 {
-                    this.mapFrame[i][j].setBackground(Color.WHITE);
+                    this.mapFrame[j][i].setBackground(Color.WHITE);
                 }
-                if (this.refToGameMap.getMap()[i][j] == GUARDSFLOOR)
+                if (this.refToGameMap.getMap()[j][i] == GUARDSFLOOR)
                 {
-                    this.mapFrame[i][j].setBackground(Color.GRAY);
+                    this.mapFrame[j][i].setBackground(Color.GRAY);
                 }
-                if (this.refToGameMap.getMap()[i][j] == SPIESFLOOR)
+                if (this.refToGameMap.getMap()[j][i] == SPIESFLOOR)
                 {
-                    this.mapFrame[i][j].setBackground(Color.LIGHT_GRAY);
+                    this.mapFrame[j][i].setBackground(Color.LIGHT_GRAY);
                 }
             }
         }

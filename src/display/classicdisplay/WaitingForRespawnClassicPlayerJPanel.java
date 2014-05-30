@@ -1,7 +1,7 @@
 package display.classicdisplay;
 
 import display.MainDisplay;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 /**
  *
@@ -18,6 +18,15 @@ public class WaitingForRespawnClassicPlayerJPanel extends JPanel {
     public WaitingForRespawnClassicPlayerJPanel(MainDisplay refToMainDisplay)
     {
         this.refToMainDisplay = refToMainDisplay;
+
+        if (this.refToMainDisplay.getPlayerSelected() < this.refToMainDisplay.getRefToGamePlayers().getNumberOfGuards())
+        {
+            this.add(new JLabel("The player is waiting for respawn: " + this.refToMainDisplay.getRefToGamePlayers().getGuardsArray()[this.refToMainDisplay.getPlayerSelected() - 1].timeBeforeRespawnInSeconds() + " seconds"));
+        }
+        else
+        {
+            this.add(new JLabel("The player is waiting for respawn: " + this.refToMainDisplay.getRefToGamePlayers().getSpiesArray()[this.refToMainDisplay.getPlayerSelected() - this.refToMainDisplay.getRefToGamePlayers().getNumberOfGuards()].timeBeforeRespawnInSeconds() + " seconds"));
+        }
     }
 
 }
