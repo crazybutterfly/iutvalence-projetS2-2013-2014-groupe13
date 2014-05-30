@@ -21,8 +21,9 @@ import javax.swing.WindowConstants;
  */
 public class ChangePseudo implements Runnable, ActionListener {
 
+    /* ---------------------- START DECLARATIONS ---------------------- */
     private final JMenuItem[] refToAllPlayersItemMenu;
-    
+
     private final AllPlayers refToAllPlayers;
 
     private JComboBox pseudoChoise;
@@ -30,18 +31,29 @@ public class ChangePseudo implements Runnable, ActionListener {
     private JTextField newPseudo;
 
     private JFrame pseudoChangerFrame;
+
     private JPanel changePseudoLayout;
+
     private JButton validationButton;
+
     private JPanel validationCancelLayout;
+
     private JButton cancelButton;
 
-    public ChangePseudo(JMenuItem[] refToAllPlayersItemMenu, AllPlayers refToAllPlayers) {
+    /* ---------------------- END DECLARATIONS ---------------------- */
+    
+    /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
+    public ChangePseudo(JMenuItem[] refToAllPlayersItemMenu, AllPlayers refToAllPlayers)
+    {
         this.refToAllPlayersItemMenu = refToAllPlayersItemMenu;
         this.refToAllPlayers = refToAllPlayers;
     }
-
+    /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
+    
+    /* ---------------------- START FUNCTION(S) ---------------------- */
     @Override
-    public void run() {
+    public void run()
+    {
 
         // Pseudo changer frame initialization
         this.pseudoChangerFrame = new JFrame();
@@ -57,7 +69,8 @@ public class ChangePseudo implements Runnable, ActionListener {
         // Add inputs
         this.changePseudoLayout.add(new JLabel("Select the player pseudo to change:"));
         String[] avaliblePseudos = new String[this.refToAllPlayersItemMenu.length];
-        for (int i = 0; i < this.refToAllPlayersItemMenu.length; i++) {
+        for (int i = 0; i < this.refToAllPlayersItemMenu.length; i++)
+        {
             avaliblePseudos[i] = this.refToAllPlayersItemMenu[i].getText();
         }
         this.pseudoChoise = new JComboBox(avaliblePseudos);
@@ -82,7 +95,8 @@ public class ChangePseudo implements Runnable, ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent actionSelected) {
+    public void actionPerformed(ActionEvent actionSelected)
+    {
         JButton selectedButton = (JButton) actionSelected.getSource();
 
         if (selectedButton == this.validationButton)
@@ -90,11 +104,17 @@ public class ChangePseudo implements Runnable, ActionListener {
             int selectedPlayer = this.pseudoChoise.getSelectedIndex();
             boolean pseudoChanged = false;
             if (selectedPlayer == 0)
+            {
                 pseudoChanged = this.refToAllPlayers.getGuardChiefPlayer().changePseudo(this.refToAllPlayers.getAllPlayersPseudos(), this.newPseudo.getText());
+            }
             if ((selectedPlayer >= 1) && (selectedPlayer < this.refToAllPlayers.getNumberOfGuards()))
-                pseudoChanged = this.refToAllPlayers.getGuardsArray()[selectedPlayer-1].changePseudo(this.refToAllPlayers.getAllPlayersPseudos(), this.newPseudo.getText());
+            {
+                pseudoChanged = this.refToAllPlayers.getGuardsArray()[selectedPlayer - 1].changePseudo(this.refToAllPlayers.getAllPlayersPseudos(), this.newPseudo.getText());
+            }
             if (selectedPlayer >= this.refToAllPlayers.getNumberOfGuards())
-                pseudoChanged = this.refToAllPlayers.getSpiesArray()[selectedPlayer-this.refToAllPlayers.getNumberOfGuards()].changePseudo(this.refToAllPlayers.getAllPlayersPseudos(), this.newPseudo.getText());
+            {
+                pseudoChanged = this.refToAllPlayers.getSpiesArray()[selectedPlayer - this.refToAllPlayers.getNumberOfGuards()].changePseudo(this.refToAllPlayers.getAllPlayersPseudos(), this.newPseudo.getText());
+            }
             if (!pseudoChanged)
             {
                 JOptionPane.showMessageDialog(this.pseudoChangerFrame, new JLabel("ERROR: this pseudo is already in use by an other player"), "ERROR", JOptionPane.INFORMATION_MESSAGE);
@@ -111,5 +131,5 @@ public class ChangePseudo implements Runnable, ActionListener {
             this.pseudoChangerFrame.dispose();
         }
     }
-
+    /* ---------------------- END FUNCTION(S) ---------------------- */
 }

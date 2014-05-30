@@ -3,8 +3,7 @@ package display.guardchiefdisplay;
 import display.SideBar;
 import gamedatas.AllPlayers;
 
-public class CamsDisplay extends SideBar
-{
+public class CamsDisplay extends SideBar {
 
     public int cameraNumbers;
 

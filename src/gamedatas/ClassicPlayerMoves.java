@@ -5,8 +5,7 @@ package gamedatas;
  *
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  */
-public abstract class ClassicPlayerMoves
-{
+public abstract class ClassicPlayerMoves {
     /* ---------------------- START DECLARATIONS ---------------------- */
 
 
@@ -19,7 +18,7 @@ public abstract class ClassicPlayerMoves
      * Vitesse du joueur sur l'axe Y.
      */
     protected int yPlayerSpeed;
-    
+
     protected ClassicPlayer player;
 
 
@@ -46,13 +45,13 @@ public abstract class ClassicPlayerMoves
     /* ---------------------- START FUNCTION(S) ---------------------- */
     public abstract void moveUp();
 
-    
+
     public abstract void moveDown();
-    
+
     public abstract void moveLeft();
-   
+
     public abstract void moveRight();
-    
+
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
 

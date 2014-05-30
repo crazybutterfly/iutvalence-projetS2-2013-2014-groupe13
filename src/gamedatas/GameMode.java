@@ -9,8 +9,7 @@ import items.Doc;
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @author BEGOT William <william.begot@iut-valence.fr>
  */
-public class GameMode
-{
+public class GameMode {
     /* ---------------------- START DECLARATIONS ---------------------- */
 
     /**
@@ -32,11 +31,13 @@ public class GameMode
      * the doc on the map.
      */
     private Doc doc;
-    
+
     private int spiesRespawnPointPosX;
+
     private int spiesRespawnPointPosY;
 
     private int guardsRespawnPointPosX;
+
     private int guardsRespawnPointPosY;
 
 
@@ -96,30 +97,36 @@ public class GameMode
     }
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
 
-    public void setSpiesRespawnPoint(int spyRespawnPosX, int spyRespawnPosY) {
+    public void setSpiesRespawnPoint(int spyRespawnPosX, int spyRespawnPosY)
+    {
         this.spiesRespawnPointPosX = spyRespawnPosX;
         this.spiesRespawnPointPosY = spyRespawnPosY;
     }
 
-    public void setGuardsRespawnPoint(int guardsRespawnPosX, int guardsRespawnPosY) {
+    public void setGuardsRespawnPoint(int guardsRespawnPosX, int guardsRespawnPosY)
+    {
         this.guardsRespawnPointPosX = guardsRespawnPosX;
         this.guardsRespawnPointPosY = guardsRespawnPosY;
     }
-    
+
     public int getSpyRespawnPointPosX()
     {
         return this.spiesRespawnPointPosX;
     }
+
     public int getSpyRespawnPointPosY()
     {
         return this.spiesRespawnPointPosY;
     }
+
     public int getGuardRespawnPointPosX()
     {
         return this.guardsRespawnPointPosX;
-    }       
+    }
+
     public int getGuardRespawnPointPosY()
     {
         return this.guardsRespawnPointPosY;
     }
+
 }

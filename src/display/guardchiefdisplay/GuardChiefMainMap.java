@@ -1,6 +1,5 @@
 package display.guardchiefdisplay;
 
-public class GuardChiefMainMap
-{
+public class GuardChiefMainMap {
 
 }

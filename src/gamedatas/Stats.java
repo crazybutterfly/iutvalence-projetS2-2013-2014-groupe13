@@ -4,15 +4,16 @@ package gamedatas;
  *
  * @author begotw
  */
-public class Stats
-{
+public class Stats {
 
 
     /* ---------------------- START DECLARATIONS ---------------------- */
     protected int numberOfKills;
+
     protected int numberOfDeaths;
 
     public static final int NUMBER_OF_KILLS_DEFAULT = 0;
+
     public static final int NUMBER_OF_DEATH_DEFAULT = 0;
     /* ---------------------- END DECLARATIONS ---------------------- */
 
@@ -58,4 +59,5 @@ public class Stats
         this.numberOfDeaths = numberOfDeaths;
     }
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
+
 }

@@ -9,8 +9,7 @@ import gamedatas.ClassicPlayer;
  * @author Woerly-Moussier Joachim <joachim.woerly-moussier@iut-valence.fr>
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  */
-public abstract class Item
-{
+public abstract class Item {
 
     /* ---------------------- START DECLARATIONS ---------------------- */
     protected String itemName;

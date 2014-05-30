@@ -14,50 +14,53 @@ import gamedatas.PlayerOrientation;
  *
  * @author UCDP_Brony
  */
-public class Gun extends Item
-{
+public class Gun extends Item {
 
     private static final int NUMBER_MAX_OF_AMMO_IN_GUN = 6;
+
     private int numberOfAmmoOwned;
+
     private int numberOfAmmoInGun;
 
     @Override
     public void useItem(ClassicPlayer player)
     {
-        if (this.numberOfAmmoInGun == 0) {
+        if (this.numberOfAmmoInGun == 0)
+        {
             System.out.println("no ammo");
         }
-        else {
+        else
+        {
             this.numberOfAmmoInGun -= 1;
-               int bulletPosX = player.getPosX();
-               int bulletPosY = player.getPosY();
-            
-               while ((player.getMap().getFrameStatus(bulletPosX, bulletPosY) != Frame.WALL) &&((bulletPosX<Map.MAX_X_SIZE&&bulletPosX!=0)&&(bulletPosY<Map.MAX_Y_SIZE&&bulletPosY!=0)))
-               {
-                    for (int index = 0; index < player.getPlayerArray().getNumberOfSpies(); index ++)
-                    { 
-                       if ((player.getPlayerArray().getSpiesArray()[index].getPosX() == bulletPosX)&&(player.getPlayerArray().getSpiesArray()[index].getPosY() == bulletPosY))
-                        {
-                            player.getPlayerArray().getSpiesArray()[index].playerHasBeenKilled();
-                        }
-                    }
-                    if (player.getPlayerOrientation() == PlayerOrientation.UP) 
+            int bulletPosX = player.getPosX();
+            int bulletPosY = player.getPosY();
+
+            while ((player.getMap().getFrameStatus(bulletPosX, bulletPosY) != Frame.WALL) && ((bulletPosX < Map.MAX_X_SIZE && bulletPosX != 0) && (bulletPosY < Map.MAX_Y_SIZE && bulletPosY != 0)))
+            {
+                for (int index = 0; index < player.getPlayerArray().getNumberOfSpies(); index++)
+                {
+                    if ((player.getPlayerArray().getSpiesArray()[index].getPosX() == bulletPosX) && (player.getPlayerArray().getSpiesArray()[index].getPosY() == bulletPosY))
                     {
-                        bulletPosY--;
+                        player.getPlayerArray().getSpiesArray()[index].playerHasBeenKilled();
                     }
-                    if (player.getPlayerOrientation() == PlayerOrientation.LEFT)
-                    {
-                        bulletPosX--;
-                    }
-                    if (player.getPlayerOrientation() == PlayerOrientation.DOWN)
-                    {
-                        bulletPosY++;
-                    }
-                    if (player.getPlayerOrientation() == PlayerOrientation.RIGHT)
-                    {
-                        bulletPosX++;
-                    }
-               }
+                }
+                if (player.getPlayerOrientation() == PlayerOrientation.UP)
+                {
+                    bulletPosY--;
+                }
+                if (player.getPlayerOrientation() == PlayerOrientation.LEFT)
+                {
+                    bulletPosX--;
+                }
+                if (player.getPlayerOrientation() == PlayerOrientation.DOWN)
+                {
+                    bulletPosY++;
+                }
+                if (player.getPlayerOrientation() == PlayerOrientation.RIGHT)
+                {
+                    bulletPosX++;
+                }
+            }
         }
     }
 
@@ -102,4 +105,5 @@ public class Gun extends Item
     {
         return new Gun();
     }
+
 }

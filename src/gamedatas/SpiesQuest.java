@@ -1,7 +1,6 @@
 package gamedatas;
 
-public class SpiesQuest extends Quests
-{
+public class SpiesQuest extends Quests {
 
     /* ---------------------- START DECLARATIONS ---------------------- */
     /**
@@ -56,10 +55,10 @@ public class SpiesQuest extends Quests
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
     /**
      *
-     * @param posX Position X de la quete.
-     * @param posY Position Y de la quete.
-     * @param questIsPrimaryQuest Quete primaire ou secondaire.
-     * @param priceWonIfQuestDone Argent gagné par le joueur.
+     * @param posX                 Position X de la quete.
+     * @param posY                 Position Y de la quete.
+     * @param questIsPrimaryQuest  Quete primaire ou secondaire.
+     * @param priceWonIfQuestDone  Argent gagné par le joueur.
      * @param teamPriceIfQuestDone Argent gagné par l'équipe.
      */
     public SpiesQuest(int posX, int posY, boolean questIsPrimaryQuest, int priceWonIfQuestDone, int teamPriceIfQuestDone)
@@ -82,11 +81,14 @@ public class SpiesQuest extends Quests
      */
     public void checkpointQuest(SpyPlayer[] spiesArray)
     {
-        for (int i = 0; i < spiesArray.length; i++) {
-            if (spiesArray[i].getPosX() == this.posX && spiesArray[i].getPosY() == this.posY) {
+        for (int i = 0; i < spiesArray.length; i++)
+        {
+            if (spiesArray[i].getPosX() == this.posX && spiesArray[i].getPosY() == this.posY)
+            {
                 this.questIsDone = true;
                 spiesArray[i].getMyCoins().changeCoinQuantity(this.priceWonIfQuestDone);
-                for (int index = 0; index < spiesArray.length; index++) {
+                for (int index = 0; index < spiesArray.length; index++)
+                {
                     spiesArray[index].getMyCoins().changeCoinQuantity(this.teamPriceIfQuestDone);
                 }
             }

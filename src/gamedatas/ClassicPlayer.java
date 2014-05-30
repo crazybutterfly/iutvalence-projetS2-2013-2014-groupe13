@@ -9,8 +9,7 @@ import items.Item;
  * @author BEGOT William <william.begot@iut-valence.fr>
  * @author DUBOIS Thomas <thomas.dubois@iut-valence.fr>
  */
-public class ClassicPlayer extends Player
-{
+public class ClassicPlayer extends Player {
 
     /* ---------------------- START DECLARATIONS ---------------------- */
 
@@ -146,7 +145,8 @@ public class ClassicPlayer extends Player
         this.respawnTime = ClassicPlayer.RESPAWN_TIME_DEFAULT;
         this.initialNumberOfLives = ClassicPlayer.INITIAL_NUMBER_OF_LIVES;
         this.items = new Item[ClassicPlayer.MAXIMUM_NUMBER_OF_ITEM_TYPE];
-        for (int i = 0; i < ClassicPlayer.MAXIMUM_NUMBER_OF_ITEM_TYPE; i++) {
+        for (int i = 0; i < ClassicPlayer.MAXIMUM_NUMBER_OF_ITEM_TYPE; i++)
+        {
             this.items[i] = new EmptyItem();
         }
         this.currentNumberOfTypeItemPocessed = ClassicPlayer.CURRENT_NUMBER_OF_TYPE_ITEM_POCESSED_DEFAULT;
@@ -181,7 +181,8 @@ public class ClassicPlayer extends Player
 
     public void refeshKilledPlayerStatuts()
     {
-        if ((System.currentTimeMillis() >= this.respawnTime) && (this.currentStatus != PlayerStatus.DEAD)) {
+        if ((System.currentTimeMillis() >= this.respawnTime) && (this.currentStatus != PlayerStatus.DEAD))
+        {
             this.currentStatus = PlayerStatus.ALIVE;
         }
     }
@@ -194,26 +195,29 @@ public class ClassicPlayer extends Player
 
     public void removeItem(int inventoryItemIndexToRemove)
     {
-        if (this.items[inventoryItemIndexToRemove].getNumberOfItemsOfThisType() != 1) {
+        if (this.items[inventoryItemIndexToRemove].getNumberOfItemsOfThisType() != 1)
+        {
             this.items[inventoryItemIndexToRemove].setNumberOfItemsOfThisType(this.items[inventoryItemIndexToRemove].getNumberOfItemsOfThisType() - 1);
             this.items[inventoryItemIndexToRemove].setXPos(this.posX);
             this.items[inventoryItemIndexToRemove].setYPos(this.posY);
             this.currentMap.addItemOnTheMap(this.items[inventoryItemIndexToRemove].getNewItem());
         }
-        else {
+        else
+        {
             this.items[inventoryItemIndexToRemove] = new EmptyItem();
         }
     }
-
 
 
     public boolean getItemFromName(String itemName)
     {
         boolean exist = false;
         String currentItemName = "";
-        for (int i = 0; i < this.currentNumberOfTypeItemPocessed && !currentItemName.equals(itemName); i++) {
+        for (int i = 0; i < this.currentNumberOfTypeItemPocessed && !currentItemName.equals(itemName); i++)
+        {
             currentItemName = this.items[i].getItemName();
-            if (currentItemName.equals(itemName)) {
+            if (currentItemName.equals(itemName))
+            {
                 exist = true;
             }
         }
@@ -224,7 +228,8 @@ public class ClassicPlayer extends Player
     {
         int itemPosition = 0;
         String currentItemName = "";
-        for (int i = 0; i < this.currentNumberOfTypeItemPocessed && !currentItemName.equals(itemName); i++) {
+        for (int i = 0; i < this.currentNumberOfTypeItemPocessed && !currentItemName.equals(itemName); i++)
+        {
             currentItemName = this.items[i].getItemName();
             itemPosition = i;
         }
@@ -299,12 +304,12 @@ public class ClassicPlayer extends Player
     {
         return this.items;
     }
-    
+
     public PlayerOrientation getPlayerOrientation()
     {
         return this.playerOrientation;
     }
-    
+
     public void setPlayerOrientation(PlayerOrientation orientation)
     {
         this.playerOrientation = orientation;
@@ -312,15 +317,17 @@ public class ClassicPlayer extends Player
 
 
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
-
-    public void deleteItem(String item) {
-        if (this.items[this.getPositionItemFromName(item)].getNumberOfItemsOfThisType() == 1) {
+    public void deleteItem(String item)
+    {
+        if (this.items[this.getPositionItemFromName(item)].getNumberOfItemsOfThisType() == 1)
+        {
             this.items[this.getPositionItemFromName(item)] = new EmptyItem();
         }
         else
         {
             this.items[this.getPositionItemFromName(item)].setNumberOfItemsOfThisType(this.items[this.getPositionItemFromName(item)].getNumberOfItemsOfThisType() - 1);
         }
-            
+
     }
+
 }

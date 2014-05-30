@@ -4,8 +4,7 @@ import gamedatas.AllPlayers;
 import display.MainDisplay;
 import gamedatas.Store;
 
-public class ClassicStoreScreen
-{
+public class ClassicStoreScreen {
 
     public MainDisplay myMainDisplay;
 

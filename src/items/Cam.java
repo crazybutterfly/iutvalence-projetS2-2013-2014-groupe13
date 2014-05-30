@@ -2,15 +2,19 @@ package items;
 
 import gamedatas.ClassicPlayer;
 
-public class Cam extends Item
-{
+public class Cam extends Item {
 
     /* ---------------------- START DECLARATIONS ---------------------- */
     private final int numCam;
+
     private CamStatus camStatus;
+
     private final static int PRICE = 100;
+
     private final static int TIME_BEFORE_UNLOCK = 0;
+
     private final static boolean USABLE_BY_SPY = false;
+
     private final static boolean USABLE_BY_GUARD = false;
 
     /* ---------------------- END DECLARATIONS ---------------------- */
@@ -75,14 +79,17 @@ public class Cam extends Item
     {
 
         int index = 0;
-        while (index < player.getItems().length) {
-            if (player.getItems()[index].getItemName().equals("Material")) {
+        while (index < player.getItems().length)
+        {
+            if (player.getItems()[index].getItemName().equals("Material"))
+            {
                 this.camStatus = CamStatus.WORKING;
                 player.deleteItem("Material");
                 System.out.println("Material deleted");
                 return;
             }
-            else {
+            else
+            {
                 index++;
             }
         }
@@ -93,4 +100,5 @@ public class Cam extends Item
     {
         return new Cam(this.getNumberOfItemsOfThisType() + 1, this.posX, this.posY);
     }
+
 }

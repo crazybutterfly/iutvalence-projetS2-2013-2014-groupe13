@@ -2,8 +2,7 @@ package gamecore;
 
 import java.io.IOException;
 
-public class GameLauncher
-{
+public class GameLauncher {
 
     public static void main(String[] args) throws IOException
     {

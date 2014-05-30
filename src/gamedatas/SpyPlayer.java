@@ -6,8 +6,7 @@ package gamedatas;
  * @author BEGOT William <william.begot@iut-valence.fr>
  * @author DUBOIS Thomas <thomas.dubois@iut-valence.fr>
  */
-public class SpyPlayer extends ClassicPlayer
-{
+public class SpyPlayer extends ClassicPlayer {
     /* ---------------------- START DECLARATIONS ---------------------- */
 
     /**
@@ -54,10 +53,12 @@ public class SpyPlayer extends ClassicPlayer
     public void playerHasBeenKilled()
     {
         this.stats.decrementRemainingLives();
-        if (this.stats.getRemainingLives() == 0) {
+        if (this.stats.getRemainingLives() == 0)
+        {
             this.currentStatus = PlayerStatus.DEAD;
         }
-        else {
+        else
+        {
             this.currentStatus = PlayerStatus.WAITING_FOR_RESPAWN;
             this.respawnTime = (this.nextTimeBeforeRespawn * 1000) + System.currentTimeMillis();
             this.nextTimeBeforeRespawn += SpyPlayer.SPY_TIME_TO_INCREMENT_FOR_RESAWN_TIME;

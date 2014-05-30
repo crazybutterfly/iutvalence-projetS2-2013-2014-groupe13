@@ -8,8 +8,7 @@ import items.Cam;
  * @author BEGOT William <william.begot@iut-valence.fr>
  * @author DUBOIS Thomas <thomas.dubois@iut-valence.fr>
  */
-public class GuardChiefPlayer extends Player
-{
+public class GuardChiefPlayer extends Player {
 
     /* ---------------------- START DECLARATIONS ---------------------- */
     /**
@@ -53,7 +52,8 @@ public class GuardChiefPlayer extends Player
         this.guardCoins = new Coins();
         this.numberOfCams = GuardChiefPlayer.NUMBER_OF_CAMS_DEFAULT;
         this.cams = new Cam[GuardChiefPlayer.NUMBER_OF_CAMS_MAXIMUM];
-        for (int i = 0; i < GuardChiefPlayer.NUMBER_OF_CAMS_MAXIMUM - 1; i++) {
+        for (int i = 0; i < GuardChiefPlayer.NUMBER_OF_CAMS_MAXIMUM - 1; i++)
+        {
             this.cams[i] = new Cam(i + 1, 0, 0);
         }
     }

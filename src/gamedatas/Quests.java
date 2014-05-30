@@ -7,8 +7,7 @@ package gamedatas;
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @author BEGOT William <william.begot@iut-valence.fr>
  */
-public class Quests
-{
+public class Quests {
     /* ---------------------- START DECLARATIONS ---------------------- */
 
     /**
@@ -29,4 +28,5 @@ public class Quests
         this.questFinished = QUEST_FINISHED_DEFAULT;
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
+
 }

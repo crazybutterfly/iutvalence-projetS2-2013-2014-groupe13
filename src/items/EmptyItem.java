@@ -6,8 +6,7 @@ import gamedatas.ClassicPlayer;
  *
  * @author UCDP_Brony
  */
-public class EmptyItem extends Item
-{
+public class EmptyItem extends Item {
 
     private static final String EMPTY_ITEM_NAME = "EmptyItem";
 
@@ -51,4 +50,5 @@ public class EmptyItem extends Item
     public void useItem(ClassicPlayer player)
     {
     }
+
 }

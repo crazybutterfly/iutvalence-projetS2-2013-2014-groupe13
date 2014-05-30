@@ -10,8 +10,7 @@ import items.Item;
  * @author WOERLY-MOUSSIER Joachim <joachim.woerly-moussier@iut-valence.fr>
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  */
-public class Map
-{
+public class Map {
 
     /* ---------------------- START DECLARATIONS ---------------------- */
     /**
@@ -57,19 +56,22 @@ public class Map
      * Frames. Maximum size is 13300*13300.
      *
      * @param numberOfColumns the number of columns of the map.
-     * @param numberOfLines the number of lines of the map.
+     * @param numberOfLines   the number of lines of the map.
      */
     public Map(int numberOfColumns, int numberOfLines)
     {
         this.numberOfColumns = numberOfColumns;
         this.numberOfLines = numberOfLines;
         this.map = new Frame[this.numberOfColumns][this.numberOfLines];
-        for (int lineToDealWith = 0; lineToDealWith < this.numberOfLines; lineToDealWith++) {
-            for (int columnToDealWith = 0; columnToDealWith < this.numberOfColumns; columnToDealWith++) {
+        for (int lineToDealWith = 0; lineToDealWith < this.numberOfLines; lineToDealWith++)
+        {
+            for (int columnToDealWith = 0; columnToDealWith < this.numberOfColumns; columnToDealWith++)
+            {
                 this.map[columnToDealWith][lineToDealWith] = Frame.WALL;
             }
         }
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 10000; i++)
+        {
             this.itemsOnTheMap[i] = new EmptyItem();
         }
         this.itemsOnTheMap[0] = new Doc(0, 0);
@@ -82,17 +84,19 @@ public class Map
     /**
      * Function used to change the status of the frames within a rectangle.
      *
-     * @param xStartCase the abciss of the left border of the rectangle
-     * @param yStartCase the number of the top row of the rectangle
-     * @param width the width of the rectangle
-     * @param height the height of the rectangle
+     * @param xStartCase  the abciss of the left border of the rectangle
+     * @param yStartCase  the number of the top row of the rectangle
+     * @param width       the width of the rectangle
+     * @param height      the height of the rectangle
      * @param frameStatus the frame status that is to be inserted into the
-     * frames within the rectangle
+     *                    frames within the rectangle
      */
     public void changeStatusOfFrameRectangle(int xStartCase, int yStartCase, int width, int height, Frame frameStatus)
     {
-        for (int lineToDealWith = yStartCase - 1; lineToDealWith < (yStartCase + height - 1); lineToDealWith++) {
-            for (int columnToDealWith = xStartCase - 1; columnToDealWith < (xStartCase + width - 1); columnToDealWith++) {
+        for (int lineToDealWith = yStartCase - 1; lineToDealWith < (yStartCase + height - 1); lineToDealWith++)
+        {
+            for (int columnToDealWith = xStartCase - 1; columnToDealWith < (xStartCase + width - 1); columnToDealWith++)
+            {
                 this.map[columnToDealWith][lineToDealWith] = frameStatus;
             }
         }
@@ -119,13 +123,15 @@ public class Map
     public void drawCircle(final int centerX, final int centerY, final int radius, final Frame frame)
     {
 
-        for (int i = 0; i < radius; i++) {
+        for (int i = 0; i < radius; i++)
+        {
             int d = 3 - (2 * radius);
             int x = 0;
             int y = radius - i;
             Frame circleFrame = frame;
 
-            do {
+            do
+            {
                 this.changeStatusOfFrame(centerX + x, centerY + y, circleFrame);
                 this.changeStatusOfFrame(centerX + x, centerY + y - 1, circleFrame);
                 this.changeStatusOfFrame(centerX + x, centerY - y, circleFrame);
@@ -142,10 +148,12 @@ public class Map
                 this.changeStatusOfFrame(centerX - y + 1, centerY + x, circleFrame);
                 this.changeStatusOfFrame(centerX - y, centerY - x, circleFrame);
                 this.changeStatusOfFrame(centerX - y + 1, centerY - x, circleFrame);
-                if (d < 0) {
+                if (d < 0)
+                {
                     d = d + (4 * x) + 6;
                 }
-                else {
+                else
+                {
                     d = d + 4 * (x - y) + 10;
                     y--;
                 }
@@ -160,8 +168,10 @@ public class Map
     {
         String stringDescriptionOfMap = "";
 
-        for (int lineToDealWith = 0; lineToDealWith < this.numberOfLines; lineToDealWith++) {
-            for (int columnToDealWith = 0; columnToDealWith < this.numberOfColumns; columnToDealWith++) {
+        for (int lineToDealWith = 0; lineToDealWith < this.numberOfLines; lineToDealWith++)
+        {
+            for (int columnToDealWith = 0; columnToDealWith < this.numberOfColumns; columnToDealWith++)
+            {
                 stringDescriptionOfMap += this.map[columnToDealWith][lineToDealWith];
             }
             stringDescriptionOfMap += "\n";
@@ -175,9 +185,10 @@ public class Map
         this.numberOfItemsOnTheMap++;
     }
     /* ---------------------- END FUNCTION(S) ---------------------- */
-    
-    public Frame getFrameStatus(int posX,int posY)
+
+    public Frame getFrameStatus(int posX, int posY)
     {
         return this.map[posX][posY];
     }
+
 }

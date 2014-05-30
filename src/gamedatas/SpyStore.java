@@ -8,8 +8,7 @@ package gamedatas;
  *
  * @author MITTOUX Hadrien <hadrien.mittoux@iut-valence.fr>
  */
-public class SpyStore extends Store
-{
+public class SpyStore extends Store {
     /* ---------------------- START DECLARATIONS ---------------------- */
 
     /* ---------------------- END DECLARATIONS ---------------------- */
@@ -20,23 +19,27 @@ public class SpyStore extends Store
      *
      * transfer a number of items from the store to a player.
      *
-     * @param item name of the item to transfer
+     * @param item   name of the item to transfer
      * @param number number of items to transfer
      * @param player current player
      */
     public void addItemPlayer(String item, int number, ClassicPlayer player)
     {
 
-        if (this.changeStoreCapacity(item, number)) {
-            if (player.getItemFromName(item)) {
+        if (this.changeStoreCapacity(item, number))
+        {
+            if (player.getItemFromName(item))
+            {
                 player.getItems()[player.getPositionItemFromName(item)].setNumberOfItemsOfThisType(player.getItems()[player.getPositionItemFromName(item)].getNumberOfItemsOfThisType() + number);
             }
-            else {
+            else
+            {
                 // message d'alerte
             }
 
         }
-        else {
+        else
+        {
             //message d'alerte
         }
 
@@ -45,4 +48,5 @@ public class SpyStore extends Store
     /* ---------------------- END FUNCTION(S) ---------------------- */
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
+
 }

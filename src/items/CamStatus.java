@@ -9,8 +9,7 @@ package items;
  *
  * @author Woerly-Moussier Joachim <joachim.woerly-moussier@iut-valence.fr>
  */
-enum CamStatus
-{
+enum CamStatus {
 
     WORKING,
     STOPPED_AT_A_FRAME,

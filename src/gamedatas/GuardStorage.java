@@ -2,14 +2,14 @@ package gamedatas;
 
 import items.Item;
 
-public class GuardStorage
-{
+public class GuardStorage {
     /* ---------------------- START DECLARATIONS ---------------------- */
 
     /**
      * declaration of an array composed with Item objects.
      */
     Item[] storeItems;
+
     /**
      * declaration of an array composed with integers.
      */
@@ -28,7 +28,7 @@ public class GuardStorage
     /**
      * when a guard takes an item.
      *
-     * @param item what the guards want for an item.
+     * @param item     what the guards want for an item.
      * @param quantity how many items he wants to take.
      */
     public void takeItem(String item, Integer quantity)
@@ -48,7 +48,8 @@ public class GuardStorage
     {
         int itemPosition = 0;
         String currentItemName = "";
-        for (int i = 0; i < Store.NUMBER_OF_ITEMS_AVAILABLE && !currentItemName.equals(itemName); i++) {
+        for (int i = 0; i < Store.NUMBER_OF_ITEMS_AVAILABLE && !currentItemName.equals(itemName); i++)
+        {
             currentItemName = this.storeItems[i].getItemName();
             itemPosition = i;
         }

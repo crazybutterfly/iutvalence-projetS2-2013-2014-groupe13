@@ -5,8 +5,7 @@ package gamedatas;
  *
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  */
-public class Timer
-{
+public class Timer {
 
     /* ---------------------- START DECLARATIONS ---------------------- */
     /**

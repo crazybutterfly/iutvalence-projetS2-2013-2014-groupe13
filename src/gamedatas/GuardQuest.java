@@ -1,7 +1,6 @@
 package gamedatas;
 
-public class GuardQuest extends Quests
-{
+public class GuardQuest extends Quests {
     /* ---------------------- START DECLARATIONS ---------------------- */
 
     /**

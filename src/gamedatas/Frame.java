@@ -7,8 +7,7 @@ package gamedatas;
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @author WOERLY-MOUSSIER Joachim <joachim.woerly-moussier@iut-valence.fr>
  */
-public enum Frame
-{
+public enum Frame {
     /* ---------------------- START DECLARATIONS---------------------- */
 
     /**
@@ -67,10 +66,13 @@ public enum Frame
 
     public static Frame parseFrame(String string)
     {
-        for (Frame value : Frame.values()) {
-            if (!value.loadingRepresentation.equals(string)) {
+        for (Frame value : Frame.values())
+        {
+            if (!value.loadingRepresentation.equals(string))
+            {
             }
-            else {
+            else
+            {
                 return value;
             }
         }
@@ -96,4 +98,5 @@ public enum Frame
         return guardsCanWalk;
     }
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
+
 }

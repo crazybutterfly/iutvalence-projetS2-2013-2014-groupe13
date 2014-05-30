@@ -6,14 +6,15 @@ package gamedatas;
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @author WOERLY-MOUSSIER Joachim <joachim.woerly-moussier@iut-valence.fr>
  */
-public class SpyStats extends Stats
-{
+public class SpyStats extends Stats {
     /* ---------------------- START DECLARATIONS ---------------------- */
 
     private boolean teamHasDocs;
+
     private int remainingLives;
 
     public final static boolean TEAM_HAS_DOCS_DEFAULT = false;
+
     public final static int REMAINING_LIVES_DEFAULT = 10;
 
     /* ---------------------- END DECLARATIONS ---------------------- */

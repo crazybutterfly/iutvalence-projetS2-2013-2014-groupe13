@@ -51,7 +51,8 @@ public class Engine {
     /* ---------------------- END DECLARATIONS ---------------------- */
 
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
-    public Engine(GameInformations gameInfos) {
+    public Engine(GameInformations gameInfos)
+    {
         this.numberOfPlayer = gameInfos.getNumberOfGuards() + gameInfos.getNumberOfSpies();
         this.map = GameInformationLoaderFromFile.loadMapFromFile(gameInfos.getMapLocation());
         this.gameMode = GameInformationLoaderFromFile.loadQuestsFromFile(gameInfos.getQuestsLocation());
@@ -61,21 +62,26 @@ public class Engine {
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 
     /* ---------------------- START FUNCTION(S) ---------------------- */
-    public void doInteraction(PlayerInputs playerInput) {
+    public void doInteraction(PlayerInputs playerInput)
+    {
 
     }
 
-    public void classicPlayerPlay() {
+    public void classicPlayerPlay()
+    {
     }
 
-    public void classicPlayerWaitingRespawn() {
+    public void classicPlayerWaitingRespawn()
+    {
     }
 
-    public void classicPlayerDead() {
+    public void classicPlayerDead()
+    {
     }
 
-    public void startGame() {
-        
+    public void startGame()
+    {
+
         SwingUtilities.invokeLater(this.mainDisplay);
     }
     /* ---------------------- END FUNCTION(S) ---------------------- */

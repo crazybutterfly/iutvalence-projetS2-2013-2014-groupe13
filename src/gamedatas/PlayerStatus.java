@@ -9,8 +9,7 @@ package gamedatas;
  *
  * @author WOERLY-MOUSSIER Joachim <joachim.woerly-moussier@iut-valence.fr>
  */
-enum PlayerStatus
-{
+enum PlayerStatus {
 
     ALIVE,
     WAITING_FOR_RESPAWN,

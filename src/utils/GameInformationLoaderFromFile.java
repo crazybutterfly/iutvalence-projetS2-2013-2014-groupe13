@@ -24,20 +24,28 @@ public class GameInformationLoaderFromFile {
      * Creates a file reader.
      *
      */
-    public GameInformationLoaderFromFile() {
+    public GameInformationLoaderFromFile()
+    {
 
     }
     /*-----------------CLASS FUNCTIONS---------------*/
 
-    public static boolean fileExists(String fileLocation) {
-        try {
+    public static boolean fileExists(String fileLocation)
+    {
+        try
+        {
             File file = new File(fileLocation);
-            if (file.exists() && !file.isDirectory()) {
+            if (file.exists() && !file.isDirectory())
+            {
                 return true;
-            } else {
+            }
+            else
+            {
                 return false;
             }
-        } catch (NullPointerException e) {
+        }
+        catch (NullPointerException e)
+        {
             return false;
         }
     }
@@ -50,64 +58,81 @@ public class GameInformationLoaderFromFile {
      *
      * @return a map.
      */
-    public static ValidFileRapport isMapFileValid(String fileLocation) {
+    public static ValidFileRapport isMapFileValid(String fileLocation)
+    {
 
         ValidFileRapport mapStatus = new ValidFileRapport();
 
-        try {
+        try
+        {
             BufferedReader fileTester = new BufferedReader(new FileReader(fileLocation));
             int mapXSizeTest = Integer.parseInt(fileTester.readLine());
             int mapYSizeTest = Integer.parseInt(fileTester.readLine());
-            if ((mapXSizeTest > Map.MAX_X_SIZE) || (mapYSizeTest > Map.MAX_Y_SIZE)) {
+            if ((mapXSizeTest > Map.MAX_X_SIZE) || (mapYSizeTest > Map.MAX_Y_SIZE))
+            {
                 mapStatus.invalidFilerapport = "erreur de dimension de la map";
                 return mapStatus;
             }
 
             String line = fileTester.readLine();
             int index = 3;
-            while ((line != null) && (!"".equals(line))) {
+            while ((line != null) && (!"".equals(line)))
+            {
 
                 String[] parts = line.split("\\s");
-                if ((parts[0].charAt(0) != 'R') && (parts[0].charAt(0) != 'C')) {
+                if ((parts[0].charAt(0) != 'R') && (parts[0].charAt(0) != 'C'))
+                {
                     mapStatus.invalidFilerapport = "erreur R && C ligne " + index;
                     return mapStatus;
                 }
-                if (parts[0].charAt(0) == 'R') {
-                    if ((Integer.parseInt(parts[1]) > mapXSizeTest) || (Integer.parseInt(parts[1]) < 0)) {
+                if (parts[0].charAt(0) == 'R')
+                {
+                    if ((Integer.parseInt(parts[1]) > mapXSizeTest) || (Integer.parseInt(parts[1]) < 0))
+                    {
                         mapStatus.invalidFilerapport = "erreur premier param rectangle ligne " + index;
                         return mapStatus;
                     }
-                    if ((Integer.parseInt(parts[2]) > mapYSizeTest)) {
+                    if ((Integer.parseInt(parts[2]) > mapYSizeTest))
+                    {
                         mapStatus.invalidFilerapport = "erreur second param rectangle ligne : " + index + ", param " + Integer.parseInt(parts[2]) + "supérieur à " + mapYSizeTest;
                         return mapStatus;
                     }
 
-                    if (Integer.parseInt(parts[2]) < 0) {
+                    if (Integer.parseInt(parts[2]) < 0)
+                    {
                         mapStatus.invalidFilerapport = "erreur second param rectangle ligne : " + index + ",inferieur à 0 ";
                         return mapStatus;
                     }
-                    if ((Integer.parseInt(parts[3]) > mapXSizeTest) || (Integer.parseInt(parts[3]) < 0)) {
+                    if ((Integer.parseInt(parts[3]) > mapXSizeTest) || (Integer.parseInt(parts[3]) < 0))
+                    {
                         mapStatus.invalidFilerapport = "erreur troisième param rectangle ligne " + index;
                         return mapStatus;
                     }
-                    if ((Integer.parseInt(parts[4]) > mapYSizeTest) || (Integer.parseInt(parts[4]) < 0)) {
+                    if ((Integer.parseInt(parts[4]) > mapYSizeTest) || (Integer.parseInt(parts[4]) < 0))
+                    {
                         mapStatus.invalidFilerapport = "erreur quatrième param rectangle ligne " + index;
                         return mapStatus;
                     }
-                    if ((!parts[5].equals("W")) && (!parts[5].equals("F")) && (!parts[5].equals("S")) && (!parts[5].equals("G"))) {
+                    if ((!parts[5].equals("W")) && (!parts[5].equals("F")) && (!parts[5].equals("S")) && (!parts[5].equals("G")))
+                    {
                         mapStatus.invalidFilerapport = "erreur format case ligne " + index;
                         return mapStatus;
                     }
-                } else if (parts[0].charAt(0) == 'C') {
-                    if ((Integer.parseInt(parts[1]) <= Integer.parseInt(parts[3])) || (Integer.parseInt(parts[1]) >= mapXSizeTest - Integer.parseInt(parts[3]))) {
+                }
+                else if (parts[0].charAt(0) == 'C')
+                {
+                    if ((Integer.parseInt(parts[1]) <= Integer.parseInt(parts[3])) || (Integer.parseInt(parts[1]) >= mapXSizeTest - Integer.parseInt(parts[3])))
+                    {
                         mapStatus.invalidFilerapport = "erreur premier param cercle ligne " + index;
                         return mapStatus;
                     }
-                    if ((Integer.parseInt(parts[2]) <= Integer.parseInt(parts[3])) || (Integer.parseInt(parts[2]) >= mapXSizeTest - Integer.parseInt(parts[3]))) {
+                    if ((Integer.parseInt(parts[2]) <= Integer.parseInt(parts[3])) || (Integer.parseInt(parts[2]) >= mapXSizeTest - Integer.parseInt(parts[3])))
+                    {
                         mapStatus.invalidFilerapport = "erreur second param cercle ligne " + index;
                         return mapStatus;
                     }
-                    if ((!parts[4].equals("W")) && (!parts[4].equals("F")) && (!parts[4].equals("S")) && (!parts[4].equals("G"))) {
+                    if ((!parts[4].equals("W")) && (!parts[4].equals("F")) && (!parts[4].equals("S")) && (!parts[4].equals("G")))
+                    {
                         mapStatus.invalidFilerapport = "erreur format case ligne " + index;
                         return mapStatus;
                     }
@@ -115,7 +140,9 @@ public class GameInformationLoaderFromFile {
 
                 line = fileTester.readLine();
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             mapStatus.invalidFilerapport = "Erreur de lecture de fichier";
             return mapStatus;
         }
@@ -124,29 +151,37 @@ public class GameInformationLoaderFromFile {
         return mapStatus;
     }
 
-    public static Map loadMapFromFile(String fileLocation) {
+    public static Map loadMapFromFile(String fileLocation)
+    {
         /**
          * création d'un lecteur pour récupérer les données entrées par le
          * joueur
          */
 
-        try {
+        try
+        {
             int mapXSize;
             int mapYSize;
             BufferedReader fileReader;
             fileReader = new BufferedReader(new FileReader(fileLocation));
 
             String mapXSizeText = fileReader.readLine();
-            if (mapXSizeText == null) {
+            if (mapXSizeText == null)
+            {
                 mapXSize = Map.STANDARD_X_SIZE_VALUE;
-            } else {
+            }
+            else
+            {
                 mapXSize = Integer.parseInt(mapXSizeText);
             }
 
             String mapYSizeText = fileReader.readLine();
-            if (mapYSizeText == null) {
+            if (mapYSizeText == null)
+            {
                 mapYSize = Map.STANDARD_Y_SIZE_VALUE;
-            } else {
+            }
+            else
+            {
                 mapYSize = Integer.parseInt(mapYSizeText);
             }
 
@@ -154,17 +189,21 @@ public class GameInformationLoaderFromFile {
 
             String line = fileReader.readLine();
 
-            while ((line != null) && (!"".equals(line))) {
+            while ((line != null) && (!"".equals(line)))
+            {
 
                 String[] parts = line.split("\\s");
-                if (parts[0].charAt(0) == 'R') {
+                if (parts[0].charAt(0) == 'R')
+                {
                     int xStartFrame = Integer.parseInt(parts[1]);
                     int yStartFrame = Integer.parseInt(parts[2]);
                     int width = Integer.parseInt(parts[3]);
                     int height = Integer.parseInt(parts[4]);
                     Frame frameStatus = Frame.parseFrame(parts[5]);
                     map.changeStatusOfFrameRectangle(xStartFrame, yStartFrame, width, height, frameStatus);
-                } else if (parts[0].charAt(0) == 'C') {
+                }
+                else if (parts[0].charAt(0) == 'C')
+                {
                     int centerX = Integer.parseInt(parts[1]);
                     int centerY = Integer.parseInt(parts[2]);
                     int radius = Integer.parseInt(parts[3]);
@@ -175,7 +214,9 @@ public class GameInformationLoaderFromFile {
             }
 
             return map;
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             System.out.println("Error during map file reading");
             return null;
         }
@@ -183,11 +224,13 @@ public class GameInformationLoaderFromFile {
     }
 
     /*-------------------------------QUEST FUNCTIONS---------------------------------------*/
-    public static ValidFileRapport isQuestFileValid(String fileLocation) {
+    public static ValidFileRapport isQuestFileValid(String fileLocation)
+    {
 
         ValidFileRapport questFileIsValid = new ValidFileRapport();
 
-        try {
+        try
+        {
             BufferedReader fileTester = new BufferedReader(new FileReader(fileLocation));
             int timer = Integer.parseInt(fileTester.readLine());
             int numberOfQuests = Integer.parseInt(fileTester.readLine());
@@ -200,50 +243,65 @@ public class GameInformationLoaderFromFile {
             int xPosGuard = Integer.parseInt(respawnLineParts[2]);
             int yPosGuard = Integer.parseInt(respawnLineParts[3]);
 
-            if (xPosSpy <= 0) {
+            if (xPosSpy <= 0)
+            {
                 questFileIsValid.invalidFilerapport = "posX du point de respawn des Spies inférieur ou égal à 0. Valeur : " + xPosSpy;
                 return questFileIsValid;
             }
-            if (xPosGuard <= 0) {
+            if (xPosGuard <= 0)
+            {
                 questFileIsValid.invalidFilerapport = "posX du point de respawn des Guards inférieur ou égal à 0. Valeur : " + xPosSpy;
                 return questFileIsValid;
             }
-            if (yPosSpy <= 0) {
+            if (yPosSpy <= 0)
+            {
                 questFileIsValid.invalidFilerapport = "posY du point de respawn des Spies inférieur ou égal à 0. Valeur : " + xPosSpy;
                 return questFileIsValid;
             }
-            if (yPosGuard <= 0) {
+            if (yPosGuard <= 0)
+            {
                 questFileIsValid.invalidFilerapport = "posY du point de respawn des Guards inférieur ou égal à 0. Valeur : " + xPosSpy;
                 return questFileIsValid;
             }
 
-            if (docXLocation < 0 || docYLocation < 0) {
+            if (docXLocation < 0 || docYLocation < 0)
+            {
                 questFileIsValid.invalidFilerapport = "doc hors de la map";
                 return questFileIsValid;
-            } else {
-                if (0 >= numberOfQuests) {
+            }
+            else
+            {
+                if (0 >= numberOfQuests)
+                {
                     questFileIsValid.invalidFilerapport = "invalid number of quests";
                     return questFileIsValid;
-                } else {
+                }
+                else
+                {
                     int index = 0;
                     String line = fileTester.readLine();
 
-                    while ((line != null) && (!"".equals(line))) {
+                    while ((line != null) && (!"".equals(line)))
+                    {
 
                         String[] parts = line.split("\\s");
-                        if (Integer.parseInt(parts[0]) < 0) {
+                        if (Integer.parseInt(parts[0]) < 0)
+                        {
                             questFileIsValid.invalidFilerapport = "error at first param, quest " + index;
                             return questFileIsValid;
                         }
-                        if (Integer.parseInt(parts[1]) < 0) {
+                        if (Integer.parseInt(parts[1]) < 0)
+                        {
                             questFileIsValid.invalidFilerapport = "error at second param, quest " + index;
                             return questFileIsValid;
                         }
-                        if (Integer.parseInt(parts[2]) < 0) {
+                        if (Integer.parseInt(parts[2]) < 0)
+                        {
                             questFileIsValid.invalidFilerapport = "error at third param, quest " + index;
                             return questFileIsValid;
                         }
-                        if (Integer.parseInt(parts[3]) < 0) {
+                        if (Integer.parseInt(parts[3]) < 0)
+                        {
                             questFileIsValid.invalidFilerapport = "error at fourth param, quest " + index;
                             return questFileIsValid;
                         }
@@ -251,27 +309,34 @@ public class GameInformationLoaderFromFile {
                         line = fileTester.readLine();
                         index++;
                     }
-                    if (numberOfQuests != index) {
+                    if (numberOfQuests != index)
+                    {
                         questFileIsValid.invalidFilerapport = "incorrect number of quests";
                         return questFileIsValid;
-                    } else {
+                    }
+                    else
+                    {
                         questFileIsValid.fileIsValid = true;
                         questFileIsValid.invalidFilerapport = "valid file";
                         return questFileIsValid;
                     }
                 }
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             questFileIsValid.invalidFilerapport = "error during quest file read";
             return questFileIsValid;
         }
 
     }
 
-    public static GameMode loadQuestsFromFile(String fileLocation) { 
+    public static GameMode loadQuestsFromFile(String fileLocation)
+    {
 
-        try {
-            BufferedReader fileReader  = new BufferedReader(new FileReader(fileLocation));
+        try
+        {
+            BufferedReader fileReader = new BufferedReader(new FileReader(fileLocation));
             GameMode gameMode = new GameMode();
             gameMode.setTimer(Integer.parseInt(fileReader.readLine()));
             gameMode.setNumberOfQuests(Integer.parseInt(fileReader.readLine()));
@@ -290,7 +355,8 @@ public class GameInformationLoaderFromFile {
             String line = fileReader.readLine();
             int index = 0;
 
-            while ((line != null) && (!"".equals(line))) {
+            while ((line != null) && (!"".equals(line)))
+            {
 
                 String[] parts = line.split("\\s");
                 int posX = Integer.parseInt(parts[0]);
@@ -305,7 +371,9 @@ public class GameInformationLoaderFromFile {
 
             return gameMode;
 
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             System.out.println("quest file load fail");
             return null;
         }

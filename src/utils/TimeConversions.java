@@ -8,8 +8,7 @@ import java.util.Date;
  *
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  */
-public class TimeConversions
-{
+public class TimeConversions {
     /* ---------------------- START FUNCTION(S) ---------------------- */
 
     /**

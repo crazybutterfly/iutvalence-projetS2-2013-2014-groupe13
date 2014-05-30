@@ -6,8 +6,7 @@ package gamedatas;
  * @author BEGOT William <william.begot@iut-valence.fr>
  * @author DUBOIS Thomas <thomas.dubois@iut-valence.fr>
  */
-public class GuardPlayer extends ClassicPlayer
-{
+public class GuardPlayer extends ClassicPlayer {
     /* ---------------------- START DECLARATIONS ---------------------- */
 
     /**
@@ -55,4 +54,5 @@ public class GuardPlayer extends ClassicPlayer
         this.currentStatus = PlayerStatus.WAITING_FOR_RESPAWN;
     }
     /* ---------------------- END FUNCTION(S) ---------------------- */
+
 }

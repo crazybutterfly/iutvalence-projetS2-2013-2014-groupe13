@@ -11,8 +11,7 @@ package gamedatas;
  * @author WOERLY-MOUSSIER Joachim <joachim.woerly-moussier@iut-valence.fr>
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  */
-public enum GameStatus
-{
+public enum GameStatus {
 
     RUNNING,
     NOT_RUNNING,

@@ -13,8 +13,7 @@ import items.Item;
  * @author MITTOUX Hadrien <hadrien.mittoux@iut-valence.fr>
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  */
-public abstract class Store
-{
+public abstract class Store {
 
     /* ---------------------- START DECLARATIONS ---------------------- */
     /**
@@ -39,7 +38,8 @@ public abstract class Store
     public void Store()
     {
         this.storedItems = new Item[Store.NUMBER_OF_ITEMS_AVAILABLE];
-        for (int i = 0; i < Store.NUMBER_OF_ITEMS_AVAILABLE; i++) {
+        for (int i = 0; i < Store.NUMBER_OF_ITEMS_AVAILABLE; i++)
+        {
             this.storedItems[i] = new EmptyItem();
         }
     }
@@ -50,23 +50,27 @@ public abstract class Store
      *
      * modificate the number of an item in the store.
      *
-     * @param itemName name of the item you want to change.
+     * @param itemName    name of the item you want to change.
      * @param modificator number of the modification.
      * @return true if the change took place correctly, false otherwise.
      */
     public boolean changeStoreCapacity(String itemName, int modificator)
     {
-        if ((this.storedItems[this.getPositionItemFromName(itemName)].getNumberOfItemsOfThisType() + modificator) > 0) {
+        if ((this.storedItems[this.getPositionItemFromName(itemName)].getNumberOfItemsOfThisType() + modificator) > 0)
+        {
             this.storedItems[this.getPositionItemFromName(itemName)].setNumberOfItemsOfThisType(this.storedItems[this.getPositionItemFromName(itemName)].getNumberOfItemsOfThisType() + modificator);
             return true;
         }
-        else {
-            if ((this.storedItems[this.getPositionItemFromName(itemName)].getNumberOfItemsOfThisType() + modificator) == 0) {
+        else
+        {
+            if ((this.storedItems[this.getPositionItemFromName(itemName)].getNumberOfItemsOfThisType() + modificator) == 0)
+            {
                 this.storedItems[this.getPositionItemFromName(itemName)] = new EmptyItem();
                 this.storedItems[this.getPositionItemFromName(itemName)].setNumberOfItemsOfThisType(1);
                 return true;
             }
-            else {
+            else
+            {
                 return false;
             }
         }
@@ -84,7 +88,8 @@ public abstract class Store
     {
         int itemPosition = 0;
         String currentItemName = "";
-        for (int i = 0; i < Store.NUMBER_OF_ITEMS_AVAILABLE && !currentItemName.equals(itemName); i++) {
+        for (int i = 0; i < Store.NUMBER_OF_ITEMS_AVAILABLE && !currentItemName.equals(itemName); i++)
+        {
             currentItemName = this.storedItems[i].getItemName();
             itemPosition = i;
         }
@@ -99,4 +104,5 @@ public abstract class Store
         return this.storedItems;
     }
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
+
 }

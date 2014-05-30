@@ -23,6 +23,10 @@ import utils.ValidFileRapport;
  */
 public class InitialParametersInput implements Runnable, ActionListener {
 
+    /* ---------------------- START DECLARATIONS ---------------------- */
+    /**
+     * Reference to game informations
+     */
     private final GameInformations refToGameInformations;
 
     /**
@@ -64,14 +68,20 @@ public class InitialParametersInput implements Runnable, ActionListener {
      * is the input finish?
      */
     private boolean inputFinish;
-
-    public InitialParametersInput(GameInformations gamedatas) {
+    /* ---------------------- END DECLARATIONS ---------------------- */
+    
+    /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
+    public InitialParametersInput(GameInformations gamedatas)
+    {
         this.inputFinish = false;
         this.refToGameInformations = gamedatas;
     }
+    /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
 
+    /* ---------------------- START FUNCTION(S) ---------------------- */
     @Override
-    public void run() {
+    public void run()
+    {
         // Frame initialization
         this.MainFrame = new JFrame();
         this.MainFrame.setTitle("Game Parameters");
@@ -108,77 +118,87 @@ public class InitialParametersInput implements Runnable, ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent actionSelected) {
+    public void actionPerformed(ActionEvent actionSelected)
+    {
         JButton selectedButton = (JButton) actionSelected.getSource();
 
-        if (selectedButton == this.mapLoaderButton) {
+        if (selectedButton == this.mapLoaderButton)
+        {
             JFileChooser mapFileChooser = new JFileChooser(new File("./src/externalFiles"));
             int returnVal = mapFileChooser.showOpenDialog(null);
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
+            if (returnVal == JFileChooser.APPROVE_OPTION)
+            {
                 this.refToGameInformations.setMapLocation(mapFileChooser.getSelectedFile().getAbsolutePath());
             }
         }
 
-        if (selectedButton == this.questLoaderButton) {
+        if (selectedButton == this.questLoaderButton)
+        {
             JFileChooser questFileChooser = new JFileChooser(new File("./src/externalFiles"));
             int returnVal = questFileChooser.showOpenDialog(null);
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
+            if (returnVal == JFileChooser.APPROVE_OPTION)
+            {
                 this.refToGameInformations.setQuestsLocation(questFileChooser.getSelectedFile().getAbsolutePath());
             }
         }
-        
-        if (selectedButton == this.startGame) {
+
+        if (selectedButton == this.startGame)
+        {
             this.refToGameInformations.setNumberOfGuards(Integer.parseInt(this.numberOfGuards.getText()));
             this.refToGameInformations.setNumberOfSpies(Integer.parseInt(this.numberOfSpies.getText()));
-            if ((this.refToGameInformations.getNumberOfGuards()<2)||(this.refToGameInformations.getNumberOfGuards()>8))
+            if ((this.refToGameInformations.getNumberOfGuards() < 2) || (this.refToGameInformations.getNumberOfGuards() > 8))
             {
                 JOptionPane.showMessageDialog(this.MainFrame, "Guard number invalid", "ERROR", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
 
-            if ((this.refToGameInformations.getNumberOfSpies()<2)||(this.refToGameInformations.getNumberOfSpies()>8))
+            if ((this.refToGameInformations.getNumberOfSpies() < 2) || (this.refToGameInformations.getNumberOfSpies() > 8))
             {
                 JOptionPane.showMessageDialog(this.MainFrame, "Spies number invalid", "ERROR", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
-            
+
             if (!GameInformationLoaderFromFile.fileExists(this.refToGameInformations.getMapLocation()))
             {
                 JOptionPane.showMessageDialog(this.MainFrame, "Map file does not exist", "ERROR", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
-            
+
             if (!GameInformationLoaderFromFile.fileExists(this.refToGameInformations.getQuestsLocation()))
             {
                 JOptionPane.showMessageDialog(this.MainFrame, "Quests file does not exist", "ERROR", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
-            
-            ValidFileRapport validMapRapport = GameInformationLoaderFromFile.isMapFileValid(this.refToGameInformations.getMapLocation()); 
+
+            ValidFileRapport validMapRapport = GameInformationLoaderFromFile.isMapFileValid(this.refToGameInformations.getMapLocation());
             if (!validMapRapport.fileIsValid)
             {
-                JOptionPane.showMessageDialog(this.MainFrame, new JLabel("Invalid Map file:\n"+validMapRapport.invalidFilerapport), "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this.MainFrame, new JLabel("Invalid Map file:\n" + validMapRapport.invalidFilerapport), "ERROR", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
-            
-            ValidFileRapport validQuestRapport = GameInformationLoaderFromFile.isQuestFileValid(this.refToGameInformations.getQuestsLocation()); 
+
+            ValidFileRapport validQuestRapport = GameInformationLoaderFromFile.isQuestFileValid(this.refToGameInformations.getQuestsLocation());
             if (!validQuestRapport.fileIsValid)
             {
-                JOptionPane.showMessageDialog(this.MainFrame, new JLabel("Invalid Quest file:\n"+validQuestRapport.invalidFilerapport), "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this.MainFrame, new JLabel("Invalid Quest file:\n" + validQuestRapport.invalidFilerapport), "ERROR", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
-            
+
             this.inputFinish = true;
             this.MainFrame.dispose();
-            
-            }
-    }
 
+        }
+    }
+    /* ---------------------- END FUNCTION(S) ---------------------- */
+    
+    /* ---------------------- START GETTERS & SETTERS ---------------------- */
     /**
      * @return the inputFinish
      */
-    public boolean isInputFinish() {
+    public boolean isInputFinish()
+    {
         return inputFinish;
     }
+    /* ---------------------- END GETTERS AND SETTERS ---------------------- */
 
 }

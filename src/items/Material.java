@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package items;
 
 import gamedatas.ClassicPlayer;
@@ -12,15 +11,17 @@ import gamedatas.ClassicPlayer;
  *
  * @author Woerly-Moussier Joachim <joachim.woerly-moussier@iut-valence.fr>
  */
-public class Material extends Item{
+public class Material extends Item {
 
     @Override
-    public void useItem(ClassicPlayer player) {
+    public void useItem(ClassicPlayer player)
+    {
     }
 
     @Override
-    public Item getNewItem() {
+    public Item getNewItem()
+    {
         return new Material();
     }
-    
+
 }

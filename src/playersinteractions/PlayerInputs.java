@@ -5,8 +5,7 @@ package playersinteractions;
  *
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  */
-public class PlayerInputs
-{
+public class PlayerInputs {
 
     /**
      * last character ou key imput by the player.

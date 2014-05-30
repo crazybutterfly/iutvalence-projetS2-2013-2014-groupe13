@@ -6,8 +6,7 @@ package gamedatas;
  * @author BEGOT William <william.begot@iut-valence.fr>
  * @author DUBOIS Thomas <thomas.dubois@iut-valence.fr>
  */
-public class Player
-{
+public class Player {
     /* ---------------------- START DECLARATIONS ---------------------- */
 
     /**
@@ -19,7 +18,7 @@ public class Player
      * Référence vers la map.
      */
     protected Map currentMap;
-  
+
     /**
      * Référence vers les joueurs.
      */
@@ -43,8 +42,10 @@ public class Player
     /* ---------------------- START FUNCTION(S) ---------------------- */
     public boolean changePseudo(String[] allPlayersPseudos, String newPseudo)
     {
-        for (String allPlayersPseudo : allPlayersPseudos) {
-            if (allPlayersPseudo.equals(newPseudo)) {
+        for (String allPlayersPseudo : allPlayersPseudos)
+        {
+            if (allPlayersPseudo.equals(newPseudo))
+            {
                 return false;
             }
         }
@@ -61,12 +62,12 @@ public class Player
     {
         return pseudo;
     }
-    
+
     public AllPlayers getPlayerArray()
     {
         return this.players;
     }
-    
+
     public Map getMap()
     {
         return this.currentMap;
