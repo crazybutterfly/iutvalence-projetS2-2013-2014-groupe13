@@ -77,6 +77,7 @@ public class Engine {
     public void startGame() {
         
         SwingUtilities.invokeLater(this.mainDisplay);
+        
     }
     /* ---------------------- END FUNCTION(S) ---------------------- */
 

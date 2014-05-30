@@ -9,7 +9,7 @@ package gamedatas;
  *
  * @author WOERLY-MOUSSIER Joachim <joachim.woerly-moussier@iut-valence.fr>
  */
-enum PlayerStatus
+public enum PlayerStatus
 {
 
     ALIVE,

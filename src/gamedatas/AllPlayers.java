@@ -184,5 +184,15 @@ public class AllPlayers
         return guardChiefPlayer;
     }
     
+    public void updateAllStatuses()
+    {
+        for (int i = 0; i < this.numberOfGuards - 1; i++) {
+            this.guardsArray[i].refeshKilledPlayerStatuts();
+        }
+        for (int i = 0; i < this.numberOfSpies; i++) {
+            this.spiesArray[i].refeshKilledPlayerStatuts();
+        }
+    }
+    
 
 }

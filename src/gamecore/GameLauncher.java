@@ -26,6 +26,8 @@ public class GameLauncher
         gameEngine = new Engine(initialGameInformations);
         // Game launch
         gameEngine.startGame();
+        
+        
 
 
     }

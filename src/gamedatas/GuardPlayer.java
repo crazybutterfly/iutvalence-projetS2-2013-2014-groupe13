@@ -58,10 +58,11 @@ public class GuardPlayer extends ClassicPlayer
        @Override
     public void refeshKilledPlayerStatuts()
     {
-         if ((System.currentTimeMillis() >= this.respawnTime) && (this.currentStatus != PlayerStatus.DEAD)) {
+         if ((System.currentTimeMillis() >= this.respawnTime) && (this.currentStatus == PlayerStatus.WAITING_FOR_RESPAWN)) {
             this.currentStatus = PlayerStatus.ALIVE;
             this.updatePosition(this.getPlayerArray().getGameMode().getGuardRespawnPointPosX(),this.getPlayerArray().getGameMode().getGuardRespawnPointPosY());
         }
+
     }
     /* ---------------------- END FUNCTION(S) ---------------------- */
 }
