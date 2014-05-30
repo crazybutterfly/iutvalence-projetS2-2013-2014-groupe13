@@ -64,6 +64,16 @@ public class SpyPlayer extends ClassicPlayer
             this.currentStatus = PlayerStatus.WAITING_FOR_RESPAWN;
         }
     }
+    
+
+    @Override
+    public void refeshKilledPlayerStatuts()
+    {
+         if ((System.currentTimeMillis() >= this.respawnTime) && (this.currentStatus != PlayerStatus.DEAD)) {
+            this.currentStatus = PlayerStatus.ALIVE;
+            this.updatePosition(this.getPlayerArray().getGameMode().getSpyRespawnPointPosX(),this.getPlayerArray().getGameMode().getSpyRespawnPointPosY());
+        }
+    }
     /* ---------------------- START FUNCTION(S) ---------------------- */
 
 

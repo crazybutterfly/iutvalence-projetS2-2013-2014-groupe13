@@ -37,5 +37,4 @@ public class GameLauncher
     private void teamSelect(GameInformations gameInfos)
     {
     }
-
 }
