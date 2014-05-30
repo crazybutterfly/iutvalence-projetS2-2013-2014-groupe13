@@ -193,18 +193,18 @@ public class ClassicPlayer extends Player {
         return (int) ((this.respawnTime - currentSystemTime) / 1000);
     }
 
-    public void removeItem(int inventoryItemIndexToRemove)
+    public void dropSelectedItem()
     {
-        if (this.items[inventoryItemIndexToRemove].getNumberOfItemsOfThisType() != 1)
+        if (this.items[this.selectedItemInInventory].getNumberOfItemsOfThisType() != 1)
         {
-            this.items[inventoryItemIndexToRemove].setNumberOfItemsOfThisType(this.items[inventoryItemIndexToRemove].getNumberOfItemsOfThisType() - 1);
-            this.items[inventoryItemIndexToRemove].setXPos(this.posX);
-            this.items[inventoryItemIndexToRemove].setYPos(this.posY);
-            this.currentMap.addItemOnTheMap(this.items[inventoryItemIndexToRemove].getNewItem());
+            this.items[this.selectedItemInInventory].setNumberOfItemsOfThisType(this.items[this.selectedItemInInventory].getNumberOfItemsOfThisType() - 1);
+            this.items[this.selectedItemInInventory].setXPos(this.posX);
+            this.items[this.selectedItemInInventory].setYPos(this.posY);
+            this.currentMap.addItemOnTheMap(this.items[this.selectedItemInInventory].getNewItem());
         }
         else
         {
-            this.items[inventoryItemIndexToRemove] = new EmptyItem();
+            this.items[this.selectedItemInInventory] = new EmptyItem();
         }
     }
 
@@ -235,6 +235,25 @@ public class ClassicPlayer extends Player {
         }
         return itemPosition;
     }
+
+    public void deleteItem(String item)
+    {
+        if (this.items[this.getPositionItemFromName(item)].getNumberOfItemsOfThisType() == 1)
+        {
+            this.items[this.getPositionItemFromName(item)] = new EmptyItem();
+        }
+        else
+        {
+            this.items[this.getPositionItemFromName(item)].setNumberOfItemsOfThisType(this.items[this.getPositionItemFromName(item)].getNumberOfItemsOfThisType() - 1);
+        }
+
+    }
+
+    public void useSelectedItem()
+    {
+        this.items[this.selectedItemInInventory].useItem(this);
+    }
+
     /* ---------------------- END FUNCTION(S) ---------------------- */
 
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
@@ -315,19 +334,21 @@ public class ClassicPlayer extends Player {
         this.playerOrientation = orientation;
     }
 
+    public int getSelectedItemInInventory()
+    {
+        return selectedItemInInventory;
+    }
+
+    public void setSelectedItemInInventory(int selectedItemInInventory)
+    {
+        this.selectedItemInInventory = selectedItemInInventory;
+    }
+
+    public ClassicPlayerMoves getCurrentMoves()
+    {
+        return currentMoves;
+    }
 
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
-    public void deleteItem(String item)
-    {
-        if (this.items[this.getPositionItemFromName(item)].getNumberOfItemsOfThisType() == 1)
-        {
-            this.items[this.getPositionItemFromName(item)] = new EmptyItem();
-        }
-        else
-        {
-            this.items[this.getPositionItemFromName(item)].setNumberOfItemsOfThisType(this.items[this.getPositionItemFromName(item)].getNumberOfItemsOfThisType() - 1);
-        }
-
-    }
 
 }

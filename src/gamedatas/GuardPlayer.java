@@ -1,5 +1,7 @@
 package gamedatas;
 
+import items.Gun;
+
 /**
  *
  * @author MOREL Charles <charles.morel@iut-valence.fr>
@@ -39,6 +41,7 @@ public class GuardPlayer extends ClassicPlayer {
         super(refToMap, refToPlayers);
         this.pseudo += GuardPlayer.DEFAULT_PSEUDO_PREFIX_FOR_GUARD;
         this.pseudo += NumberOfThePlayer;
+        this.items[0] = new Gun();
         this.stats = new Stats();
         this.currentMoves = new GuardPlayerMoves(this);
     }

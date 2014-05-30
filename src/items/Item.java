@@ -61,17 +61,14 @@ public abstract class Item {
     /* ---------------------- START FUNCTION(S) ---------------------- */
 
     /**
-     *
-     * @param player
+     * @return the content of this item on the display button
      */
-    public abstract void useItem(ClassicPlayer player);
-
-
-    /**
-     *
-     * @return
-     */
-    public abstract Item getNewItem();
+    public String buttonText()
+    {
+        String newToString = "";
+        newToString += this.numberOfItemsOfThisType + " <" + this.itemName + ">";
+        return newToString;
+    }
 
     /* ---------------------- END FUNCTION(S) ---------------------- */
 
@@ -139,6 +136,19 @@ public abstract class Item {
     {
         this.numberOfItemsOfThisType = numberOfItemsOfThisType;
     }
+
+    /**
+     *
+     * @param player
+     */
+    public abstract void useItem(ClassicPlayer player);
+
+
+    /**
+     *
+     * @return
+     */
+    public abstract Item getNewItem();
     /* ---------------------- END GETTERS AND SETTERS ---------------------- */
 
 

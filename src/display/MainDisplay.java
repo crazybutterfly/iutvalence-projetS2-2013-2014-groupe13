@@ -1,13 +1,9 @@
 package display;
 
+import display.classicdisplay.*;
 import gamedatas.AllPlayers;
-import display.classicdisplay.ClassicStoreScreen;
-import display.guardchiefdisplay.GuardChiefMainMap;
-import display.classicdisplay.ClassicMainMap;
-import gamedatas.Map;
-import display.guardchiefdisplay.GuardChiefStoreScreen;
-import gamedatas.GameMode;
-import gamedatas.Store;
+import display.guardchiefdisplay.*;
+import gamedatas.*;
 import javax.swing.*;
 
 
@@ -19,17 +15,17 @@ import javax.swing.*;
 public class MainDisplay implements Runnable {
 
     /* ---------------------- START DECLARATIONS ---------------------- */
-    public ClassicMainMap myClassicMainMap;
-
-    public ClassicStoreScreen myClassicStoreScreen;
-
-    public SideBar mySideBar;
-
-    public MiniMap myMiniMap;
-
-    public GuardChiefMainMap myGuardChiefMainMap;
-
-    public GuardChiefStoreScreen myGuardChiefStoreScreen;
+//    public ClassicMainMap myClassicMainMap;
+//
+//    public ClassicStoreScreen myClassicStoreScreen;
+//
+//    public SideBar mySideBar;
+//
+//    public MiniMap myMiniMap;
+//
+//    public GuardChiefMainMap myGuardChiefMainMap;
+//
+//    public GuardChiefStoreScreen myGuardChiefStoreScreen;
 
     /**
      * The number of the selected player.
@@ -39,33 +35,46 @@ public class MainDisplay implements Runnable {
     /**
      * Reference to AllPlayers of the game.
      */
-    private final AllPlayers gamePlayers;
+    private final AllPlayers refToGamePlayers;
 
     /**
      * Reference to the map of the game.
      */
-    private final Map gameMap;
+    private final Map refToGameMap;
 
     /**
      * Reference to game mode.
      */
-    private final GameMode gameMode;
+    private final GameMode refToGameMode;
 
+    /**
+     * The main frame of the game.
+     */
     private JFrame mainFrame;
 
+    /**
+     * The JMenuBar of the main frame of the game.
+     */
     private JMenuMainDisplay jmenuBar;
+
+    private JPanel currentJPanel;
+
+    /**
+     * The number of the selected player by default.
+     */
+    public final static int PLAYER_SELECTED_DEFAULT = 0;
     /* ---------------------- END DECLARATIONS ---------------------- */
-    
+
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
     public MainDisplay(AllPlayers allPlayers, Map map, GameMode gameMode)
     {
-        this.gamePlayers = allPlayers;
-        this.gameMap = map;
-        this.gameMode = gameMode;
-
+        this.refToGamePlayers = allPlayers;
+        this.refToGameMap = map;
+        this.refToGameMode = gameMode;
+        this.playerSelected = MainDisplay.PLAYER_SELECTED_DEFAULT;
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
-    
+
     /* ---------------------- START FUNCTION(S) ---------------------- */
     public void refreshDisplay(Map myMap, Store stores, AllPlayers players)
     {
@@ -83,41 +92,89 @@ public class MainDisplay implements Runnable {
         // Main frame initialization
         this.mainFrame = new JFrame();
         this.mainFrame.setTitle("Spies & Guards");
-        this.mainFrame.setSize(720, 610);
+        this.mainFrame.setSize(700, 700);
         this.mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        // JMenu generation
+        // JMenu initialization
         this.jmenuBar = new JMenuMainDisplay(this);
         this.mainFrame.setJMenuBar(this.jmenuBar);
 
+        // JPanel initialization
+        this.updateTheJPannel();
+
+        // JFrame Display
         this.mainFrame.setVisible(true);
 
     }
+
+
+    public void updateTheJPannel()
+    {
+        if (this.playerSelected == 0)
+        {
+            this.currentJPanel = new GuardChiefPlayerJPanel(this);
+        }
+        else
+        {
+            if (this.playerSelected < this.refToGamePlayers.getNumberOfGuards())
+            {
+                if (this.refToGamePlayers.getGuardsArray()[playerSelected - 1].getCurrentStatus() == PlayerStatus.ALIVE)
+                {
+                    this.currentJPanel = new AliveClassicPlayerJPanel(this);
+                }
+                else if (this.refToGamePlayers.getGuardsArray()[playerSelected - 1].getCurrentStatus() == PlayerStatus.WAITING_FOR_RESPAWN)
+                {
+                    this.currentJPanel = new WaitingForRespawnClassicPlayerJPanel(this);
+                }
+                else
+                {
+                    this.currentJPanel = new DeadClassicPlayerJPanel(this);
+                }
+            }
+            else
+            {
+                if (this.refToGamePlayers.getSpiesArray()[playerSelected - this.getRefToGamePlayers().getNumberOfGuards()].getCurrentStatus() == PlayerStatus.ALIVE)
+                {
+                    this.currentJPanel = new AliveClassicPlayerJPanel(this);
+                }
+                else if (this.refToGamePlayers.getSpiesArray()[playerSelected - this.getRefToGamePlayers().getNumberOfGuards()].getCurrentStatus() == PlayerStatus.WAITING_FOR_RESPAWN)
+                {
+                    this.currentJPanel = new WaitingForRespawnClassicPlayerJPanel(this);
+                }
+                else
+                {
+                    this.currentJPanel = new DeadClassicPlayerJPanel(this);
+                }
+            }
+        }
+        this.mainFrame.setContentPane(this.currentJPanel);
+        this.mainFrame.revalidate();
+    }
     /* ---------------------- END FUNCTION(S) ---------------------- */
-    
+
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
     /**
-     * @return the gamePlayers
+     * @return the refToGamePlayers
      */
-    public AllPlayers getGamePlayers()
+    public AllPlayers getRefToGamePlayers()
     {
-        return gamePlayers;
+        return refToGamePlayers;
     }
 
     /**
-     * @return the gameMap
+     * @return the refToGameMap
      */
-    public Map getGameMap()
+    public Map getRefToGameMap()
     {
-        return gameMap;
+        return refToGameMap;
     }
 
     /**
-     * @return the gameMode
+     * @return the refToGameMode
      */
-    public GameMode getGameMode()
+    public GameMode getRefToGameMode()
     {
-        return gameMode;
+        return refToGameMode;
     }
 
     /**
@@ -127,6 +184,25 @@ public class MainDisplay implements Runnable {
     {
         return mainFrame;
     }
-    /* ---------------------- END GETTERS AND SETTERS ---------------------- */
 
+    /**
+     * @param playerSelected
+     */
+    public void setPlayerSelected(int playerSelected)
+    {
+        this.playerSelected = playerSelected;
+    }
+
+    public int getPlayerSelected()
+    {
+        return playerSelected;
+    }
+
+    public AliveClassicPlayerJPanel getCurrentJPanel()
+    {
+        return (AliveClassicPlayerJPanel) currentJPanel;
+    }
+
+
+    /* ---------------------- END GETTERS AND SETTERS ---------------------- */
 }

@@ -51,4 +51,12 @@ public class EmptyItem extends Item {
     {
     }
 
+    @Override
+    public String buttonText()
+    {
+        String newToString = "";
+        newToString += "<Empty>";
+        return newToString;
+    }
+
 }

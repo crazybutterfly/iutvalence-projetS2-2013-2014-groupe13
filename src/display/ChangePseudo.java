@@ -41,7 +41,7 @@ public class ChangePseudo implements Runnable, ActionListener {
     private JButton cancelButton;
 
     /* ---------------------- END DECLARATIONS ---------------------- */
-    
+
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
     public ChangePseudo(JMenuItem[] refToAllPlayersItemMenu, AllPlayers refToAllPlayers)
     {
@@ -49,7 +49,7 @@ public class ChangePseudo implements Runnable, ActionListener {
         this.refToAllPlayers = refToAllPlayers;
     }
     /* ---------------------- END CONSTRUCTOR(S) ---------------------- */
-    
+
     /* ---------------------- START FUNCTION(S) ---------------------- */
     @Override
     public void run()
@@ -132,4 +132,5 @@ public class ChangePseudo implements Runnable, ActionListener {
         }
     }
     /* ---------------------- END FUNCTION(S) ---------------------- */
+
 }

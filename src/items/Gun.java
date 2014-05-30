@@ -25,11 +25,7 @@ public class Gun extends Item {
     @Override
     public void useItem(ClassicPlayer player)
     {
-        if (this.numberOfAmmoInGun == 0)
-        {
-            System.out.println("no ammo");
-        }
-        else
+        if (this.numberOfAmmoInGun != 0)
         {
             this.numberOfAmmoInGun -= 1;
             int bulletPosX = player.getPosX();
@@ -104,6 +100,14 @@ public class Gun extends Item {
     public Item getNewItem()
     {
         return new Gun();
+    }
+
+    @Override
+    public String buttonText()
+    {
+        String newToString = "";
+        newToString += this.numberOfAmmoInGun + " / " + this.numberOfAmmoOwned + " <Gun>";
+        return newToString;
     }
 
 }

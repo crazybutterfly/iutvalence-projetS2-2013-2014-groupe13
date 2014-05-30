@@ -69,7 +69,7 @@ public class InitialParametersInput implements Runnable, ActionListener {
      */
     private boolean inputFinish;
     /* ---------------------- END DECLARATIONS ---------------------- */
-    
+
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
     public InitialParametersInput(GameInformations gamedatas)
     {
@@ -190,7 +190,7 @@ public class InitialParametersInput implements Runnable, ActionListener {
         }
     }
     /* ---------------------- END FUNCTION(S) ---------------------- */
-    
+
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
     /**
      * @return the inputFinish

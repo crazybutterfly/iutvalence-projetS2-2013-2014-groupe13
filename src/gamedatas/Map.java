@@ -184,11 +184,30 @@ public class Map {
         this.itemsOnTheMap[this.numberOfItemsOnTheMap] = itemToAdd.getNewItem();
         this.numberOfItemsOnTheMap++;
     }
-    /* ---------------------- END FUNCTION(S) ---------------------- */
 
     public Frame getFrameStatus(int posX, int posY)
     {
         return this.map[posX][posY];
     }
+    /* ---------------------- END FUNCTION(S) ---------------------- */
 
+
+    /* ---------------------- START GETTERS & SETTERS ---------------------- */
+    public int getNumberOfColumns()
+    {
+        return numberOfColumns;
+    }
+
+    public int getNumberOfLines()
+    {
+        return numberOfLines;
+    }
+
+    public Frame[][] getMap()
+    {
+        return map;
+    }
+
+
+    /* ---------------------- END GETTERS AND SETTERS ---------------------- */
 }

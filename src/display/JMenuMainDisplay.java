@@ -12,19 +12,33 @@ import javax.swing.*;
 public class JMenuMainDisplay extends JMenuBar implements ActionListener {
 
     /* ---------------------- START DECLARATIONS ---------------------- */
+    /**
+     * Reference to main display.
+     */
     private final MainDisplay refToMainDisplay;
 
+    /**
+     * JMenuItem "about this"
+     */
     private final JMenuItem aboutMenuItem;
 
-    private JMenuItem menuItem;
-
+    /**
+     * JMenuItem "Close the game"
+     */
     private final JMenuItem closeMenuItem;
 
+    /**
+     * JMenuItem "Change a pseudo"
+     */
     private final JMenuItem changePseudoMenuItem;
 
-    private final JMenuItem[] playerSelectionMenuItem;
+    /**
+     * Array composed by referencies of JMenuItem of the differents players
+     * selection
+     */
+    private final JRadioButtonMenuItem[] playerSelectionMenuItem;
     /* ---------------------- END DECLARATIONS ---------------------- */
-    
+
     /* ---------------------- START CONSTRUCTOR(S) ---------------------- */
     public JMenuMainDisplay(MainDisplay refToMainDisplay)
     {
@@ -32,7 +46,7 @@ public class JMenuMainDisplay extends JMenuBar implements ActionListener {
         // Attributes initialisation
 
         this.refToMainDisplay = refToMainDisplay;
-        this.playerSelectionMenuItem = new JMenuItem[this.refToMainDisplay.getGamePlayers().getNumberOfGuards() + this.refToMainDisplay.getGamePlayers().getNumberOfSpies()];
+        this.playerSelectionMenuItem = new JRadioButtonMenuItem[this.refToMainDisplay.getRefToGamePlayers().getNumberOfGuards() + this.refToMainDisplay.getRefToGamePlayers().getNumberOfSpies()];
 
         // MenuBar initialization
 
@@ -46,13 +60,17 @@ public class JMenuMainDisplay extends JMenuBar implements ActionListener {
         gameMenu.add(this.closeMenuItem);
 
         JMenu playerSelectMenu = new JMenu("Players");
-        String[] allPlayersPseudos = this.refToMainDisplay.getGamePlayers().getAllPlayersPseudos();
-        for (int i = 0; i < this.refToMainDisplay.getGamePlayers().getNumberOfGuards() + this.refToMainDisplay.getGamePlayers().getNumberOfSpies(); i++)
+        String[] allPlayersPseudos = this.refToMainDisplay.getRefToGamePlayers().getAllPlayersPseudos();
+        ButtonGroup playerSelectionGroup = new ButtonGroup();
+        for (int i = 0; i < this.refToMainDisplay.getRefToGamePlayers().getNumberOfGuards() + this.refToMainDisplay.getRefToGamePlayers().getNumberOfSpies(); i++)
         {
-            this.playerSelectionMenuItem[i] = new JMenuItem(allPlayersPseudos[i]);
+            this.playerSelectionMenuItem[i] = new JRadioButtonMenuItem(allPlayersPseudos[i]);
             this.playerSelectionMenuItem[i].addActionListener(this);
+            this.playerSelectionMenuItem[i].setSelected(false);
+            playerSelectionGroup.add(this.playerSelectionMenuItem[i]);
             playerSelectMenu.add(this.playerSelectionMenuItem[i]);
         }
+        this.playerSelectionMenuItem[0].setSelected(true);
         playerSelectMenu.addSeparator();
         this.changePseudoMenuItem = new JMenuItem("Change a Pseudo");
         this.changePseudoMenuItem.addActionListener(this);
@@ -70,7 +88,7 @@ public class JMenuMainDisplay extends JMenuBar implements ActionListener {
 
         if (selectedMenuItem == this.changePseudoMenuItem)
         {
-            ChangePseudo pseudoChanger = new ChangePseudo(this.playerSelectionMenuItem, this.refToMainDisplay.getGamePlayers());
+            ChangePseudo pseudoChanger = new ChangePseudo(this.playerSelectionMenuItem, this.refToMainDisplay.getRefToGamePlayers());
             SwingUtilities.invokeLater(pseudoChanger);
             return;
         }
@@ -89,9 +107,20 @@ public class JMenuMainDisplay extends JMenuBar implements ActionListener {
             JOptionPane.showMessageDialog(this.refToMainDisplay.getMainFrame(), new JLabel("Spies and Guards - Projet tutoré S2, IUT Valence, 2014 - MOREL Charles, BEGOT William, DUBOIS Thomas, WOERLY-MOUSSIER Joachim et MITTOUX Hadrien"), "About us...", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
+
+        for (int i = 0; i < this.playerSelectionMenuItem.length; i++)
+        {
+            if (selectedMenuItem == this.playerSelectionMenuItem[i])
+            {
+                this.refToMainDisplay.setPlayerSelected(i);
+                this.refToMainDisplay.updateTheJPannel();
+                this.playerSelectionMenuItem[i].setSelected(true);
+                return;
+            }
+        }
     }
     /* ---------------------- END FUNCTION(S) ---------------------- */
-    
+
     /* ---------------------- START GETTERS & SETTERS ---------------------- */
     public JMenuItem[] getPlayerSelectionMenuItem()
     {
